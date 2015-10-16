@@ -2,9 +2,106 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Hello World!</title>
+    <title>HIT! Alerts</title>
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+
   </head>
   <body>
-	My name is Julian
+
+    <div class="row-fluid">
+
+      <div class="span12 alertbox">
+
+        <div class="row-fluid header">
+            <div class="head">
+                <img class="header_alert_ic ic_header_doc" src="images/ic_doc.png"/>
+                <img class="header_alert_ic ic_header_briefcase" src="images/ic_briefcase.png"/>
+                <img class="not_bell ic_header_bell" src="images/ic_bell.png"/>
+            </div>
+            <div class="head_border"></div>
+        </div>
+
+        <div class="row-fluid search_row">
+
+            <div class="span9"></div>
+
+            <div class="span3">
+
+                  <div class="row-fluid search">
+
+                    <div class="span12">
+                      <div class="row-fluid">
+                        <input  id="search_input"  placeholder="Search e.g >> before May 26th, 2015"/>
+                        <img class="ic_search" src="images/ic_search.png"/>
+                      </div>
+                    </div>
+
+                  </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="row-fluid alerts_holder">
+
+            <div class="span12">
+
+                <div class="row-fluid">
+
+                    <div class="span1"></div>
+                    <div class="span10 alert_msg">
+                        <label><span>May 23rd, 2015</span></label>
+                        <div class="row-fluid">
+                            <div class="span2" id = "alert_icon_holder">
+                                <img class="ic_alert_doc" src="images/ic_doc.png"/>
+                            </div>
+                            <div class="span10">
+                                <div class="row-fluid alert_doc_text_holder">
+                                    <span class="alert_title_text" >Alert title</span>
+                                    <span class="alert_time_text"> 8:30am</span><br/>
+                                    <span class="alert_excerpt_text">Text about the alert</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span1"></div>
+
+                </div>
+
+                <div class="row-fluid">
+
+                    <div class="span1"></div>
+                    <div class="span10 alert_msg">
+                        <label><span>June 2nd, 2015</span></label>
+                        <div class="row-fluid">
+                            <div class="span2" id= "alert_icon_holder">
+                                <img class="ic_alert_briefcase" src="images/ic_briefcase.png"/>
+                            </div>
+                            <div class="span10">
+                                <div class="row-fluid">
+                                    <span class="alert_title_text" >Alert title</span>
+                                    <span class="alert_time_text"> 2:33pm</span><br/>
+                                    <span class="alert_excerpt_text">Text about the alert</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="span1"></div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
   </body>
 </html>

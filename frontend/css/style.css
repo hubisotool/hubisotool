@@ -1,0 +1,120 @@
+.alertbox{
+    height: 100%;
+}
+
+.body{
+    overflow-x: hidden;
+}
+.head_border{
+    border-bottom: 2px solid #b3b3b3;
+}
+
+.header{
+    height: 45px;
+    margin-bottom: 10px;
+}
+
+.head{
+    margin-top: 5px;
+    margin-left: 20px;
+    height: 30px;
+}
+
+.search_row{
+    margin-top: 20px;
+}
+
+.search{
+    border-radius: 25px;
+    border: 2px solid #b3b3b3;
+    width: 95%;
+    height: 30px;
+    margin-right: 50px;
+}
+
+#search_input{
+    border: none;
+    border-color: #b3b3b3;
+    border-bottom: thin;
+    margin: 0 0 10px 10px;
+    width: 80%;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-top: 4px;
+}
+
+.not_bell{
+    float: right;
+    margin-right: 5px;
+}
+
+.header_alert_ic{
+    float: left;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.ic_header_briefcase{
+    height: 20px; width: 20px; margin-top: 2px;
+}
+
+.ic_header_doc{
+    height: 25px; width: 25px;
+}
+
+.ic_header_bell{
+    height: 25px; width: 25px;
+}
+
+.ic_search{
+    height: 30px; width: 30px;
+}
+
+.alert_msg{
+    padding: 10px;
+}
+
+.alerts_holder{
+    margin-top: 15px;
+}
+
+.ic_alert_briefcase{
+    height: 40px; width: 40px;
+}
+
+.ic_alert_doc{
+    height: 55px; width: 50px;
+}
+
+#alert_icon_holder{
+    width: 50px;
+}
+
+.alert_title_text{
+    color: #000; font-weight: bold;
+}
+
+.alert_time_text{
+    color: #b3b3b3; margin-left: 10px;
+}
+
+.alert_excerpt_text{
+    color: #000;
+}
+
+.alert_doc_text_holder{
+    margin-top: 8px;
+}
+
+label {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #b3b3b3;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+label span {
+    background: #fff;
+    padding: 0 10px;
+}
