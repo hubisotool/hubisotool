@@ -1,0 +1,14 @@
+@import "nav_bar/nav_bar";
+@import "settings/settings";
+
+[ui-view="root.docs_n_records.nav_bar"]{
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 5px  ;
+  position: fixed;
+  width: 100%;
+  top: 42px;
+  z-index: 100;
+}
+
+

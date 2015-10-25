@@ -2,7 +2,7 @@
   "name": "hubisotool",
   "version": "0.0.0",
   "description": "Medical lab Assistant tool",
-  "main": "frontend/index.html",
+  "main": "app/shell.html",
   
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,6 +14,12 @@
   "keywords": [
     "hubisotool"
   ],
+  "window":{
+    "width":900,
+    "height":500,
+    "min_width":900,
+    "min_height":500
+  },
   "author": "Bishaka Samuel <sbishaka@gmail.com> (https://twitter.com/sbishaka)",
   "license": "N/A"
 }

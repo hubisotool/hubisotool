@@ -1,0 +1,17 @@
+@import "icon_fonts/icon_fonts";
+@import "nav_bar/nav_bar";
+
+@import "docs_n_records/docs_n_records";
+
+body,.row{
+  margin: 0;
+}
+
+[ui-view="root.nav_bar"]{
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 5px;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}

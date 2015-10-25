@@ -1,0 +1,23 @@
+{
+  "name": "hubisotool",
+  "authors": [
+    "Bishaka Samuel <sbishaka@gmail.com>"
+  ],
+  "description": "Lab tool",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5"
+  }
+}
