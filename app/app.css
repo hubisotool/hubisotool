@@ -70,6 +70,7 @@
     font-size: 12px;
     padding: 2px 5px;
     margin-left: 10px;
+    -webkit-user-select: none;
     color: #434343;
     border-radius: 5px;
     cursor: default;
@@ -88,8 +89,24 @@
   width: 100%;
   top: 74px;
   padding-bottom: 30px; }
-  [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.input.reviewedby.position"] {
+  [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.input.reviewedby.position"],
+  [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.input.approvedby.position"],
+  [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.input.authorisedby.position"] {
     margin-top: 8px; }
+  [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.prompt.logo"] {
+    border: 1px solid #cccccc;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 500px;
+    width: 100px;
+    height: 100px;
+    cursor: default; }
+  [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.box.logo"] {
+    margin-bottom: 15px;
+    margin-top: 15px; }
+  [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.box.title"] {
+    margin-top: 15px; }
 
 [ui-view="root.docs_n_records.nav_bar"] {
   background-color: #fff;

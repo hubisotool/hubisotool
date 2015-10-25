@@ -6,6 +6,12 @@ var
     settings = angular.module('docs_n_records.settings',[])
 
     .controller('rootDnrSettingsCtrl',['$scope',function($scope){
+            $scope.scrollbarSetup = false;
+
+            $scope.setupScrollbar = function(newH){
+                $("[data-hubiso-module='root.docs_n_records.settings']").css('height',newH+"px");
+                $("[data-hubiso-module='root.docs_n_records.settings']").niceScroll({cursorwidth:7});
+            };
 
             $scope.resizeDnrSettings = function(){
                 var winH = $(window).height();
@@ -13,15 +19,24 @@ var
                 $scope.style = {
                     "height":newH+"px"
                 };
+
+                if(!$scope.scrollbarSetup){
+                    $scope.scrollbarSetup=true;
+                    $scope.setupScrollbar(newH);
+                }
+
                 console.log("Resizing, H : " + newH);
-            }
+            };
+
+
+
     }])
 
     .directive('rootDnrSettingsWinRsz',['$window',function($window){
         return{
             restrict:'A',
             link:function(scope,elem){
-                    scope.resizeDnrSettings();
+                scope.resizeDnrSettings();
                 $(window).on('resize',function(){
                     console.log('window resized!');
                     scope.resizeDnrSettings();

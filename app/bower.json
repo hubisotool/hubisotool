@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "angular-ui-router": "~0.2.15",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "jquery.nicescroll": "https://github.com/inuyaksa/jquery.nicescroll.git#3.6.0"
   }
 }

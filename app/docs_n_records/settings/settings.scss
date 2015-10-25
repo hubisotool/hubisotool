@@ -6,7 +6,29 @@
   top: 74px;
   padding-bottom: 30px;
 
-  [id="root.docs_n_records.settings.form.input.reviewedby.position"]{
+  [id="root.docs_n_records.settings.form.input.reviewedby.position"],
+  [id="root.docs_n_records.settings.form.input.approvedby.position"],
+  [id="root.docs_n_records.settings.form.input.authorisedby.position"]{
     margin-top: 8px;
+  }
+
+  [id="root.docs_n_records.settings.form.prompt.logo"]{
+    border: 1px solid #cccccc;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 500px;
+    width: 100px;
+    height: 100px;
+    cursor: default;
+  }
+
+  [id="root.docs_n_records.settings.form.box.logo"]{
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  [id="root.docs_n_records.settings.form.box.title"]{
+    margin-top: 15px;
   }
 }
