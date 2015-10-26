@@ -3,9 +3,9 @@
  */
 
 var
-    settings = angular.module('docs_n_records.settings',[])
+    settings = angular.module('docs_n_records.settings',['backend'])
 
-    .controller('rootDnrSettingsCtrl',['$scope',function($scope){
+    .controller('rootDnrSettingsCtrl',['$scope','_backend_',function($scope,backend){
             $scope.scrollbarSetup = false;
 
             $scope.setupScrollbar = function(newH){
@@ -28,7 +28,21 @@ var
                 console.log("Resizing, H : " + newH);
             };
 
-
+            $scope.save = function(){
+                var settings = {};
+                settings["name"] = $scope["name"];
+                settings["address"] = $scope["address"];
+                settings["reviewedby"] = {};
+                settings["reviewedby"]["name"] = $scope["reviewedby_name"];
+                settings["reviewedby"]["position"] = $scope["reviewedby_position"];
+                settings["approvedby"] = {};
+                settings["approvedby"]["name"] = $scope["approvedby_name"];
+                settings["approvedby"]["position"] = $scope["approvedby_position"];
+                settings["authorizedby"] = {};
+                settings["authorizedby"]["name"] = $scope["authorizedby_name"];
+                settings["authorizedby"]["position"] = $scope["authorizedby_position"];
+                alert( JSON.stringify(settings));
+            }
 
     }])
 

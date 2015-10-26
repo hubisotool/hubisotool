@@ -18,7 +18,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="root.docs_n_records.settings.form.input.name">Hospital | Laboratory name</label>
-                        <input type="text" class="form-control" id="root.docs_n_records.settings.form.input.name" placeholder="Hospital | Laboratory name">
+                        <input type="text" class="form-control" ng-model="name" id="root.docs_n_records.settings.form.input.name" placeholder="Hospital | Laboratory name">
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="root.docs_n_records.settings.form.input.address">Address</label>
-                        <textarea placeholder="Address" id="root.docs_n_records.settings.form.input.address" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea placeholder="Address" ng-model="address" id="root.docs_n_records.settings.form.input.address" class="form-control" cols="30" rows="10"></textarea>
                     </div>
                 </div>
             </div>
@@ -36,8 +36,8 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="root.docs_n_records.settings.form.input.reviewedby.name">Reveiwed by</label>
-                        <input type="text" class="form-control" id="root.docs_n_records.settings.form.input.reviewedby.name" placeholder="Name">
-                        <input type="text" class="form-control" id="root.docs_n_records.settings.form.input.reviewedby.position" placeholder="Position">
+                        <input type="text" ng-model="reviewedby_name" class="form-control" id="root.docs_n_records.settings.form.input.reviewedby.name" placeholder="Name">
+                        <input type="text" ng-model="reviewedby_position" class="form-control" id="root.docs_n_records.settings.form.input.reviewedby.position" placeholder="Position">
                     </div>
                 </div>
             </div>
@@ -46,8 +46,8 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="root.docs_n_records.settings.form.input.approvedby.name">Approved by</label>
-                        <input type="text" class="form-control" id="root.docs_n_records.settings.form.input.approvedby.name" placeholder="Name">
-                        <input type="text" class="form-control" id="root.docs_n_records.settings.form.input.approvedby.position" placeholder="Position">
+                        <input type="text" ng-model="approvedby_name" class="form-control" id="root.docs_n_records.settings.form.input.approvedby.name" placeholder="Name">
+                        <input type="text" ng-model="approvedby_position" class="form-control" id="root.docs_n_records.settings.form.input.approvedby.position" placeholder="Position">
                     </div>
                 </div>
             </div>
@@ -56,12 +56,17 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="root.docs_n_records.settings.form.input.authorisedby.name">Authorised by</label>
-                        <input type="text" class="form-control" id="root.docs_n_records.settings.form.input.authorisedby.name" placeholder="Name">
-                        <input type="text" class="form-control" id="root.docs_n_records.settings.form.input.authorisedby.position" placeholder="Position">
+                        <input type="text" ng-model="authorisedby_name" class="form-control" id="root.docs_n_records.settings.form.input.authorisedby.name" placeholder="Name">
+                        <input type="text" ng-model="authorisedby_position" class="form-control" id="root.docs_n_records.settings.form.input.authorisedby.position" placeholder="Position">
                     </div>
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                </div>
+            </div>
 
         </div>
     </div>
