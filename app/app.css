@@ -102,6 +102,10 @@
     width: 100px;
     height: 100px;
     cursor: default; }
+  [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.input.logo"] {
+    display: none; }
+  [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.preview.logo"] {
+    width: 100%; }
   [data-hubiso-module="root.docs_n_records.settings"] [id="root.docs_n_records.settings.form.box.logo"] {
     margin-bottom: 15px;
     margin-top: 15px; }

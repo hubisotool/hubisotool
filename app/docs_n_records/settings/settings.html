@@ -10,7 +10,9 @@
 
             <div class="row" id="root.docs_n_records.settings.form.box.logo">
                 <div class="col-xs-12">
-                    <div id="root.docs_n_records.settings.form.prompt.logo">Add Logo</div>
+                    <img id="root.docs_n_records.settings.form.preview.logo" ng-show="logo_preview" src="">
+                    <div id="root.docs_n_records.settings.form.prompt.logo" ng-hide="logo_preview">Add Logo</div>
+                    <input id="root.docs_n_records.settings.form.input.logo" logo type="file">
                 </div>
             </div>
 
