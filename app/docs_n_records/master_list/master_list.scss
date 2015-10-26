@@ -1,0 +1,30 @@
+@import "edit/edit";
+
+[data-hubiso-module="root.docs_n_records.master_list"]{
+  position: fixed;
+  overflow: auto;
+  height: 400px;
+  width: 100%;
+  top: 74px;
+  padding-bottom: 30px;
+
+  [class~="root.docs_n_records.master_list.newdoc.icon"]{
+    border: 1px solid #cccccc;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    cursor: default;
+    height: 130px;
+    width: 100px;
+  }
+
+  [class~="root.docs_n_records.master_list.newdoc.prompt"]{
+    color: rgba(0,0,0,.6);
+    font-size: small;
+  }
+
+  [class~="root.docs_n_records.master_list.category.box.title"]{
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+}

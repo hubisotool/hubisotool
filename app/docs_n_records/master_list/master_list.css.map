@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,sDAAsD;EACpD,QAAQ,EAAE,KAAK;EACf,QAAQ,EAAE,IAAI;EACd,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,IAAI;EACX,GAAG,EAAE,IAAI;EACT,cAAc,EAAE,IAAI",
+"sources": ["master_list.scss"],
 "names": [],
 "file": "master_list.css"
 }

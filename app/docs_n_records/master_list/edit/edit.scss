@@ -1,0 +1,43 @@
+[data-hubiso-module="root.docs_n_records.master_list.edit"]{
+  position: fixed;
+  overflow: hidden;
+  height: 400px;
+  width: 100%;
+  top: 74px;
+  padding-bottom: 30px;
+
+  [id="root.docs_n_records.master_list.edit.box.title"]{
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+
+  [id="root.docs_n_records.master_list.edit.box.editor"]{
+
+    .note-editor{
+      border: none;
+    }
+
+    .col-xs-12{
+      padding: 0;
+    }
+
+    .note-editable.panel-body{
+      padding-left: 15px;
+      padding-right: 15px;
+      table{
+        width: 100%;
+        table-layout: fixed;
+      }
+    }
+
+    .note-statusbar{
+      display: none;
+    }
+
+    .note-toolbar.panel-heading{
+      background: none;
+      border-top: 1px solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+  }
+}

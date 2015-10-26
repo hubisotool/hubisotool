@@ -1,5 +1,6 @@
 @import "nav_bar/nav_bar";
 @import "settings/settings";
+@import "master_list/master_list";
 
 [ui-view="root.docs_n_records.nav_bar"]{
   background-color: #fff;

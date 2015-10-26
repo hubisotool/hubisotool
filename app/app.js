@@ -29,6 +29,22 @@ var
                        }
                     }
                 })
+                .state('docs_n_records.master_list',{
+                    url:'/master_list',
+                    views:{
+                        'root.docs_n_records.workbench':{
+                            templateUrl:'docs_n_records/master_list/master_list.html'
+                        }
+                    }
+                })
+                .state('docs_n_records.master_list_edit',{
+                    url:'/master_list/edit/{cat}/{docId}',
+                    views:{
+                        'root.docs_n_records.workbench':{
+                            templateUrl:'docs_n_records/master_list/edit/edit.html'
+                        }
+                    }
+                })
 
             $urlRouterProvider.otherwise('/docs_n_records');
 

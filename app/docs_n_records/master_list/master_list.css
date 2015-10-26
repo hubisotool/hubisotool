@@ -1,3 +1,9 @@
-
+[data-hubiso-module="root.docs_n_records.master_list"] {
+  position: fixed;
+  overflow: auto;
+  height: 400px;
+  width: 100%;
+  top: 74px;
+  padding-bottom: 30px; }
 
 /*# sourceMappingURL=master_list.css.map */
