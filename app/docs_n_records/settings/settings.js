@@ -5,7 +5,7 @@
 var
     settings = angular.module('docs_n_records.settings',['backend'])
 
-    .controller('rootDnrSettingsCtrl',['$scope','_backend_',function($scope,backend){
+    .controller('rootDnrSettingsCtrl',['$scope','_backend_',function($scope,_backend_){
             $scope.scrollbarSetup = false;
 
             $scope.setupScrollbar = function(newH){
@@ -41,7 +41,8 @@ var
                 settings["authorizedby"] = {};
                 settings["authorizedby"]["name"] = $scope["authorizedby_name"];
                 settings["authorizedby"]["position"] = $scope["authorizedby_position"];
-                alert( JSON.stringify(settings));
+                _backend_.dnr.settings.docCtrl.save(settings);
+                _backend_.alert({src:"dnr.settings", title:"Document Control Settings", msg : "You're new document control settings have been saved!"})
             }
 
     }])

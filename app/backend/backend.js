@@ -22,6 +22,15 @@ var
     .factory('_backend_',[function(){
         var _gut = {};
         _gut["dnr"] = {};
+        _gut["dnr"]["settings"] = {};
+        _gut["dnr"]["settings"]["docCtrl"] = {};
+        _gut["dnr"]["settings"]["docCtrl"].save = function(obj){
+            obj["type"] = "dnr.settings.docCtrl";
+            njs_backend.saveToDb("dnr",obj);
+        };
+        _gut["alert"] = function(opts){
+            njs_backend.alert(opts);
+        };
         return _gut;
     }])
 ;
