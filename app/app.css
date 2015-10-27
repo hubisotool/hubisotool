@@ -138,6 +138,11 @@
     background: none;
     border-top: 1px solid #f0f0f0;
     border-bottom: 1px solid #f0f0f0; }
+  [data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .modal-content {
+    top: 72px; }
+
+[class="modal-backdrop in"] {
+  display: none; }
 
 [data-hubiso-module="root.docs_n_records.master_list"] {
   position: fixed;

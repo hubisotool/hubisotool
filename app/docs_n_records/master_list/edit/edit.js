@@ -19,15 +19,12 @@ var
             console.log("Editor Height : " + editorH)
             $('[id="root.docs_n_records.master_list.edit.editor"]').destroy();
             $('[id="root.docs_n_records.master_list.edit.editor"]').summernote({
-                height: editorH,                 // set editor height
-                minHeight: editorH,             // set minimum height of editor
-                maxHeight: editorH,             // set maximum height of editor
-                focus: true                 // set focus to editable area after initializing summernote
+                height: editorH,
+                minHeight: editorH,
+                maxHeight: editorH,
+                focus: true
             });
-            if(!$scope.scrollbarSetup){
-                $scope.scrollbarSetup=true;
-                $scope.setupScrollbar(newH);
-            }
+            $scope.setupScrollbar(newH);
         };
 
         $scope.resizeDnrMlEdit = function(){
