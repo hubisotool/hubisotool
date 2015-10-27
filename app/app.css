@@ -43,6 +43,24 @@
 .hubiso-icon-chevron-down:before {
   content: "e"; }
 
+.hubiso-icon-page-pdf:before {
+  content: "f"; }
+
+.hubiso-icon-pencil:before {
+  content: "g"; }
+
+.hubiso-icon-print:before {
+  content: "h"; }
+
+.hubiso-icon-table:before {
+  content: "i"; }
+
+.hubiso-icon-thumbnails:before {
+  content: "j"; }
+
+.hubiso-icon-split:before {
+  content: "k"; }
+
 [data-hubiso-module="root.nav_bar"] [id="root.nav_bar.options"] {
   margin: 0; }
 [data-hubiso-module="root.nav_bar"] [class~="root.nav_bar.nav_option"]:nth-child(1) {
