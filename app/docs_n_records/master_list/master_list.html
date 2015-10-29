@@ -2,59 +2,95 @@
 
     <div class="row root.docs_n_records.master_list.category.box.title">
         <div class="col-xs-12">
-            Manuals
+            Manuals ({{Manuals.length}})
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-2">
+        <div class="col-xs-2 root.docs_n_records.master_list.doc.box">
             <div class="row root.docs_n_records.master_list.newdoc.box.icon">
                 <div class="col-xs-12">
-                    <div class="root.docs_n_records.master_list.newdoc.icon">+</div>
+                    <div class="root.docs_n_records.master_list.newdoc.icon" ng-click="newDoc('Manuals')">+</div>
                 </div>
             </div>
             <div class="row root.docs_n_records.master_list.newdoc.box.prompt">
-                <div class="col-xs-12 root.docs_n_records.master_list.newdoc.prompt">
+                <div class="col-xs-12 root.docs_n_records.master_list.newdoc.prompt" ng-click="newDoc('Manuals')">
                     New blank Manual
                 </div>
             </div>
         </div>
+        <div class="col-xs-2 root.docs_n_records.master_list.doc.box" ng-repeat="doc  in Manuals">
+            <div class="row root.docs_n_records.master_list.doc.box.icon">
+                <div class="col-xs-12">
+                    <div class="root.docs_n_records.master_list.doc.icon" ng-click="viewDoc(doc)"></div>
+                </div>
+            </div>
+            <div class="row root.docs_n_records.master_list.doc.box.prompt">
+                <div class="col-xs-12 root.docs_n_records.master_list.doc.prompt" ng-click="viewDoc(doc)">
+                    {{doc.name}}
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row root.docs_n_records.master_list.category.box.title">
         <div class="col-xs-12">
-            Managerial
+            Managerial ({{Managerial.length}})
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-2">
+        <div class="col-xs-2 root.docs_n_records.master_list.doc.box">
             <div class="row root.docs_n_records.master_list.newdoc.box.icon">
                 <div class="col-xs-12">
-                    <div class="root.docs_n_records.master_list.newdoc.icon">+</div>
+                    <div class="root.docs_n_records.master_list.newdoc.icon" ng-click="newDoc('Managerial')">+</div>
                 </div>
             </div>
             <div class="row root.docs_n_records.master_list.newdoc.box.prompt">
-                <div class="col-xs-12 root.docs_n_records.master_list.newdoc.prompt">
+                <div class="col-xs-12 root.docs_n_records.master_list.newdoc.prompt" ng-click="newDoc('Managerial')">
                     New blank managerial document
                 </div>
             </div>
         </div>
+        <div class="col-xs-2 root.docs_n_records.master_list.doc.box" ng-repeat="doc  in Managerial">
+            <div class="row root.docs_n_records.master_list.doc.box.icon">
+                <div class="col-xs-12">
+                    <div class="root.docs_n_records.master_list.doc.icon" ng-click="viewDoc(doc)"></div>
+                </div>
+            </div>
+            <div class="row root.docs_n_records.master_list.doc.box.prompt">
+                <div class="col-xs-12 root.docs_n_records.master_list.doc.prompt" ng-click="viewDoc(doc)">
+                    {{doc.name}}
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row root.docs_n_records.master_list.category.box.title">
         <div class="col-xs-12">
-            Technical
+            Technical ({{Technical.length}})
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-2">
+        <div class="col-xs-2 root.docs_n_records.master_list.doc.box">
             <div class="row root.docs_n_records.master_list.newdoc.box.icon">
                 <div class="col-xs-12">
-                    <div class="root.docs_n_records.master_list.newdoc.icon">+</div>
+                    <div class="root.docs_n_records.master_list.newdoc.icon" ng-click="newDoc('Technical')">+</div>
                 </div>
             </div>
             <div class="row root.docs_n_records.master_list.newdoc.box.prompt">
-                <div class="col-xs-12 root.docs_n_records.master_list.newdoc.prompt">
+                <div class="col-xs-12 root.docs_n_records.master_list.newdoc.prompt" ng-click="newDoc('Technical')">
                     New blank technical document
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-2 root.docs_n_records.master_list.doc.box" ng-repeat="doc  in Technical">
+            <div class="row root.docs_n_records.master_list.doc.box.icon">
+                <div class="col-xs-12">
+                    <div class="root.docs_n_records.master_list.doc.icon" ng-click="viewDoc(doc)"></div>
+                </div>
+            </div>
+            <div class="row root.docs_n_records.master_list.doc.box.prompt">
+                <div class="col-xs-12 root.docs_n_records.master_list.doc.prompt" ng-click="viewDoc(doc)">
+                    {{doc.name}}
                 </div>
             </div>
         </div>

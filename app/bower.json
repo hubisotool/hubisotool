@@ -21,6 +21,8 @@
     "bootstrap": "~3.3.5",
     "jquery.nicescroll": "https://github.com/inuyaksa/jquery.nicescroll.git#3.6.0",
     "moment": "~2.10.6",
-    "summernote": "~0.6.16"
+    "summernote": "~0.6.16",
+    "jspdf": "https://github.com/MrRio/jsPDF.git#~1.1.135",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.6.0"
   }
 }

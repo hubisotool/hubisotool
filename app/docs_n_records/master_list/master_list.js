@@ -3,9 +3,41 @@
  */
 var
 
-    master_list = angular.module('docs_n_records.master_list',['docs_n_records.master_list.edit'])
+    master_list = angular.module('docs_n_records.master_list',['docs_n_records.master_list.edit','backend'])
 
-    .controller('rootDnrMlCtrl',['$scope',function($scope){
+    .controller('rootDnrMlCtrl',['$scope','_backend_','$state',function($scope,_backend_,$state){
+
+        //Load docs
+        var loadDocs = function(cat) {
+            _backend_["dnr"]["ml"]["docs"].load(cat)
+                .then(function (docs) {
+                    $scope[cat] = docs;
+                    $scope.$apply();
+                });
+        }
+
+        loadDocs("Manuals");
+        loadDocs("Managerial");
+        loadDocs("Technical");
+
+        $scope.viewDoc =function(doc){
+            $state.transitionTo("docs_n_records.master_list_edit", {cat:doc.cat,docId:doc["_id"]});
+        }
+
+        $scope.newDoc = function(category){
+            var doc = {};
+            doc["type"] = "dnr.ml.doc";
+            doc["name"] = "Untitled Document";
+            doc["content"] = "Test Content" ;
+            doc["cat"] = category;
+            console.log(JSON.stringify(doc));
+            _backend_.saveToDb("dnr",doc)
+            .then(function(newDoc){
+                  console.log(JSON.stringify(newDoc));
+                  $state.transitionTo("docs_n_records.master_list_edit", {cat:category,docId:newDoc["_id"],doc:JSON.stringify(newDoc)});
+            })
+        }
+
         $scope.setupScrollbar = function(newH){
             $("[data-hubiso-module='root.docs_n_records.master_list']").css('height',newH+"px");
             $("[data-hubiso-module='root.docs_n_records.master_list']").niceScroll({cursorwidth:7});

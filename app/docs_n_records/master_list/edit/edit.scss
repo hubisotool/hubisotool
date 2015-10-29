@@ -11,6 +11,12 @@
       margin-bottom: 10px;
   }
 
+  [class~="root.docs_n_records.master_list.edit.doc.name"]{
+      border: none;
+      outline: none;
+    width: 80%;
+  }
+
   [id="root.docs_n_records.master_list.edit.box.editor"]{
 
     .note-editor{

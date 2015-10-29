@@ -2,13 +2,14 @@
 
     <div class="row" id="root.docs_n_records.master_list.edit.box.title">
         <div class="col-xs-12">
-            {{cat}} | {{docId}}
+            {{cat}} | <input class="root.docs_n_records.master_list.edit.doc.name" type="text" ng-model="doc.name" ml-doc-name />
         </div>
     </div>
 
-    <div class="row" id="root.docs_n_records.master_list.edit.box.editor" ml-editor>
+    <div class="row" id="root.docs_n_records.master_list.edit.box.editor" >
         <div class="col-xs-12">
-            <div id="root.docs_n_records.master_list.edit.editor">Hello Summernote</div>
+            <div id="root.docs_n_records.master_list.edit.editor">
+            </div>
         </div>
     </div>
 

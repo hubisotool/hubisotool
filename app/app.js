@@ -38,14 +38,13 @@ var
                     }
                 })
                 .state('docs_n_records.master_list_edit',{
-                    url:'/master_list/edit/{cat}/{docId}',
+                    url:'/master_list/edit/{cat}/{docId}?doc',
                     views:{
                         'root.docs_n_records.workbench':{
                             templateUrl:'docs_n_records/master_list/edit/edit.html'
                         }
                     }
                 })
-
             $urlRouterProvider.otherwise('/docs_n_records');
 
         }])

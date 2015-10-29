@@ -3,11 +3,42 @@
  */
 
 var
-    ml_edit = angular.module('docs_n_records.master_list.edit',[])
+    ml_edit = angular.module('docs_n_records.master_list.edit',['backend'])
 
-    .controller('rootDnrMlEditCtrl',['$scope','$stateParams',function($scope,$stateParams){
+    .controller('rootDnrMlEditCtrl',['$scope','$stateParams','_backend_',function($scope,$stateParams,_backend_){
         $scope.cat = $stateParams.cat;
         $scope.docId = $stateParams.docId;
+
+        //$scope.doc = JSON.parse($stateParams.doc);
+        var loadDoc = function(id) {
+            _backend_["dnr"]["ml"]["doc"].load(id)
+                .then(function (doc) {
+                    $scope.doc = doc;
+                    $('[id="root.docs_n_records.master_list.edit.editor"]').code(doc.content);
+                    $scope.$apply();
+                });
+        };
+
+        loadDoc($scope.docId);
+
+        console.log("New doc recieved: " + $stateParams.doc);
+
+        $scope.updateDocName = function(id,name){
+            //Execute db update
+            _backend_.execInDb("dnr","update",[{"_id":id},{$set:{name:name}},{multi:true}])
+            .then(function(numReplaced){
+              console.log("Number of Docs Updated : " + numReplaced)
+            })
+        };
+
+        $scope.updateDocContent = function(id,content){
+            //Execute db update
+            _backend_.execInDb("dnr","update",[{"_id":id},{$set:{content:content}},{multi:true}])
+                .then(function(numReplaced){
+                    console.log("Number of Docs Updated : " + numReplaced)
+                })
+        };
+
 
         $scope.setupScrollbar = function(newH){
             $(".note-editable").niceScroll({cursorwidth:7});
@@ -22,7 +53,10 @@ var
                 height: editorH,
                 minHeight: editorH,
                 maxHeight: editorH,
-                focus: true
+                focus: true,
+                onChange: function(contents, $editable) {
+                    $scope.updateDocContent($scope.docId,contents);
+                }
             });
             $scope.setupScrollbar(newH);
         };
@@ -51,11 +85,13 @@ var
         }
     }])
 
-    .directive('mlEditor',[function(){
+    .directive('mlDocName',[function(){
         return{
             restrict:'A',
             link:function(scope,elem){
-
+                $(document).on("change","[class~='root.docs_n_records.master_list.edit.doc.name']",function(){
+                    scope.updateDocName(scope.doc["_id"],scope.doc.name)
+                })
             }
         }
     }])

@@ -8,7 +8,12 @@
   top: 74px;
   padding-bottom: 30px;
 
-  [class~="root.docs_n_records.master_list.newdoc.icon"]{
+  [class~="root.docs_n_records.master_list.doc.box"]{
+    margin-top: 10px;
+  }
+
+  [class~="root.docs_n_records.master_list.newdoc.icon"],
+  [class~="root.docs_n_records.master_list.doc.icon"]{
     border: 1px solid #cccccc;
     text-align: center;
     display: table-cell;
@@ -18,9 +23,11 @@
     width: 100px;
   }
 
-  [class~="root.docs_n_records.master_list.newdoc.prompt"]{
+  [class~="root.docs_n_records.master_list.newdoc.prompt"],
+  [class~="root.docs_n_records.master_list.doc.prompt"]{
     color: rgba(0,0,0,.6);
     font-size: small;
+    cursor: default;
   }
 
   [class~="root.docs_n_records.master_list.category.box.title"]{

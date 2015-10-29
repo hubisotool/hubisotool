@@ -23,9 +23,9 @@ var
     .factory('_backend_',[function(){
         var _gut = {};
         _gut["dnr"] = {};
+
         _gut["dnr"]["settings"] = {};
         _gut["dnr"]["settings"]["docCtrl"] = {};
-
         _gut["dnr"]["settings"]["docCtrl"].load = function(){
             return new Promise(function(resolve, reject){
                 njs_backend.loadFromDb("dnr","find",{type:"dnr.settings.docCtrl"})
@@ -43,9 +43,40 @@ var
             njs_backend.saveToDb("dnr",obj);
         };
 
+        _gut["dnr"]["ml"] = {};
+        _gut["dnr"]["ml"]["docs"] = {};
+        _gut["dnr"]["ml"]["doc"] = {};
+        _gut["dnr"]["ml"]["docs"].load = function(cat){
+            return new Promise(function(resolve, reject){
+                njs_backend.loadFromDb("dnr","find",{type:"dnr.ml.doc",cat:cat})
+                .then(function(docs){
+                    resolve(docs);
+                })
+            })
+        };
+
+        _gut["dnr"]["ml"]["doc"].load = function(id){
+            return new Promise(function(resolve, reject){
+                njs_backend.loadFromDb("dnr","findOne",{"_id":id})
+                    .then(function(doc){
+                        resolve(doc);
+                    })
+            })
+        };
+
+
+            _gut.saveToDb = function(dbname,obj){
+            return njs_backend.saveToDb(dbname,obj);
+        };
+
         _gut["alert"] = function(opts){
             njs_backend.alert(opts);
         };
+
+        _gut["execInDb"] = function(dbname,func,args){
+            return njs_backend.execInDb(dbname,func,args);
+        };
+
         return _gut;
     }])
 ;
