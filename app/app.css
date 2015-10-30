@@ -150,7 +150,8 @@
     padding: 0; }
   [data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .note-editable.panel-body {
     padding-left: 15px;
-    padding-right: 15px; }
+    padding-right: 15px;
+    font-family: "Bookman", Georgia, "Times New Roman", serif; }
     [data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .note-editable.panel-body table {
       width: 100%;
       table-layout: fixed; }

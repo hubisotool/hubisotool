@@ -5,9 +5,33 @@
 var
     ml_edit = angular.module('docs_n_records.master_list.edit',['backend'])
 
-    .controller('rootDnrMlEditCtrl',['$scope','$stateParams','_backend_',function($scope,$stateParams,_backend_){
+    .controller('rootDnrMlEditCtrl',['$scope','$stateParams','_backend_','hotkeys','docs_n_records.exporters.pdf.factory',function($scope,$stateParams,_backend_,hotkeys,pdfExporter){
         $scope.cat = $stateParams.cat;
         $scope.docId = $stateParams.docId;
+
+         //shortcuts
+        hotkeys.bindTo($scope)
+        .add({
+            combo: 'ctrl+s',
+            allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+            description: 'Save doc content as pdf',
+            callback: function() {
+                //Save pdf of content
+                var content = $('[id="root.docs_n_records.master_list.edit.editor"]').code();
+                pdfExporter.htmlToPdfMakeLayout(content);
+                //console.log("Content : " + $(".note-editable.panel-body")[0]);
+                //var doc = new jsPDF("l", "pt", "letter");
+                //doc.fromHTML($(".note-editable.panel-body")[0], 15, 15, {
+                //    'width': 250,
+                //    'margin': 1,
+                //    'pagesplit': true //This will work for multiple pages
+                //},function(info){
+                //    console.log(info);
+                //});
+                //doc.save($scope.doc.name+".pdf")
+                //console.log("Save doc as pdf called");
+            }
+        })
 
         //$scope.doc = JSON.parse($stateParams.doc);
         var loadDoc = function(id) {
@@ -56,7 +80,39 @@ var
                 focus: true,
                 onChange: function(contents, $editable) {
                     $scope.updateDocContent($scope.docId,contents);
-                }
+                },
+                toolbar:[
+                    [
+                        'style',['style']
+                    ],
+                    [
+                        'font_style',['bold','italic','underline','strikethrough','clear']
+                    ],
+                    [
+                        'font_size',['fontsize']
+                    ],
+                    [
+                        'font_color',['color']
+                    ],
+                    [
+                        'layout_p',['ul','ol','paragraph']
+                    ],
+                    [
+                        'height_p',['height']
+                    ],
+                    [
+                        'table',['table']
+                    ],
+                    [
+                        'insert',['link','picture','hr']
+                    ],
+                    [
+                        'misc',['codeview','undo','redo']
+                    ],
+                    [
+                        'help',['help']
+                    ]
+                ]
             });
             $scope.setupScrollbar(newH);
         };
