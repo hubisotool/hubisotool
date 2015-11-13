@@ -63,9 +63,11 @@
 
 [data-hubiso-module="root.nav_bar"] [id="root.nav_bar.options"] {
   margin: 0; }
-[data-hubiso-module="root.nav_bar"] [class~="root.nav_bar.nav_option"]:nth-child(1) {
+
+[class~="root.nav_bar.nav_option"]:nth-child(1) {
   margin-left: 0px; }
-[data-hubiso-module="root.nav_bar"] [class~="root.nav_bar.nav_option"] {
+
+[class~="root.nav_bar.nav_option"] {
   width: auto;
   font-size: large;
   padding: 5px 5px 1px;
@@ -74,7 +76,8 @@
   transition: box-shadow .2s;
   transition: transform .2s;
   color: #434343; }
-[data-hubiso-module="root.nav_bar"] [class~="root.nav_bar.nav_option"]:hover {
+
+[class~="root.nav_bar.nav_option"]:hover {
   background-color: #fefefe;
   box-shadow: 0px 2px 5px #888888;
   transform: scale(1.05, 1.05); }
