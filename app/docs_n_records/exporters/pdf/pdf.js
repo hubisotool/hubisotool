@@ -18,22 +18,44 @@ var
                         //console.log("Idx["+idx+"] : " + Object.keys(data[idx]));
                         console.log("Idx["+idx+"] Type: " + data[idx]["nodeName"]);
                         if($(data[idx]).find("img").length > 0){
-                            //Handle Images
                             var img = $(data[idx]).find("img").attr("src");
-                            console.log("Found image : " + img);
                             layout.push({image:img,width:515});
                         }else if(data[idx]["nodeName"]==="TABLE"){
-                            console.log("found table");
+                            var body = [];
+                            var widths = [];
+                            $(data[idx]).find("tr").each(function(_row_idx,_row){
+                                var row = []
+                                $(_row).find('td').each(function(_cell_idx,_cell){
+                                    var cell = $(_cell);
+                                    widths[_cell_idx] = '*';
+                                    var txt =  cell.text();
+                                    var align = cell.prop('style').textAlign || "left";
+                                    var colspan = cell.attr('colspan') || 1;
+
+                                    row.push({text:txt,alignment:align,colSpan:colspan});
+
+                                    console.log("Text : " + txt);
+                                    console.log("Align : " + align);
+                                    console.log("Colspan : " + colspan);
+                                });
+                                body.push(row)
+                            })
+                            console.log("found table : " + JSON.stringify(body));
+                            layout.push({ table:{widths:widths,body:body} });
                         }
                         else{
                             var txt = $(data[idx]).text()
                             if($.isEmptyObject(txt)){
-                                console.log("found empty string")
-                                layout[layout.length-1]["margin"] = [0, 20];
+                                if(typeof layout[layout.length-1]["margin"] === 'undefined'){
+                                    layout[layout.length-1]["margin"] = [0,0,0,20];
+                                }else{
+                                    layout[layout.length-1]["margin"][3] = 20;
+                                }
+
                             }else{
+                                var ml = parseInt($(data[idx]).prop('style').marginLeft.replace('px','')) || 0;
                                 var align = $(data[idx]).prop('style').textAlign;
-                                console.log("Text alignment : " + $(data[idx]).prop('style').textAlign)
-                                layout.push({text:txt, alignment:align});
+                                layout.push({text:txt, margin:[ml,0,0,0], alignment:align});
                             }
                         }
                     })
