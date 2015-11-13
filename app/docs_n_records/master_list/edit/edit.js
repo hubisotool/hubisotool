@@ -9,6 +9,11 @@ var
         $scope.cat = $stateParams.cat;
         $scope.docId = $stateParams.docId;
 
+        $scope.savePdf = function(){
+            var content = $('[id="root.docs_n_records.master_list.edit.editor"]').code();
+            pdfExporter.htmlToPdfMakeLayout({html:content,name:$scope.doc.name});
+        }
+
          //shortcuts
         hotkeys.bindTo($scope)
         .add({
@@ -16,20 +21,8 @@ var
             allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
             description: 'Save doc content as pdf',
             callback: function() {
-                //Save pdf of content
                 var content = $('[id="root.docs_n_records.master_list.edit.editor"]').code();
-                pdfExporter.htmlToPdfMakeLayout(content);
-                //console.log("Content : " + $(".note-editable.panel-body")[0]);
-                //var doc = new jsPDF("l", "pt", "letter");
-                //doc.fromHTML($(".note-editable.panel-body")[0], 15, 15, {
-                //    'width': 250,
-                //    'margin': 1,
-                //    'pagesplit': true //This will work for multiple pages
-                //},function(info){
-                //    console.log(info);
-                //});
-                //doc.save($scope.doc.name+".pdf")
-                //console.log("Save doc as pdf called");
+                pdfExporter.htmlToPdfMakeLayout({html:content,name:$scope.doc.name});
             }
         })
 

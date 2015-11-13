@@ -10,8 +10,10 @@ var
     .factory('docs_n_records.exporters.pdf.factory',[function(){
             var _gut = {};
 
-            _gut["htmlToPdfMakeLayout"] = function(html){
+            _gut["htmlToPdfMakeLayout"] = function(opts){
                 return new Promise(function(resolve,reject){
+                    var html = opts["html"];
+                    var name = opts["name"] || "document";
                     var data = $(html)
                     var layout = [];
                     $.each(data,function(idx){
@@ -61,7 +63,7 @@ var
                     })
                     var docDefinition = { pageSize:'A4', content: layout };
                     console.log(JSON.stringify(docDefinition));
-                    pdfMake.createPdf(docDefinition).download('optionalName.pdf');
+                    pdfMake.createPdf(docDefinition).download(name+'.pdf');
                     resolve(layout);
                 })
             };
