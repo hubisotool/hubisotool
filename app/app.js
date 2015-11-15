@@ -21,6 +21,20 @@ var
                         }
                     }
                 })
+                .state('ctns_imprvmt',{
+                    url:'/ctns_imprvmt',
+                    views:{
+                        'root.nav_bar':{
+                            templateUrl:'nav_bar/nav_bar.html'
+                        },
+                        'root.workbench':{
+                            templateUrl:'ctns_imprvmt/ctns_imprvmt.html'
+                        },
+                        'root.ctns_imprvmt.nav_bar@ctns_imprvmt':{
+                            templateUrl:'ctns_imprvmt/nav_bar/nav_bar.html'
+                        }
+                    }
+                })
                 .state('docs_n_records.settings',{
                     url:'/settings',
                     views:{
