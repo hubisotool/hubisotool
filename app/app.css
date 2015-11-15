@@ -61,6 +61,9 @@
 .hubiso-icon-split:before {
   content: "k"; }
 
+.hubiso-icon-refresh:before {
+  content: "l"; }
+
 [data-hubiso-module="root.nav_bar"] [id="root.nav_bar.options"] {
   margin: 0; }
 
