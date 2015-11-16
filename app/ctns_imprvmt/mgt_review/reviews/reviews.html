@@ -1,0 +1,47 @@
+<div data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews" ng-controller="ctns_imprvmt.mgt_review.reviewsCtrl">
+
+    <div class="row root.ctns_imprvmt.mgt_review.reviews.reviewlist.header">
+        <div class="col-xs-1">
+            <input type="checkbox"/>
+        </div>
+        <div class="col-xs-4">
+            Name
+        </div>
+        <div class="col-xs-2">
+            Checklist
+        </div>
+        <div class="col-xs-2">
+            Action(s)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-4">
+            <input type="text" placeholder="review name"/>
+        </div>
+        <div class="col-xs-2">
+            <select name="" id="">
+                <option value=""></option>
+                <option value="c1">c1</option>
+            </select>
+        </div>
+        <div class="col-xs-2">
+            <div>save</div>
+        </div>
+    </div>
+    <div class="row root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry" ng-repeat="review in reviews">
+        <div class="col-xs-1">
+            <input type="checkbox"/>
+        </div>
+        <div class="col-xs-4">
+            {{review.name}}
+        </div>
+        <div class="col-xs-2">
+
+        </div>
+        <div class="col-xs-2">
+            Action(s)
+        </div>
+    </div>
+</div>
