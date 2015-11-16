@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="bower_components/summernote/dist/summernote.css"/>
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-layout/src/ui-layout.css"/>
     <link rel="stylesheet" href="app.css"/>
 </head>
 <body>
@@ -14,30 +15,33 @@
 <div ui-view="root.nav_bar"></div>
 <div ui-view="root.workbench"></div>
 
+<script src="../node_modules/pdfjs-dist/build/pdf.js"></script>
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
-
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
 <script src="bower_components/moment/min/moment.min.js"></script>
 <script src="bower_components/summernote/dist/summernote.min.js"></script>
-<script src="../node_modules/pdfjs-dist/build/pdf.js"></script>
-
 <script src="bower_components/pdfmake/build/pdfmake.min.js"></script>
 <script src="bower_components/pdfmake/build/vfs_fonts.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-layout/src/ui-layout.js"></script>
 
 <script src="backend/backend.js"></script>
+
 <script src="docs_n_records/settings/settings.js"></script>
 <script src="docs_n_records/master_list/master_list.js"></script>
 <script src="docs_n_records/master_list/edit/edit.js"></script>
 <script src="docs_n_records/previewer/previewer.js"></script>
 <script src="docs_n_records/exporters/exporters.js"></script>
 <script src="docs_n_records/exporters/pdf/pdf.js"></script>
-
 <script src="docs_n_records/docs_n_records.js"></script>
+
+<script src="ctns_imprvmt/mgt_review/mgt_review.js"></script>
+<script src="ctns_imprvmt/ctns_imprvmt.js"></script>
+
 <script src="app.js"></script>
 </body>
 </html>

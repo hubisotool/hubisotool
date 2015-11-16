@@ -3,7 +3,7 @@
  */
 
 var
-    hubisotool = angular.module('hubisotool',['ui.router','docs_n_records','cfp.hotkeys'])
+    hubisotool = angular.module('hubisotool',['ui.router','ui.layout','cfp.hotkeys','docs_n_records','ctns_imprvmt'])
 
         .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
             $stateProvider
@@ -18,20 +18,6 @@ var
                         },
                         'root.docs_n_records.nav_bar@docs_n_records':{
                             templateUrl:'docs_n_records/nav_bar/nav_bar.html'
-                        }
-                    }
-                })
-                .state('ctns_imprvmt',{
-                    url:'/ctns_imprvmt',
-                    views:{
-                        'root.nav_bar':{
-                            templateUrl:'nav_bar/nav_bar.html'
-                        },
-                        'root.workbench':{
-                            templateUrl:'ctns_imprvmt/ctns_imprvmt.html'
-                        },
-                        'root.ctns_imprvmt.nav_bar@ctns_imprvmt':{
-                            templateUrl:'ctns_imprvmt/nav_bar/nav_bar.html'
                         }
                     }
                 })
