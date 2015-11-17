@@ -4,8 +4,21 @@
     border-bottom: 1px solid #f0f0f0;
   }
 
-[class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry"]:nth-of-type(2n){
-  background-color: #f0f0f0;
-}
+  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry"]:nth-of-type(2n){
+    background-color: #f0f0f0;
+  }
 
+  [id="root.ctns_imprvmt.mgt_review.reviews.reviewlist.save"]{
+    cursor: default;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]{
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]:nth-of-type(1),
+  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]:nth-of-type(3){
+    margin-left: 0px;
+  }
 }
