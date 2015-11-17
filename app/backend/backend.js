@@ -65,7 +65,23 @@ var
         };
 
 
-            _gut.saveToDb = function(dbname,obj){
+        _gut.sortByTimestamp = function(opts){
+            var
+                array = opts["array"],
+                sort  = opts["sort"] || "asc"
+            ;
+            array.sort(function(a,b){
+                switch(sort){
+                    case "asc":
+                        return moment(a["_timestamp"]).isAfter(b["_timestamp"]);
+                    case "des":
+                        return moment(a["_timestamp"]).isBefore(b["_timestamp"]);
+                }
+            });
+            return array;
+        };
+
+        _gut.saveToDb = function(dbname,obj){
             return njs_backend.saveToDb(dbname,obj);
         };
 
