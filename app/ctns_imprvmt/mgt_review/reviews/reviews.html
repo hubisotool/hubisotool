@@ -18,30 +18,43 @@
         <div class="col-xs-1">
         </div>
         <div class="col-xs-4">
-            <input type="text" placeholder="review name"/>
+            <input type="text" placeholder="review name" ng-model="rv.name"/>
         </div>
         <div class="col-xs-2">
-            <select name="" id="">
+            <select name="" id="" ng-model="rv.cl">
                 <option value=""></option>
-                <option value="c1">c1</option>
+                <option ng-repeat="cl in checklists" value="{{cl._id}}">{{cl.name}}</option>
             </select>
         </div>
         <div class="col-xs-2">
-            <div>save</div>
+            <div id="root.ctns_imprvmt.mgt_review.reviews.reviewlist.save" ng-click="createRv()">save</div>
         </div>
     </div>
-    <div class="row root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry" ng-repeat="review in reviews">
+    <div class="row root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry" ng-repeat="rv in reviews">
         <div class="col-xs-1">
             <input type="checkbox"/>
         </div>
         <div class="col-xs-4">
-            {{review.name}}
-        </div>
-        <div class="col-xs-2">
+            <div ng-hide="editRvId===rv._id">{{rv.name}}</div>
+            <div ng-show="editRvId===rv._id">
+                <input id="_rv_edit_name_{{rv._id}}" type="text" placeholder="review name" value="{{rv.name}}"/>
+            </div>
 
         </div>
         <div class="col-xs-2">
-            Action(s)
+            <div ng-hide="editRvId===rv._id">{{nameMap[rv.cl]}}</div>
+            <div ng-show="editRvId===rv._id">
+                <select id="_rv_edit_cl_{{rv._id}}" name="">
+                    <option ng-if="cl._id !== rv.cl" ng-repeat="cl in checklists" value="{{cl._id}}">{{cl.name}}</option>
+                    <option ng-if="cl._id === rv.cl" selected ng-repeat="cl in checklists" value="{{cl._id}}">{{cl.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div ng-click="editRv(rv)" ng-hide="editRvId===rv._id" class="hubiso-icon-edit root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"></div>
+            <div ng-click="deleteRv(rv)" ng-hide="editRvId===rv._id" class="hubiso-icon-trash root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"></div>
+            <div ng-click="saveEditRv(rv)" ng-show="editRvId===rv._id" class="hubiso-icon-check-mark root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"></div>
+            <div ng-click="cancelEditRv()" ng-show="editRvId===rv._id" class="hubiso-icon-remove root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"></div>
         </div>
     </div>
 </div>
