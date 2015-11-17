@@ -1,0 +1,36 @@
+<div data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists" ng-controller="ctns_imprvmt.mgt_review.checklistsCtrl">
+
+    <div class="row root.ctns_imprvmt.mgt_review.checklists.checklist.header">
+        <div class="col-xs-1">
+            <input type="checkbox"/>
+        </div>
+        <div class="col-xs-4">
+            Name
+        </div>
+        <div class="col-xs-2">
+            Action(s)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-4">
+            <input type="text" placeholder="Checklist name" ng-model="clname"/>
+        </div>
+        <div class="col-xs-2">
+            <div id="root.ctns_imprvmt.mgt_review.checklists.checklist.save" ng-click="createCl()">save</div>
+        </div>
+    </div>
+    <div class="row root.ctns_imprvmt.mgt_review.checklists.checklist.entry" ng-repeat="cl in checklists">
+        <div class="col-xs-1">
+            <input type="checkbox"/>
+        </div>
+        <div class="col-xs-4">
+            {{cl.name}}
+        </div>
+        <div class="col-xs-2">
+            <div ng-click="editCl(cl)" class="hubiso-icon-edit root.ctns_imprvmt.mgt_review.checklists.checklist.entry.action"></div>
+            <div ng-click="deleteCl(cl)" class="hubiso-icon-trash root.ctns_imprvmt.mgt_review.checklists.checklist.entry.action"></div>
+        </div>
+    </div>
+</div>
