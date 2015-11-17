@@ -2,7 +2,7 @@
  * Created by Bishaka on 15/11/2015.
  */
 var
-    mgt_review = angular.module('ctns_imprvmt.mgt_review',['ctns_imprvmt.mgt_review.reviews'])
+    mgt_review = angular.module('ctns_imprvmt.mgt_review',['ctns_imprvmt.mgt_review.reviews','ctns_imprvmt.mgt_review.checklists'])
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
         $stateProvider
             .state('ctns_imprvmt.mgt_review',{
