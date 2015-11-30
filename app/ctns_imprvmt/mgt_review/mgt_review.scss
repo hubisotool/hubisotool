@@ -1,16 +1,20 @@
 @import "sidebar/sidebar";
 @import "reviews/reviews";
 @import "checklists/checklists";
+@import "schedule/schedule";
+@import "../../colors/colors";
 
 [data-hubiso-module="root.ctns_imprvmt.mgt_review"] {
   position: fixed;
   overflow: auto;
-  height: 400px;
+  height: 100%;
   width: 100%;
   top: 74px;
   padding-bottom: 30px;
 
   .ui-splitbar{
-      background: #f0f0f0;
+      background: $border-color;
   }
+
 }
+

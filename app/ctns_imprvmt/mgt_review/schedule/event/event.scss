@@ -1,0 +1,23 @@
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.schedule.event"]{
+  padding-top:10px;
+
+  [class~="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.label"]{
+    text-align: right;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.box"]{
+    padding: 0;
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.add.rv.box"]{
+    margin-top: 10px;
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.add.rv"]{
+    cursor: default;
+    display: none;
+  }
+  [class~="root.ctns_imprvmt.mgt_review.schedule.event.action"]{
+    cursor: default;
+  }
+}

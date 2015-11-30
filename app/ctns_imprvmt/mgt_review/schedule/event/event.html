@@ -1,0 +1,84 @@
+<div data-hubiso-module="root.ctns_imprvmt.mgt_review.schedule.event" ng-controller="ctns_imprvmt.mgt_review.schedule.eventCtrl">
+    <div class="row">
+        <div class="col-xs-2">
+            Schedule review(s)
+        </div>
+        <div class="col-xs-1">
+            <div id="root.ctns_imprvmt.mgt_review.schedule.event.save" class="root.ctns_imprvmt.mgt_review.schedule.event.action" ng-click="addEvent()">
+                Save
+            </div>
+        </div>
+        <div class="col-xs-1">
+            <div id="root.ctns_imprvmt.mgt_review.schedule.event.discard" class="root.ctns_imprvmt.mgt_review.schedule.event.action" ng-click="discard()">
+                Discard
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-2 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.label">Review :</div>
+                <div class="col-xs-5">
+                    <select name="" id="" ng-model="evt.rv">
+                        <option value=""></option>
+                        <option ng-repeat="rv in reviews" value="{{rv._id}}">{{rv.name}}</option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <div style="display:none">remove</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.label">From :</div>
+                <div class="col-xs-5">
+                    <div class="row">
+                        <div class="col-xs-8 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.box">
+                            <input type="date" ng-model="evt.from.date"/>
+                        </div>
+                        <div class="col-xs-4 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.box">
+                            <input type="text" ng-model="evt.from.time" value="{{d4lts.time}}" timepicker/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.label">To :</div>
+                <div class="col-xs-5">
+                    <div class="row">
+                        <div class="col-xs-8 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.box">
+                            <input ng-model="evt.to.date" type="date"/>
+                        </div>
+                        <div class="col-xs-4 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.box">
+                            <input type="text" ng-model="evt.to.time" timepicker/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.add.rv.box">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-2 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.label"></div>
+                <div class="col-xs-5">
+                    <div class="row">
+                        <div class="col-xs-8 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.box">
+                            <div id="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.add.rv">Add review</div>
+                        </div>
+                        <div class="col-xs-4 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.box">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,9 +1,10 @@
 @import "formbuilder/formbuilder";
+@import "../../../colors/colors";
 
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"]{
 
   [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.header"]{
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid $border-color;
   }
 
   [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.entry"]:nth-of-type(2n){
