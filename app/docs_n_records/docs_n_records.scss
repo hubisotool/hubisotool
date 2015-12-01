@@ -1,10 +1,11 @@
 @import "nav_bar/nav_bar";
 @import "settings/settings";
 @import "master_list/master_list";
+@import "../colors/colors";
 
 [ui-view="root.docs_n_records.nav_bar"]{
   background-color: #fff;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid $border-color;
   padding: 5px  ;
   position: fixed;
   width: 100%;

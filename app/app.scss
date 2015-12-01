@@ -1,9 +1,8 @@
 @import "icon_fonts/icon_fonts";
 @import "nav_bar/nav_bar";
-
 @import "docs_n_records/docs_n_records";
-
 @import "ctns_imprvmt/ctns_imprvmt";
+@import "colors/colors";
 
 body,.row{
   margin: 0;
@@ -11,7 +10,7 @@ body,.row{
 
 [ui-view="root.nav_bar"]{
   background-color: #fff;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid $border-color;
   padding: 5px;
   position: fixed;
   width: 100%;

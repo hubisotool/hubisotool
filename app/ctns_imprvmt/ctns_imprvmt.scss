@@ -1,9 +1,10 @@
 @import "nav_bar/nav_bar";
 @import "mgt_review/mgt_review";
+@import "../colors/colors";
 
 [ui-view="root.ctns_imprvmt.nav_bar"]{
   background-color: #fff;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid $border-color;
   padding: 5px  ;
   position: fixed;
   width: 100%;

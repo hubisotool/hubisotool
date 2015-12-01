@@ -1,7 +1,8 @@
+@import "../../../colors/colors";
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"]{
 
   [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.header"]{
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid $border-color;
   }
 
   [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry"]:nth-of-type(2n){
