@@ -49,6 +49,7 @@ var
                         log.trace("Event list recieved : " + JSON.stringify(_eventList));
 
                         $('[id="root.ctns_imprvmt.mgt_review.schedule.calendar"]').fullCalendar({
+                            timezone:'local',
                             events:_eventList,
                             dayClick: function(date, jsEvent, view) {
                                 $state.transitionTo("ctns_imprvmt.mgt_review.schedule.event", {dt:date.format()});
