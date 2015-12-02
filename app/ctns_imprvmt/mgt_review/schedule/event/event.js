@@ -5,7 +5,7 @@ var
     Promise = require('bluebird'),
     event = angular.module('ctns_imprvmt.mgt_review.schedule.event',[])
     .config(['$stateProvider',function($stateProvider){
-        $stateProvider
+            $stateProvider
             .state('ctns_imprvmt.mgt_review.schedule.event',{
                 url:'/event?dt',
                 views:{
@@ -60,10 +60,38 @@ var
         ;
         loadReviews();
     }])
-    .factory('_events_',[function(){
+    .factory('_events_',['_backend_','logger',function(_backend_,log){
             var _gut = {};
 
-            _gut.getEvents = function(){
+            _gut.load = function(){
+                return new Promise(function(resolve, reject){
+                    var
+                        dbname = "cim",
+                        func = "find",
+                        args = [{type:"cim.mgt_review.schedule.event"}]
+                    ;
+
+                    _backend_.execInDb(dbname,func,args).then(function(events){
+                        events = _backend_.sortByTimestamp({"array":events,sort:"des"});
+                        resolve(events);
+                    })
+                });
+            };
+
+            _gut.createEventList = function(reviewMap,events){
+                    return new Promise(function(resolve,reject){
+                        log.debug(">>> Creating event list");
+                        var result = [];
+                        events.forEach(function(_event,idx,arr){
+                            var event = _event.evt,
+                                title = reviewMap[event.rv].name,
+                                start = event.from,
+                                end = event.to;
+                            result.push({title:title,start:start,end:end});
+                        });
+                        log.debug("<<< Event list created");
+                        resolve(result);
+                    })
             };
 
             _gut.getIsoTime = function(date,time){
