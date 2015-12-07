@@ -9,4 +9,4 @@ before_install:
   - cd ..
 script:
   - npm install
-  - nwbuild .
+  - nwbuild -v 0.12.3 .
