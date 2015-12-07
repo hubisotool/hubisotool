@@ -4,7 +4,7 @@
   "description": "Medical lab Assistant tool",
   "main": "app/shell.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Hubiso Doesn't have any tests yet!\""
   },
   "repository": {
     "type": "git",
