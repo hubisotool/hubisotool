@@ -307,6 +307,17 @@
     display: none; }
   [data-hubiso-module="root.ctns_imprvmt.mgt_review.schedule.event"] [class~="root.ctns_imprvmt.mgt_review.schedule.event.action"] {
     cursor: default; }
+  [data-hubiso-module="root.ctns_imprvmt.mgt_review.schedule.event"] [class~="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.reminder.time.val"] {
+    text-align: right;
+    width: 90px; }
+  [data-hubiso-module="root.ctns_imprvmt.mgt_review.schedule.event"] [class~="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.remove.reminder"] {
+    font-size: smaller;
+    cursor: default; }
+  [data-hubiso-module="root.ctns_imprvmt.mgt_review.schedule.event"] [id="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.add.reminder"] {
+    cursor: default;
+    margin-bottom: 10px; }
+  [data-hubiso-module="root.ctns_imprvmt.mgt_review.schedule.event"] [class~="root.ctns_imprvmt.mgt_review.schedule.event.form.subform.reminder"] {
+    margin-bottom: 5px; }
 
 [data-hubiso-module="root.ctns_imprvmt.mgt_review"] {
   position: fixed;

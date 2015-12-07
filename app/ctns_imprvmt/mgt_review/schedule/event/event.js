@@ -3,7 +3,7 @@
  */
 var
     Promise = require('bluebird'),
-    event = angular.module('ctns_imprvmt.mgt_review.schedule.event',[])
+    event = angular.module('ctns_imprvmt.mgt_review.schedule.event',['ctns_imprvmt.mgt_review.schedule.event.reminders'])
     .config(['$stateProvider',function($stateProvider){
             $stateProvider
             .state('ctns_imprvmt.mgt_review.schedule.event',{
@@ -16,12 +16,13 @@ var
             })
 
     }])
-    .controller('ctns_imprvmt.mgt_review.schedule.eventCtrl',['$scope','_reviews_','_backend_','$stateParams','$state','_events_',function($scope,_reviews_,_backend_,$stateParams,$state,_events_){
+    .controller('ctns_imprvmt.mgt_review.schedule.eventCtrl',['$scope','_reviews_','_backend_','$stateParams','$state','_events_','reminders',function($scope,_reviews_,_backend_,$stateParams,$state,_events_,reminders){
 
         $scope.d4lts = {
             time:moment().format('LT').replace(" ","").toLowerCase(),
-            min_date:$stateParams.dt
-        }
+            min_date:$stateParams.dt || new Date(),
+            reminder:{type:"popup",time_v:10,time_t:"m"}
+        };
 
         $scope.evt = {
             rv:"",
@@ -35,18 +36,30 @@ var
             }
         };
 
+        $scope.reminders = [ jQuery.extend(true, {}, $scope.d4lts.reminder)];
+
         $scope.addEvent = function(){
             var obj = {type:"cim.mgt_review.schedule.event",evt:jQuery.extend(true, {}, $scope.evt)};
             obj.evt.from =  _events_.getIsoTime(obj.evt.from.date,obj.evt.from.time);
             obj.evt.to = _events_.getIsoTime(obj.evt.to.date,obj.evt.to.time);
-            _backend_.saveToDb("cim",obj).then(function(){
-                _backend_.alert({ src :"cim.mgt_review.schedule.event",title : "Event added", text :"Review has been scheduled"});
-                $state.transitionTo("ctns_imprvmt.mgt_review.schedule");
-            });
+            obj.reminders = jQuery.extend(true, {}, $scope.reminders);
+            reminders.scheduleReminders(obj);
+            //_backend_.saveToDb("cim",obj).then(function(){
+            //    _backend_.alert({ src :"cim.mgt_review.schedule.event",title : "Event added", text :"Review has been scheduled"});
+            //    $state.transitionTo("ctns_imprvmt.mgt_review.schedule");
+            //});
         };
 
         $scope.discard = function(){
             $state.transitionTo("ctns_imprvmt.mgt_review.schedule");
+        }
+
+        $scope.addReminder = function(){
+            $scope.reminders.push(jQuery.extend(true, {}, $scope.d4lts.reminder));
+        };
+
+        $scope.removeReminder = function(idx){
+            $scope.reminders.splice(idx,1);
         }
 
         var
