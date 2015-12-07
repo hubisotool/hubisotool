@@ -97,6 +97,19 @@ var
     .factory('_reviews_',['_backend_',function(_backend_){
     var _gut = {};
 
+    _gut.get = function(id){
+        return new Promise(function(resolve, reject){
+            var
+                dbname = "cim",
+                func = "findOne",
+                args = [{_id:id}]
+                ;
+            _backend_.execInDb(dbname,func,args).then(function(review){
+                resolve(review);
+            })
+        });
+    }
+
     _gut.load = function(){
         return new Promise(function(resolve, reject){
             var

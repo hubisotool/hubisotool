@@ -22,8 +22,10 @@
   "author": "Bishaka Samuel <sbishaka@gmail.com> (https://twitter.com/sbishaka)",
   "license": "N/A",
   "dependencies": {
-    "backend": "https://bitbucket.org/hubisotool/backend/get/0.6.1.tar.gz",
+    "async": "^1.5.0",
+    "backend": "git+https://hubiso@bitbucket.org/hubisotool/backend.git#0.7.0",
     "bluebird": "^2.10.2",
+    "loglevel": "^1.4.0",
     "pdfjs-dist": "^1.2.38"
   }
 }

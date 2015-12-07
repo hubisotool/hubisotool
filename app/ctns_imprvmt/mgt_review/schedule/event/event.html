@@ -21,7 +21,6 @@
                 <div class="col-xs-2 root.ctns_imprvmt.mgt_review.schedule.event.form.entry.label">Review :</div>
                 <div class="col-xs-5">
                     <select name="" id="" ng-model="evt.rv">
-                        <option value=""></option>
                         <option ng-repeat="rv in reviews" value="{{rv._id}}">{{rv.name}}</option>
                     </select>
                 </div>
@@ -79,6 +78,36 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row root.ctns_imprvmt.mgt_review.schedule.event.section.label">
+        <div class="col-xs-12">Reminders</div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-5">
+
+            <div ng-click="addReminder()" id="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.add.reminder">Add reminder</div>
+            <div class="form-inline root.ctns_imprvmt.mgt_review.schedule.event.form.subform.reminder" ng-repeat="reminder in reminders">
+                <select name="" ng-model="reminder.type">
+                    <option value="email">Email</option>
+                    <option value="popup">Popup</option>
+                </select>
+                <input ng-model="reminder.time_v" class="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.reminder.time.val" type="number"/>
+                <select ng-model="reminder.time_t" class="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.reminder.time.type" name="">
+                    <option value="m">minutes</option>
+                    <option value="h">hours</option>
+                    <option value="d">days</option>
+                    <option value="w">weeks</option>
+                    <option value="M">months</option>
+                    <option value="y">years</option>
+                </select>
+                before each event.
+                <span ng-show="reminders.length > 1" ng-click="removeReminder($index)" class="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.remove.reminder">remove</span>
+            </div>
+        </div>
+        <div class="col-xs-3"></div>
     </div>
 
 </div>

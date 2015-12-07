@@ -20,4 +20,23 @@
   [class~="root.ctns_imprvmt.mgt_review.schedule.event.action"]{
     cursor: default;
   }
+
+  [class~="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.input.reminder.time.val"]{
+    text-align: right;
+    width: 90px;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.remove.reminder"]{
+    font-size: smaller;
+    cursor: default;
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.schedule.event.form.entry.action.add.reminder"]{
+    cursor: default;
+    margin-bottom: 10px;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.schedule.event.form.subform.reminder"]{
+    margin-bottom: 5px;
+  }
 }
