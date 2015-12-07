@@ -3,6 +3,9 @@ node_js:
   - "5.1.1"
 before_install:
   - npm install -g bower
+  - npm install -g nw-builder
   - cd app/
   - bower install
   - cd ..
+after_install:
+  - nwbuild .
