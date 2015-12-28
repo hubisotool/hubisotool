@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Hubiso Doesn't have any tests yet!\"",
     "buildWin32": "nwbuild -v 0.12.2 -p win32 .",
-    "pkgWin32": "cd $(echo build/$npm_package_name/win32) && mkdir -p ../../../dist && zip -r $(echo ../../../dist/$npm_package_name-v$npm_package_version-win-ia32) . ",
+    "pkgWin32": "cd $(echo build/$npm_package_name/win32) && mkdir -p ../../../dist && zip -r $(echo ../../../dist/$npm_package_name-v$npm_package_version-win-ia32.zip) . ",
     "releaseWin32": "npm run buildWin32 && npm run pkgWin32"
   },
   "repository": {
