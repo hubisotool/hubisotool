@@ -4,7 +4,8 @@
   "description": "Medical lab Assistant tool",
   "main": "app/shell.html",
   "scripts": {
-    "test": "echo \"Hubiso Doesn't have any tests yet!\""
+    "test": "echo \"Hubiso Doesn't have any tests yet!\"",
+    "buildWin32":"nwbuild -v 0.12.2 -p win32 ."
   },
   "repository": {
     "type": "git",
