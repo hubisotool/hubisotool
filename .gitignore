@@ -3,3 +3,4 @@ frontend/.idea/
 app/bower_components
 node_modules/
 build/
+dist/
