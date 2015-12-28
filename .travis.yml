@@ -17,6 +17,6 @@ deploy:
   file: dist/*.zip
   skip_cleanup: true
   on:
-    tags:true,
+    tags:true
     all_branches:true
     repo: ghostfreak3000/hubisotool
