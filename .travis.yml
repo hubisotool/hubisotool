@@ -9,4 +9,4 @@ before_install:
   - cd ..
 script:
   - npm install
-  - npm run buildWin32
+  - npm run releaseWin32
