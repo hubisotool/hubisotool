@@ -10,6 +10,9 @@ before_install:
 script:
 - npm install
 - npm run releaseWin32
+before_deploy:
+  - export RELEASE_FILE_WIN_32=$(echo dist/hubisotool-$TRAVIS_TAG-win-ia32)
+  - echo "deploying $RELEASE_FILE_WIN_32 to GitHub releases"
 deploy:
   provider: releases
   api_key:
