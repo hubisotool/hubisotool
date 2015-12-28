@@ -17,4 +17,4 @@ deploy:
   file: dist/*.zip
   skip_cleanup: true
   on:
-    branch:ghReleases  
+    branch:ghRelease  
