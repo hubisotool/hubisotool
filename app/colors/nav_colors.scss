@@ -1,5 +1,6 @@
 @import "hue";
 
+$main-nav-bg-hue:$hue;
 $main-nav-bg-sat:50%;
 $main-nav-bg-light:25%;
 $main-nav-bg-alpha:1;
@@ -18,6 +19,7 @@ $main-nav-txt-active-sat:50%;
 $main-nav-txt-active-light:25%;
 $main-nav-txt-active-alpha:1;
 
+$sec-nav-bg-hue:$hue;
 $sec-nav-bg-sat:50%;
 $sec-nav-bg-light:99%;
 $sec-nav-bg-alpha:1;
