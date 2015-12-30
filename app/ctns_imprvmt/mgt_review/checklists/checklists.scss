@@ -3,6 +3,37 @@
 @import "../../../dimens/dimens";
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"]{
 
+  [id="root.ctns_imprvmt.mgt_review.checklists.checklist.save"]{
+    text-align: center;
+    line-height: $block-height*.8;
+    vertical-align: middle;
+    background-color: hsla(
+                    $cim-mgtrv-checklist-ctrl-save-bg-hue,
+                    $cim-mgtrv-checklist-ctrl-save-bg-sat,
+                    $cim-mgtrv-checklist-ctrl-save-bg-light,
+                    $cim-mgtrv-checklist-ctrl-save-bg-alpha
+                    );
+    height: 100%;
+    transition: background $hover-transition-duration, color $hover-transition-duration;
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.checklists.checklist.save"]:hover{
+    background-color: hsla(
+                    $cim-mgtrv-checklist-ctrl-save-hover-bg-hue,
+                    $cim-mgtrv-checklist-ctrl-save-hover-bg-sat,
+                    $cim-mgtrv-checklist-ctrl-save-hover-bg-light,
+                    $cim-mgtrv-checklist-ctrl-save-hover-bg-alpha
+    );
+
+    color: hsla(
+                    $cim-mgtrv-checklist-ctrl-save-hover-color-hue,
+                    $cim-mgtrv-checklist-ctrl-save-hover-color-sat,
+                    $cim-mgtrv-checklist-ctrl-save-hover-color-light,
+                    $cim-mgtrv-checklist-ctrl-save-hover-color-alpha
+    );
+
+  }
+
   [id="root.ctns_imprvmt.mgt_review.checklists.input.name"]{
     height: 100%;
     width: 100%;
@@ -12,7 +43,7 @@
                           $cim-mgtrv-checklist-input-name-border-sat,
                           $cim-mgtrv-checklist-input-name-border-light,
                           $cim-mgtrv-checklist-input-name-border-alpha
-                          )
+                          );
   }
 
   [class~="root.ctns_imprvmt.mgt_review.checklists.ctrlBox"],
@@ -22,6 +53,10 @@
 
   [class~="root.ctns_imprvmt.mgt_review.checklists.inputBox"]{
     padding: $block-height*.2;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.checklists.ctrlBox"]{
+    padding: $block-height*.1;
   }
 
   [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.header"]{

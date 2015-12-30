@@ -98,7 +98,7 @@
     cursor: default;
     font-size: 16px;
     text-align: center;
-    transition: background 0.4s, color 0.4s; }
+    transition: background 0.3s, color 0.3s; }
   [data-hubiso-module="root.nav_bar"] [class~="root.nav_bar.nav_option"].active {
     color: #204060;
     background-color: #fbfcfe; }
@@ -247,7 +247,7 @@
   cursor: default;
   font-size: 16px;
   padding-left: 15px;
-  transition: background 0.4s, color 0.4s; }
+  transition: background 0.3s, color 0.3s; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.sidebar"] [id="root.ctns_imprvmt.mgt_review.sidebar.option.listBox"] {
   padding: 0; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.sidebar"] [class~="root.ctns_imprvmt.mgt_review.sidebar.option"]:hover {
@@ -274,6 +274,16 @@
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists.formbuilder"] [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.formbuilder.action"]:nth-of-type(1) {
   margin-left: 0px; }
 
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [id="root.ctns_imprvmt.mgt_review.checklists.checklist.save"] {
+  text-align: center;
+  line-height: 32px;
+  vertical-align: middle;
+  background-color: #cbcdcc;
+  height: 100%;
+  transition: background 0.3s, color 0.3s; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [id="root.ctns_imprvmt.mgt_review.checklists.checklist.save"]:hover {
+  background-color: #20604a;
+  color: white; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [id="root.ctns_imprvmt.mgt_review.checklists.input.name"] {
   height: 100%;
   width: 100%;
@@ -284,6 +294,8 @@
   height: 40px; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [class~="root.ctns_imprvmt.mgt_review.checklists.inputBox"] {
   padding: 8px; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [class~="root.ctns_imprvmt.mgt_review.checklists.ctrlBox"] {
+  padding: 4px; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.header"] {
   border-bottom: 1px solid #ccc; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.entry"]:nth-of-type(2n) {
