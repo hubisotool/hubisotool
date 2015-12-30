@@ -1,32 +1,19 @@
 @import "../../colors/colors";
-
+@import "../../dimens/dimens";
 [data-hubiso-module="root.ctns_imprvmt.nav_bar"]{
-  [id="root.ctns_imprvmt.nav_bar.options"]{
-    margin: 0;
-
-    [class~="root.ctns_imprvmt.nav_bar.option"]:nth-child(1){
-      margin-left: 0px;
-    }
-
-    [class~="root.ctns_imprvmt.nav_bar.option"]{
-      width: auto;
-      font-size: 12px;
-      padding: 2px 5px;
-      margin-left: 10px;
-      -webkit-user-select: none;
-      color: $colors-root-docs_n_records-nav_bar-font;
-      border-radius: 5px;
-      cursor: default;
-      transition: background-color .2s;
-      transition: box-shadow .2s;
-      transition: transform .2s;
-    }
-
-    [class~="root.ctns_imprvmt.nav_bar.option"]:hover{
-      background-color: #fefefe;
-      box-shadow: 0px 2px 5px #888888;
-      transform: scale(1.05,1.05);
-    }
-
+  background-color: hsla($hue, $sec-nav-bg-sat, $sec-nav-bg-light, $sec-nav-bg-alpha);
+  border-bottom: 1px solid hsla(
+                                  $sec-nav-border-hue,
+                                  $sec-nav-border-sat,
+                                  $sec-nav-border-light,
+                                  $sec-nav-border-alpha
+                                );
+  [class~="root.ctns_imprvmt.nav_bar.option"]{
+    height: $block-height;
+    line-height: $block-height;
+    vertical-align: middle;
+    cursor: default;
+    font-size:$block-height*.4;
   }
 }
+

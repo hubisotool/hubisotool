@@ -1,27 +1,26 @@
 @import "../colors/colors";
+@import "../dimens/dimens";
 [data-hubiso-module="root.nav_bar"]{
-  [id="root.nav_bar.options"]{
-    margin: 0;
+  background-color: hsla($hue, $main-nav-bg-sat, $main-nav-bg-light, $main-nav-bg-alpha);
+
+  [class~="root.nav_bar.nav_option"]{
+    color: hsla($main-nav-txt-inert-hue,$main-nav-txt-inert-sat,$main-nav-txt-inert-light,$main-nav-txt-inert-alpha);
+    height: $block-height;
+    line-height: $block-height;
+    vertical-align: middle;
+    cursor: default;
+    font-size:$block-height*.4;
+    text-align: center;
   }
-}
 
-[class~="root.nav_bar.nav_option"]:nth-child(1){
-  margin-left: 0px;
-}
+  [class~="root.nav_bar.nav_option"].active{
+    color: hsla(
+                  $main-nav-txt-active-hue,
+                  $main-nav-txt-active-sat,
+                  $main-nav-txt-active-light,
+                  $main-nav-txt-active-alpha
+                );
 
-[class~="root.nav_bar.nav_option"]{
-  width: auto;
-  font-size: large;
-  padding: 5px 5px 1px;
-  margin-left: 10px;
-  transition: background-color .2s;
-  transition: box-shadow .2s;
-  transition: transform .2s;
-  color: $colors-root-nav_bar-icon;
-}
-
-[class~="root.nav_bar.nav_option"]:hover{
-  background-color: #fefefe;
-  box-shadow: 0px 2px 5px #888888;
-  transform: scale(1.05,1.05);
+    background-color: hsla($hue, $sec-nav-bg-sat, $sec-nav-bg-light, $sec-nav-bg-alpha);
+  }
 }

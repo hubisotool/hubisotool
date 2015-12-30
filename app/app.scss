@@ -1,3 +1,4 @@
+@import "fonts/fonts";
 @import "icon_fonts/icon_fonts";
 @import "nav_bar/nav_bar";
 @import "docs_n_records/docs_n_records";
@@ -8,11 +9,8 @@ body,.row{
   margin: 0;
 }
 
-[ui-view="root.nav_bar"]{
-  background-color: #fff;
-  border-bottom: 1px solid $border-color;
-  padding: 5px;
-  position: fixed;
-  width: 100%;
-  z-index: 100;
+body{
+  font-family: raleway;
+  background-color: hsla($hue,$body-bg-sat,$body-bg-light,$body-bg-alpha);
 }
+
