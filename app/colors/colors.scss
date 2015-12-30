@@ -22,9 +22,9 @@ $sec-nav-bg-sat:50%;
 $sec-nav-bg-light:99%;
 $sec-nav-bg-alpha:1;
 
-$sec-nav-border-hue:0%;
-$sec-nav-border-sat:0%;
-$sec-nav-border-light:70%;
+$sec-nav-border-hue:$hue;
+$sec-nav-border-sat:1%;
+$sec-nav-border-light:80%;
 $sec-nav-border-alpha:1;
 
 $body-bg-sat:100%;
@@ -40,6 +40,11 @@ $cim-mgtrv-sidebar-active-bg-hue:$hue;
 $cim-mgtrv-sidebar-active-bg-sat:10%;
 $cim-mgtrv-sidebar-active-bg-light:90%;
 $cim-mgtrv-sidebar-active-bg-alpha:1;
+
+$cim-mgtrv-checklist-input-name-border-hue:$hue;
+$cim-mgtrv-checklist-input-name-border-sat:1%;
+$cim-mgtrv-checklist-input-name-border-light:80%;
+$cim-mgtrv-checklist-input-name-border-alpha:1;
 
 
 $colors-root-nav_bar-icon:#434343;

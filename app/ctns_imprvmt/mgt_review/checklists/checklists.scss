@@ -3,8 +3,25 @@
 @import "../../../dimens/dimens";
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"]{
 
-  [class~="root.ctns_imprvmt.mgt_review.checklists.ctrlBox"]{
+  [id="root.ctns_imprvmt.mgt_review.checklists.input.name"]{
+    height: 100%;
+    width: 100%;
+    padding-left: $block-padding-left;
+    border:1px solid hsla(
+                          $cim-mgtrv-checklist-input-name-border-hue,
+                          $cim-mgtrv-checklist-input-name-border-sat,
+                          $cim-mgtrv-checklist-input-name-border-light,
+                          $cim-mgtrv-checklist-input-name-border-alpha
+                          )
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.checklists.ctrlBox"],
+  [class~="root.ctns_imprvmt.mgt_review.checklists.inputBox"]{
     height: $block-height;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.checklists.inputBox"]{
+    padding: $block-height*.2;
   }
 
   [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.header"]{
