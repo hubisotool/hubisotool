@@ -7,6 +7,18 @@
       vertical-align: middle;
       cursor: default;
       font-size:$block-height*.4;
+      padding-left: $block-padding-left;
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.sidebar.option.listBox"]{
+    padding: 0;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.sidebar.option"]:hover{
+    background-color: hsla( $cim-mgtrv-sidebar-hover-hue,
+                            $cim-mgtrv-sidebar-hover-sat,
+                            $cim-mgtrv-sidebar-hover-light,
+                            $cim-mgtrv-sidebar-hover-alpha);
   }
 
 }

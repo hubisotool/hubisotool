@@ -245,7 +245,12 @@
   line-height: 40px;
   vertical-align: middle;
   cursor: default;
-  font-size: 16px; }
+  font-size: 16px;
+  padding-left: 15px; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.sidebar"] [id="root.ctns_imprvmt.mgt_review.sidebar.option.listBox"] {
+  padding: 0; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.sidebar"] [class~="root.ctns_imprvmt.mgt_review.sidebar.option"]:hover {
+  background-color: #f1f2f4; }
 
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"] [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.header"] {
   border-bottom: 1px solid #ccc; }
