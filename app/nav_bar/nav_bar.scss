@@ -11,6 +11,7 @@
     cursor: default;
     font-size:$block-height*.4;
     text-align: center;
+    transition: background $hover-transition-duration, color $hover-transition-duration;
   }
 
   [class~="root.nav_bar.nav_option"].active{
@@ -22,5 +23,18 @@
                 );
 
     background-color: hsla($hue, $sec-nav-bg-sat, $sec-nav-bg-light, $sec-nav-bg-alpha);
+  }
+
+  [class~="root.nav_bar.nav_option"]:hover{
+    background-color: hsla( $hue,
+                            $main-nav-hover-sat,
+                            $main-nav-hover-light,
+                            $main-nav-hover-alpha);
+    color: hsla(
+                    $main-nav-txt-active-hue,
+                    $main-nav-txt-active-sat,
+                    $main-nav-txt-active-light,
+                    $main-nav-txt-active-alpha
+    );
   }
 }
