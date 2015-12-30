@@ -1,4 +1,5 @@
 @import "../../../dimens/dimens";
+@import "../../../colors/colors";
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.sidebar"]{
 
   [class~="root.ctns_imprvmt.mgt_review.sidebar.option"]{
@@ -8,6 +9,7 @@
       cursor: default;
       font-size:$block-height*.4;
       padding-left: $block-padding-left;
+      transition: background $hover-transition-duration, color $hover-transition-duration;
   }
 
   [id="root.ctns_imprvmt.mgt_review.sidebar.option.listBox"]{
@@ -21,4 +23,12 @@
                             $cim-mgtrv-sidebar-hover-alpha);
   }
 
+  [class~="root.ctns_imprvmt.mgt_review.sidebar.option"].active{
+    background-color: hsla(
+                              $cim-mgtrv-sidebar-active-bg-hue,
+                              $cim-mgtrv-sidebar-active-bg-sat,
+                              $cim-mgtrv-sidebar-active-bg-light,
+                              $cim-mgtrv-sidebar-active-bg-alpha
+                          );
+  }
 }
