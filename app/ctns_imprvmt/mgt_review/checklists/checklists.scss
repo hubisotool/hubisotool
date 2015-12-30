@@ -40,11 +40,11 @@
     line-height: $block-height*.8;
     vertical-align: middle;
     background-color: hsla(
-                    $cim-mgtrv-checklist-ctrl-save-bg-hue,
-                    $cim-mgtrv-checklist-ctrl-save-bg-sat,
-                    $cim-mgtrv-checklist-ctrl-save-bg-light,
-                    $cim-mgtrv-checklist-ctrl-save-bg-alpha
-                    );
+                    $cim-mgtrv-sidebar-active-bg-hue,
+                    $cim-mgtrv-sidebar-active-bg-sat,
+                    $cim-mgtrv-sidebar-active-bg-light,
+                    $cim-mgtrv-sidebar-active-bg-alpha
+    );
     height: 100%;
     transition: background $hover-transition-duration, color $hover-transition-duration;
   }
@@ -92,7 +92,12 @@
   }
 
   [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.entry"]:nth-of-type(2n){
-    background-color: #f0f0f0;
+    background-color: hsla(
+                    $cim-mgtrv-sidebar-active-bg-hue,
+                    $cim-mgtrv-sidebar-active-bg-sat,
+                    $cim-mgtrv-sidebar-active-bg-light,
+                    $cim-mgtrv-sidebar-active-bg-alpha
+    );
   }
 
   [id="root.ctns_imprvmt.mgt_review.checklists.checklist.save"]{

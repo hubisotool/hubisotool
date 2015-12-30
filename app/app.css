@@ -287,7 +287,7 @@
   text-align: center;
   line-height: 32px;
   vertical-align: middle;
-  background-color: #cbcdcb;
+  background-color: #e3e6e8;
   height: 100%;
   transition: background 0.3s, color 0.3s; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [id="root.ctns_imprvmt.mgt_review.checklists.checklist.save"]:hover {
@@ -306,7 +306,7 @@
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [class~="root.ctns_imprvmt.mgt_review.checklists.ctrlBox"] {
   padding: 4px; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.entry"]:nth-of-type(2n) {
-  background-color: #f0f0f0; }
+  background-color: #e3e6e8; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [id="root.ctns_imprvmt.mgt_review.checklists.checklist.save"] {
   cursor: default; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.entry.action"] {
