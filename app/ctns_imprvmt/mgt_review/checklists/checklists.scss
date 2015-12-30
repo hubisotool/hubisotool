@@ -3,11 +3,13 @@
 @import "../../../dimens/dimens";
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"]{
 
-  [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.header.th"]{
+  [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.header.th"],
+  [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.entry.td"]{
     height: $block-height;
     line-height: $block-height;
     vertical-align: middle;
   }
+
 
   [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.header"]{
     background-color: hsla(
