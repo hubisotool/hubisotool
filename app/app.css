@@ -287,11 +287,11 @@
   text-align: center;
   line-height: 32px;
   vertical-align: middle;
-  background-color: #cbcdcc;
+  background-color: #cbcdcb;
   height: 100%;
   transition: background 0.3s, color 0.3s; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [id="root.ctns_imprvmt.mgt_review.checklists.checklist.save"]:hover {
-  background-color: #20604a;
+  background-color: #339933;
   color: white; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [id="root.ctns_imprvmt.mgt_review.checklists.input.name"] {
   height: 100%;
