@@ -1,7 +1,11 @@
 @import "formbuilder/formbuilder";
 @import "../../../colors/colors";
-
+@import "../../../dimens/dimens";
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"]{
+
+  [class~="root.ctns_imprvmt.mgt_review.checklists.ctrlBox"]{
+    height: $block-height;
+  }
 
   [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.header"]{
     border-bottom: 1px solid $border-color;
