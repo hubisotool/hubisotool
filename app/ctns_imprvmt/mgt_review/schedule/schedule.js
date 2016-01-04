@@ -3,8 +3,6 @@
  */
 var
     async = require("async"),
-    path = require('path'),
-    logSrc = document.currentScript.src,
     schedule = angular.module('ctns_imprvmt.mgt_review.schedule',['ctns_imprvmt.mgt_review.schedule.event'])
     .config(['$stateProvider',function($stateProvider){
         $stateProvider
@@ -18,7 +16,19 @@ var
             })
 
     }])
-    .directive('calendar',['$state','_reviews_','_events_','logger',function($state,_reviews_,_events_,log){
+    .factory('scheduleLogSrc',[function(){
+        var logSrc="";
+        try{
+            throw new Error();
+        }catch(err){
+            var regex = /\(.*\)/,
+                match = regex.exec(err.stack),
+                filename = match[0].replace("(","").replace(")","");
+            logSrc = filename;
+        }
+        return logSrc;
+    }])
+    .directive('calendar',['$state','_reviews_','_events_','logger','scheduleLogSrc',function($state,_reviews_,_events_,log,logSrc){
         return{
             restrict:"A",
             link:function(scope,elem){
@@ -54,6 +64,8 @@ var
                             timezone:'local',
                             events:_eventList,
                             dayClick: function(date, jsEvent, view) {
+                                log.debug({src:logSrc,diagId:"LINE-57",msg:"Calendar date< "+moment(date).format("dddd, MMMM Do YYYY")+" > clicked"});
+                                log.debug({src:logSrc,diagId:"LINE-58",msg:"Transitioning to ctns_imprvmt.mgt_review.schedule.event"});
                                 $state.transitionTo("ctns_imprvmt.mgt_review.schedule.event", {dt:date.format()});
                             }
                         });

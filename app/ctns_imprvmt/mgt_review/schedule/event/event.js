@@ -3,6 +3,7 @@
  */
 var
     Promise = require('bluebird'),
+    logSrc = document.currentScript.src,
     event = angular.module('ctns_imprvmt.mgt_review.schedule.event',['ctns_imprvmt.mgt_review.schedule.event.reminders'])
     .config(['$stateProvider',function($stateProvider){
             $stateProvider
@@ -36,7 +37,7 @@ var
             }
         };
 
-        $scope.reminders = [ jQuery.extend(true, {}, $scope.d4lts.reminder)];
+        $scope.reminders = [];
 
         $scope.addEvent = function(){
             var obj = {type:"cim.mgt_review.schedule.event",evt:jQuery.extend(true, {}, $scope.evt)};
