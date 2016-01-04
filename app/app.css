@@ -289,7 +289,13 @@
   vertical-align: middle;
   background-color: #e3e6e8;
   height: 100%;
-  transition: background 0.3s, color 0.3s; }
+  transition: background 0.3s, color 0.3s;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists"] [id="root.ctns_imprvmt.mgt_review.checklists.checklist.save"]:hover {
   background-color: #339933;
   color: white; }
