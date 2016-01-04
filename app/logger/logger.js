@@ -8,22 +8,50 @@ var
             log.enableAll();
     }])
     .factory('logger',[function(){
-        var _gut = {};
+        var _gut = {},
+            delim = " | ",
+            _log_ = function(opts,severity){
+
+                var sev_up = severity.toUpperCase(),
+                    sev_low = severity.toLowerCase();
+
+                if(typeof opts === "string"){
+                    log[sev_low](buildMsg({msg:opts,severity:sev_up}))
+                }else{
+                    log[sev_low](buildMsg({    msg:opts.msg,
+                        severity:sev_up,
+                        diagId:opts.diagId,
+                        src:opts.src    }));
+                }
+
+            },
+
+            buildMsg = function(opts){
+                var result = "",
+                    keys = ["severity","src","diagId","msg"],
+                    timestamp = moment().toISOString();
+
+                keys.map(function(key){
+                    opts[key] = opts[key] || "-";
+                });
+
+                result =    timestamp
+                            + delim + opts.severity
+                            + delim + opts.src
+                            + delim + opts.diagId
+                            + delim + opts.msg;
+
+                return result;
+            };
+
+
 
         _gut.trace = function(opts){
-                if(typeof opts === "string"){
-                    log.trace(opts)
-                }else{
-                    log.trace(opts.msg);
-                }
+            _log_(opts,"TRACE");
         };
 
         _gut.debug = function(opts){
-            if(typeof opts === "string"){
-                log.debug(opts)
-            }else{
-                log.debug(opts.msg);
-            }
+            _log_(opts,"DEBUG");
         };
 
         return _gut;

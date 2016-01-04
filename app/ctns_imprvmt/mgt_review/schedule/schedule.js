@@ -3,6 +3,8 @@
  */
 var
     async = require("async"),
+    path = require('path'),
+    logSrc = document.currentScript.src,
     schedule = angular.module('ctns_imprvmt.mgt_review.schedule',['ctns_imprvmt.mgt_review.schedule.event'])
     .config(['$stateProvider',function($stateProvider){
         $stateProvider
@@ -23,22 +25,22 @@ var
                 //Get reviews and events and make the eventList
                 async.parallel([
                     function(done){
-                        log.debug(">>> Loading reviewMap");
+                        log.debug({src:logSrc,msg:">>> Loading reviewMap"});
                         var reviewMap = {};
                         _reviews_.load().then(function(reviews){
                             reviews.forEach(function(review,idx,arr){
                                 reviewMap[review._id]=review;
                             })
-                            log.debug("<<< ReviewMap loaded")
+                            log.debug({src:logSrc,msg:"<<< ReviewMap loaded"});
                             done(null,reviewMap);
                         })
                     },
                     function(done){
-                        log.debug(">>> Loading events")
+                        log.debug({src:logSrc,msg:">>> Loading events"});
                         var events = [];
                         _events_.load().then(function(_events){
                             events = _events;
-                            log.debug("<<< Events loaded")
+                            log.debug({src:logSrc,msg:"<<< Events loaded"});
                             done(null,events);
                         })
                     }
@@ -64,3 +66,7 @@ var
         }
     }])
 ;
+
+process.argv.forEach(function(val, index, array) {
+    console.log(index + ': ' + val);
+});
