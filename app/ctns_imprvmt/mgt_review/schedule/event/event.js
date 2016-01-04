@@ -45,10 +45,10 @@ var
             obj.evt.to = _events_.getIsoTime(obj.evt.to.date,obj.evt.to.time);
             obj.reminders = jQuery.extend(true, {}, $scope.reminders);
             reminders.scheduleReminders(obj);
-            //_backend_.saveToDb("cim",obj).then(function(){
-            //    _backend_.alert({ src :"cim.mgt_review.schedule.event",title : "Event added", text :"Review has been scheduled"});
-            //    $state.transitionTo("ctns_imprvmt.mgt_review.schedule");
-            //});
+            _backend_.saveToDb("cim",obj).then(function(){
+                _backend_.alert({ src :"cim.mgt_review.schedule.event",title : "Event added", text :"Review has been scheduled"});
+                $state.transitionTo("ctns_imprvmt.mgt_review.schedule");
+            });
         };
 
         $scope.discard = function(){
