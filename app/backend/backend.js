@@ -85,6 +85,12 @@ var
             return njs_backend.saveToDb(dbname,obj);
         };
 
+        _gut.addHeartBeat = function(fn){
+            if(typeof fn === "function"){
+                njs_backend.hubhb.add({intervals:{ "* * * * * *":[fn]}})
+            }
+        };
+
         _gut["alert"] = function(opts){
             njs_backend.alert(opts);
         };
