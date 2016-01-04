@@ -17,12 +17,12 @@ var
             })
 
     }])
-    .controller('ctns_imprvmt.mgt_review.schedule.eventCtrl',['$scope','_reviews_','_backend_','$stateParams','$state','_events_','reminders',function($scope,_reviews_,_backend_,$stateParams,$state,_events_,reminders){
+    .controller('ctns_imprvmt.mgt_review.schedule.eventCtrl',['$scope','_reviews_','_backend_','$stateParams','$state','_events_','reminders','logger','eventsLogSrc',function($scope,_reviews_,_backend_,$stateParams,$state,_events_,reminders,log,logSrc){
 
         $scope.d4lts = {
             time:moment().format('LT').replace(" ","").toLowerCase(),
             min_date:$stateParams.dt || new Date(),
-            reminder:{type:"popup",time_v:10,time_t:"m"}
+            reminder:{type:"popup",time_v:10,time_t:"m",status:"active"}
         };
 
         $scope.evt = {
@@ -43,11 +43,13 @@ var
             var obj = {type:"cim.mgt_review.schedule.event",evt:jQuery.extend(true, {}, $scope.evt)};
             obj.evt.from =  _events_.getIsoTime(obj.evt.from.date,obj.evt.from.time);
             obj.evt.to = _events_.getIsoTime(obj.evt.to.date,obj.evt.to.time);
-            obj.reminders = jQuery.extend(true, {}, $scope.reminders);
-            reminders.scheduleReminders(obj);
-            _backend_.saveToDb("cim",obj).then(function(){
-                _backend_.alert({ src :"cim.mgt_review.schedule.event",title : "Event added", text :"Review has been scheduled"});
-                $state.transitionTo("ctns_imprvmt.mgt_review.schedule");
+            reminders.scheduleReminders({event:obj,reminders:$scope.reminders}).then(function(reminders){
+                obj.reminders = reminders;
+                log.debug({src:logSrc,diagId:"ctns_imprvmt.mgt_review.schedule.eventCtrl::addEvent",msg:"Saving "+JSON.stringify(obj)+" to Database"});
+                _backend_.saveToDb("cim",obj).then(function(){
+                    _backend_.alert({ src :"cim.mgt_review.schedule.event",title : "Event added", text :"Review has been scheduled"});
+                    $state.transitionTo("ctns_imprvmt.mgt_review.schedule");
+                });
             });
         };
 
@@ -73,6 +75,18 @@ var
             }
         ;
         loadReviews();
+    }])
+    .factory('eventsLogSrc',[function(){
+        var logSrc="";
+        try{
+            throw new Error();
+        }catch(err){
+            var regex = /\(.*\)/,
+                match = regex.exec(err.stack),
+                filename = match[0].replace("(","").replace(")","");
+            logSrc = filename;
+        }
+        return logSrc;
     }])
     .factory('_events_',['_backend_','logger',function(_backend_,log){
             var _gut = {};

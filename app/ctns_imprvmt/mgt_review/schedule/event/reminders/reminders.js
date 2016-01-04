@@ -20,12 +20,22 @@ var
     }])
     .factory('reminders',['_backend_','_reviews_','logger','remindersLogSrc',function(b,reviews,log,logSrc){
             var _gut = {};
-            _gut.scheduleReminders = function(event){
+            _gut.scheduleReminders = function(opts){
+                var event = opts.event,
+                    start_t = event.evt.rv.from,
+                    result = [],
+                    reminders = opts.reminders;
                 return new Promise(function(resolve,reject){
                     log.debug({src:logSrc,diagId:"reminders::scheduleReminders",msg:"Fetching review tied to event"});
                     reviews.get(event.evt.rv).then(function(review){
-                        log.trace("Working with Review : " + review.name);
-                        
+                        log.debug({src:logSrc,diagId:"reminders::scheduleReminders",msg:"Review fetched "+JSON.stringify(review)+""});
+                        log.debug({src:logSrc,diagId:"reminders::scheduleReminders",msg:"Compiling reminders"});
+                        result = reminders.map(function(rem){
+                            var tt = moment(start_t).subtract(rem.time_v,rem.time_t).toISOString()
+                            return {at:tt,status:rem.status,type:rem.type};
+                        });
+                        log.debug({src:logSrc,diagId:"reminders::scheduleReminders",msg:"Returning " + JSON.stringify(result)});
+                        resolve(result);
                     })
                 });
             };
