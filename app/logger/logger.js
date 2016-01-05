@@ -3,8 +3,33 @@
  */
 var
     log = require('loglevel'),
+    winston = require('winston'),
     logger = angular.module('logger',[])
     .config([function(){
+            winston.loggers.add('reminders::scheduleReminders',{
+                file:{
+                    level:"silly",
+                    filename:require('nw.gui').App.dataPath+"/reminder-scheduler.log"
+                }
+            });
+            winston.loggers.add('reminderDaemon::link::reminderDaemonHook',{
+                file:{
+                    filename:require('nw.gui').App.dataPath+"/cim.log"
+                }
+            });
+            winston.loggers.add('calendar::link',{
+                file:{
+                    level:"silly",
+                    filename:require('nw.gui').App.dataPath+"/cim.log"
+                }
+            });
+            winston.loggers.add('events::addEvent',{
+                file:{
+                    level:"silly",
+                    filename:require('nw.gui').App.dataPath+"/cim.log"
+                }
+            });
+
             log.enableAll();
     }])
     .factory('logger',[function(){
@@ -18,9 +43,14 @@ var
                 if(typeof opts === "string"){
                     log[sev_low](buildMsg({msg:opts,severity:sev_up}))
                 }else{
-                    log[sev_low](buildMsg({    msg:opts.msg,
+                    //log[sev_low](buildMsg({    msg:opts.msg,
+                    //    severity:sev_up,
+                    //    diagId:opts.diagId,
+                    //    src:opts.src    }));
+                    winston.loggers.get(opts.diagId)[sev_low](buildMsg({msg:opts.msg,
                         severity:sev_up,
                         diagId:opts.diagId,
+                        uuid:opts.uuid,
                         src:opts.src    }));
                 }
 
@@ -28,7 +58,7 @@ var
 
             buildMsg = function(opts){
                 var result = "",
-                    keys = ["severity","src","diagId","msg"],
+                    keys = ["severity","src","diagId","uuid","msg"],
                     timestamp = moment().toISOString();
 
                 keys.map(function(key){
@@ -39,6 +69,7 @@ var
                             + delim + opts.severity
                             + delim + opts.src
                             + delim + opts.diagId
+                            + delim + opts.uuid
                             + delim + opts.msg;
 
                 return result;

@@ -41,11 +41,13 @@ var
 
         $scope.addEvent = function(){
             var obj = {type:"cim.mgt_review.schedule.event",evt:jQuery.extend(true, {}, $scope.evt)};
+            obj.evt.from.time = $("[ng-model='evt.from.time']").val();
+            obj.evt.to.time = $("[ng-model='evt.to.time']").val();
             obj.evt.from =  _events_.getIsoTime(obj.evt.from.date,obj.evt.from.time);
             obj.evt.to = _events_.getIsoTime(obj.evt.to.date,obj.evt.to.time);
             reminders.scheduleReminders({event:obj,reminders:$scope.reminders}).then(function(reminders){
                 obj.reminders = reminders;
-                log.debug({src:logSrc,diagId:"ctns_imprvmt.mgt_review.schedule.eventCtrl::addEvent",msg:"Saving "+JSON.stringify(obj)+" to Database"});
+                log.debug({src:logSrc,diagId:"events::addEvent",msg:"Saving "+JSON.stringify(obj)+" to Database"});
                 _backend_.saveToDb("cim",obj).then(function(){
                     _backend_.alert({ src :"cim.mgt_review.schedule.event",title : "Event added", text :"Review has been scheduled"});
                     $state.transitionTo("ctns_imprvmt.mgt_review.schedule");
