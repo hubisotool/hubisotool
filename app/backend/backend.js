@@ -10,7 +10,9 @@ var
     module_backend = angular.module('backend',[])
 
     .config([function(){
-            console.log("Datapath : \n"+app.dataPath);
+            require('nw.gui').Window.get().showDevTools();
+            console.log("Datapath : "+app.dataPath);
+            console.log("Platform : "+navigator.platform);
             njs_backend.startup({datapath:app.dataPath});
 
             win.on('close', function() {
