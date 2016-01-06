@@ -3,7 +3,7 @@
  */
 
 var
-    hubisotool = angular.module('hubisotool',['ui.router','ui.layout','cfp.hotkeys','docs_n_records','ctns_imprvmt','logger','mainNav'])
+    hubisotool = angular.module('hubisotool',['ui.router','ui.layout','cfp.hotkeys','docs_n_records','ctns_imprvmt','logger','mainNav','updater'])
 
         .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
             $stateProvider

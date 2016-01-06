@@ -21,16 +21,17 @@
     "bootstrap": "~3.3.5",
     "jquery.nicescroll": "https://github.com/inuyaksa/jquery.nicescroll.git#3.6.0",
     "moment": "~2.x",
-    "summernote": "~0.6.16",
     "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.6.0",
     "pdfmake": "~0.1.20",
     "angular-ui-layout": "~1.3.1",
     "formbuilder": "https://github.com/dobtco/formbuilder.git#~0.2.1",
     "fullcalendar": "~2.4.0",
     "tooltipster": "https://github.com/ghostfreak3000/tooltipster.git#dist",
-    "jt.timepicker": "https://github.com/ghostfreak3000/jquery-timepicker.git#ba1ba0ea71ed3b6ad6797712c6815ce9f559931e"
+    "jt.timepicker": "https://github.com/ghostfreak3000/jquery-timepicker.git#ba1ba0ea71ed3b6ad6797712c6815ce9f559931e",
+    "jquery": "~2.x"
   },
   "resolutions": {
-    "font-awesome": ">=4.2.0"
+    "font-awesome": ">=4.2.0",
+    "jquery": "~2.x"
   }
 }

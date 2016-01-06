@@ -12,7 +12,7 @@ var
     .config([function(){
             require('nw.gui').Window.get().showDevTools();
             console.log("Datapath : "+app.dataPath);
-            console.log("Platform : "+navigator.platform);
+            console.log("Platform : "+process.arch);
             njs_backend.startup({datapath:app.dataPath});
 
             win.on('close', function() {

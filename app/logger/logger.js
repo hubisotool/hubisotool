@@ -4,6 +4,7 @@
 var
     log = require('loglevel'),
     winston = require('winston'),
+    log2Console = ['rootDnrMlEditCtrl::loadDoc','mlDocEditor::link'],
     logger = angular.module('logger',[])
     .config([function(){
             winston.loggers.add('reminders::scheduleReminders',{
@@ -43,10 +44,12 @@ var
                 if(typeof opts === "string"){
                     log[sev_low](buildMsg({msg:opts,severity:sev_up}))
                 }else{
-                    //log[sev_low](buildMsg({    msg:opts.msg,
-                    //    severity:sev_up,
-                    //    diagId:opts.diagId,
-                    //    src:opts.src    }));
+                    if(log2Console.indexOf(opts.diagId) > -1) {
+                        log[sev_low](buildMsg({    msg:opts.msg,
+                            severity:sev_up,
+                            diagId:opts.diagId,
+                            src:opts.src    }));
+                    }
                     winston.loggers.get(opts.diagId)[sev_low](buildMsg({msg:opts.msg,
                         severity:sev_up,
                         diagId:opts.diagId,
