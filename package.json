@@ -28,13 +28,13 @@
     "height": 500,
     "min_width": 900,
     "min_height": 500,
-    "toolbar": false
+      "toolbar": false
   },
   "author": "Bishaka Samuel <sbishaka@gmail.com> (https://twitter.com/sbishaka)",
   "license": "N/A",
   "dependencies": {
     "async": "^1.5.0",
-    "backend": "git+https://hubiso@github.com/hubisotool/backend.git#v0.7.1",
+    "backend": "git+https://hubiso@github.com/hubisotool/backend.git#v0.7.2",
     "bluebird": "^2.10.2",
     "loglevel": "^1.4.0",
     "pdfjs-dist": "^1.2.38",

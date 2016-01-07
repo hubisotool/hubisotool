@@ -1,0 +1,36 @@
+<div data-hubiso-module="updater" ng-controller="updaterCtrl">
+    <div class="row" ng-hide="install">
+        <div class="col-xs-12">
+            Found updates for Hubiso
+        </div>
+    </div>
+    <div class="row" ng-hide="install">
+        <div class="col-xs-12">
+            Would you like to continue to install updates?
+        </div>
+    </div>
+    <div class="row" ng-hide="install">
+        <div class="col-xs-12">
+            <button class="btn btn-success" ng-click="do_install()">install</button>
+            <button class="btn" ng-click="cancel()">cancel</button>
+        </div>
+    </div>
+    <div class="row" ng-show="install">
+        <div class="col-xs-12">
+            Installing updates
+        </div>
+    </div>
+    <div class="row" ng-show="install">
+        <div class="col-xs-12">
+            Downloading ( 100kb of 11.88MB, 0% complete )
+        </div>
+    </div>
+
+    <div class="row" ng-show="install">
+        <div class="col-xs-12">
+            <div id="update-progress-box">
+                <div id="update-progress"></div>
+            </div>
+        </div>
+    </div>
+</div>

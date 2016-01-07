@@ -354,6 +354,13 @@
   [data-hubiso-module="root.ctns_imprvmt.mgt_review"] [ui-layout] {
     margin-top: 80px; }
 
+[data-hubiso-module="updater"] .row {
+  margin: 0; }
+[data-hubiso-module="updater"] #update-progress-box {
+  height: 40px;
+  border: 1px solid #cbcccd;
+  background-color: #cbcdcb; }
+
 body, .row {
   margin: 0; }
 

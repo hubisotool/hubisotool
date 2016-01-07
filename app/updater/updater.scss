@@ -1,0 +1,26 @@
+@import '../colors/colors';
+@import '../dimens/dimens';
+
+[data-hubiso-module="updater"]{
+
+  .row{
+    margin: 0;
+  }
+
+  #update-progress-box{
+    height: $block-height;
+    border:1px solid hsla(
+                    $update-progress-box-border-hue,
+                    $update-progress-box-border-sat,
+                    $update-progress-box-border-light,
+                    $update-progress-box-border-alpha
+    );
+    background-color:hsla(
+                    $update-progress-box-bg-hue,
+                    $update-progress-box-bg-sat,
+                    $update-progress-box-bg-light,
+                    $update-progress-box-bg-alpha
+    );
+  }
+
+}

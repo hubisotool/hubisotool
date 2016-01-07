@@ -9,21 +9,24 @@ var
 
     module_backend = angular.module('backend',[])
 
-    .config([function(){
-            require('nw.gui').Window.get().showDevTools();
+    .factory('_backend_',['$state',function($state){
+        var _gut = {}, boot = function(){
             console.log("Datapath : "+app.dataPath);
             console.log("Platform : "+process.arch);
             njs_backend.startup({datapath:app.dataPath});
 
             win.on('close', function() {
-                console.log("Shutdown script called");
-                njs_backend.shutdown();
-                app.quit();
+                console.log("Setting updater window open variable to false");
+                njs_backend.execInDb("config","update",[{module:"updater"},{$set:{"updaterWindowOpen":"false"}},{multi:true}]).then(function(){
+                    njs_backend.shutdown();
+                    win.close(true);
+                })
             });
-    }])
 
-    .factory('_backend_',[function(){
-        var _gut = {};
+        };
+
+        boot();
+
         _gut["dnr"] = {};
 
         _gut["dnr"]["settings"] = {};
