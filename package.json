@@ -8,6 +8,7 @@
     "buildWin32": "node scripts/nw-builder/buildWin32.js",
     "buildWin64": "nwbuild -v 0.12.2 -p win64 .",
     "buildWin": "npm run buildWin32 && npm run buildWin64",
+    "pkgWin32exe":"mkdir -p dist && makensis scripts/nsis/pkgWin32Exe.nsi",
     "pkgWin32": "cd $(echo build/$npm_package_name/win32) && mkdir -p ../../../dist && zip -r $(echo ../../../dist/$npm_package_name-v$npm_package_version-win-ia32.zip) . ",
     "pkgWin64": "cd $(echo build/$npm_package_name/win64) && mkdir -p ../../../dist && zip -r $(echo ../../../dist/$npm_package_name-v$npm_package_version-win-x64.zip) . ",
     "pkgWin": "npm run pkgWin32 && npm run pkgWin64",
