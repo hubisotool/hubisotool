@@ -4,9 +4,10 @@ node_js:
 before_install:
 - which npm
 - which node
+- export NODE_PATH=/home/travis/.nvm/versions/node/v5.1.1/lib/node_modules/
 - echo $NODE_PATH
 - npm install -g bower
-- npm install -g --verbose nw-builder
+- npm install -g nw-builder
 - cd app/
 - bower install
 - cd ..
