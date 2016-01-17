@@ -2,7 +2,8 @@ language: node_js
 node_js:
 - 5.1.1
 before_install:
-- sudo apt-get install nsis  
+- sudo apt-get update
+- sudo apt-get install nsis
 - export NODE_PATH=/home/travis/.nvm/versions/node/v5.1.1/lib/node_modules/
 - npm install -g bower
 - npm install -g nw-builder
