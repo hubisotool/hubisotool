@@ -20,9 +20,36 @@
             Installing updates
         </div>
     </div>
+    <div class="row" ng-show="install" style="margin-top:20px;">
+        <div class="col-xs-6">
+            File Size
+        </div>
+        <div class="col-xs-6">
+            {{total}}
+        </div>
+    </div>
     <div class="row" ng-show="install">
-        <div class="col-xs-12">
-            Downloading ( 100kb of 11.88MB, 0% complete )
+        <div class="col-xs-6">
+            Downloaded
+        </div>
+        <div class="col-xs-6">
+            {{trans}} ( {{percent}} )
+        </div>
+    </div>
+    <div class="row" ng-show="install">
+        <div class="col-xs-6">
+            Transfer rate
+        </div>
+        <div class="col-xs-6">
+            {{speed}}
+        </div>
+    </div>
+    <div class="row" ng-show="install" style="margin-bottom:20px;">
+        <div class="col-xs-6">
+            Time left
+        </div>
+        <div class="col-xs-6">
+            {{time}}
         </div>
     </div>
 

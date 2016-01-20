@@ -360,6 +360,10 @@
   height: 40px;
   border: 1px solid #cbcccd;
   background-color: #cbcdcb; }
+  [data-hubiso-module="updater"] #update-progress-box #update-progress {
+    background-color: #339933;
+    height: 100%;
+    width: 0%; }
 
 body, .row {
   margin: 0; }

@@ -4,7 +4,7 @@
 var
     log = require('loglevel'),
     winston = require('winston'),
-    log2Console = ['updaterDaemon::link','updaterDaemon::openUpdaterWindow'],
+    log2Console = ['updaterDaemon::link','updaterDaemon::openUpdaterWindow','updater::downloadNewVersion'],
     logger = angular.module('logger',[])
     .config([function(){
             winston.loggers.add('reminders::scheduleReminders',{

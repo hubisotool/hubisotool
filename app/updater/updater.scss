@@ -21,6 +21,17 @@
                     $update-progress-box-bg-light,
                     $update-progress-box-bg-alpha
     );
+
+    #update-progress{
+      background-color:hsla(
+                      $update-progress-bg-hue,
+                      $update-progress-bg-sat,
+                      $update-progress-bg-light,
+                      $update-progress-bg-alpha
+      );
+      height: 100%;
+      width: 0%;
+    }
   }
 
 }
