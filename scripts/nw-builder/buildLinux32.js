@@ -1,7 +1,7 @@
 var NwBuilder = require('nw-builder');
 var nw = new NwBuilder({
     files: ['./app/**/**','./package.json','./node_modules/**/**'],
-    platforms: ['win32'],
+    platforms: ['linux32'],
     version: '0.12.2',
     buildDir:'./build'
 });

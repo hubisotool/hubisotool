@@ -15,7 +15,16 @@
     "pkgWin": "npm run pkgWin32 && npm run pkgWin64",
     "releaseWin32": "npm run buildWin32 && npm run pkgWin32 && npm run pkgWin32exe",
     "releaseWin64": "npm run buildWin64 && npm run pkgWin64 && npm run pkgWin64exe",
-    "releaseWin": "npm run releaseWin32 && npm run releaseWin64"
+    "releaseWin": "npm run releaseWin32 && npm run releaseWin64",
+    "buildLinux32": "node scripts/nw-builder/buildLinux32.js",
+    "buildLinux64": "node scripts/nw-builder/buildLinux64.js",
+    "buildLinux": "npm run buildLinux32 && npm run buildLinux64",
+    "pkgLinux32": "cd $(echo build/$npm_package_name/linux32) && mkdir -p ../../../dist && zip -r $(echo ../../../dist/$npm_package_name-v$npm_package_version-linux-ia32.zip) . ",
+    "pkgLinux64": "cd $(echo build/$npm_package_name/linux64) && mkdir -p ../../../dist && zip -r $(echo ../../../dist/$npm_package_name-v$npm_package_version-linux-x64.zip) . ",
+    "pkgLinux": "npm run pkgWin32 && npm run pkgWin64",
+    "releaseLinux32": "npm run buildLinux32 && npm run pkgLinux32",
+    "releaseLinux64": "npm run buildLinux64 && npm run pkgLinux64",
+    "releaseLinux": "npm run releaseLinux32 && npm run releaseLinux64"
   },
   "repository": {
     "type": "git",
@@ -38,5 +47,8 @@
     "bluebird": "^2.10.2",
     "loglevel": "^1.4.0",
     "pdfjs-dist": "^1.2.38"
+  },
+  "devDependencies": {
+    "nw-builder": "^2.2.0"
   }
 }

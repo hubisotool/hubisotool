@@ -13,11 +13,14 @@ before_install:
 script:
 - npm install
 - npm run releaseWin
+- npm run releaseLinux
 before_deploy:
   - export RELEASE_FILE_WIN_32=$(echo dist/hubisotool-$TRAVIS_TAG-win-ia32.zip)
   - export RELEASE_FILE_WIN_32_EXE=$(echo dist/hubisotool-ia32-installer.exe)
   - export RELEASE_FILE_WIN_64=$(echo dist/hubisotool-$TRAVIS_TAG-win-x64.zip)
   - export RELEASE_FILE_WIN_64_EXE=$(echo dist/hubisotool-x64-installer.exe)
+  - export RELEASE_FILE_LINUX_32=$(echo dist/hubisotool-$TRAVIS_TAG-linux-ia32.zip)
+  - export RELEASE_FILE_LINUX_64=$(echo dist/hubisotool-$TRAVIS_TAG-linux-x64.zip)
 deploy:
   provider: releases
   api_key:
@@ -27,6 +30,8 @@ deploy:
     - "${RELEASE_FILE_WIN_32_EXE}"
     - "${RELEASE_FILE_WIN_64}"
     - "${RELEASE_FILE_WIN_64_EXE}"
+    - "${RELEASE_FILE_LINUX_32}"
+    - "${RELEASE_FILE_LINUX_64}"
   skip_cleanup: true
   on:
     repo: hubisotool/hubisotool
