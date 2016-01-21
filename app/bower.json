@@ -28,10 +28,10 @@
     "fullcalendar": "~2.4.0",
     "tooltipster": "https://github.com/ghostfreak3000/tooltipster.git#dist",
     "jt.timepicker": "https://github.com/ghostfreak3000/jquery-timepicker.git#ba1ba0ea71ed3b6ad6797712c6815ce9f559931e",
-    "jquery": "~2.x"
+    "jquery": "~2.2.x"
   },
   "resolutions": {
     "font-awesome": ">=4.2.0",
-    "jquery": "~2.x"
+    "jquery": "~2.2.x"
   }
 }
