@@ -12,7 +12,8 @@ var
     .factory('_backend_',['$state',function($state){
         var _gut = {}, boot = function(){
             console.log("Datapath : "+app.dataPath);
-            console.log("Platform : "+process.arch);
+            console.log("Platform : "+process.platform);
+            console.log("Arch : "+process.arch);
             njs_backend.startup({datapath:app.dataPath});
 
             win.on('close', function() {
