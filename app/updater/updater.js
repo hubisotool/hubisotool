@@ -124,6 +124,9 @@ var
                 case 'win32':
                     platform = "win";
                     break;
+                case 'linux':
+                    platform = "linux";
+                    break;
             }
             return "hubisotool-"+ver+"-"+platform+"-"+arch+".zip";
         };
