@@ -5,12 +5,16 @@
 var
     fs = require('fs'),
     request = require('request'),
+    gui = require('nw.gui'),
     prettysize = require('prettysize'),
     prettytime = require('prettytime'),
     progress = require('request-progress'),
     bc_dprog = "dwnld-progress",
     OsTmpDir = require('os-tmpdir'),
     Promise = require('bluebird'),
+    nw_updater = require('node-webkit-updater'),
+    pkg = require('../package.json'),
+    upd = new nw_updater(pkg),
     updater = angular.module('updater',[])
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
         $stateProvider
@@ -24,20 +28,63 @@ var
             });
         $urlRouterProvider.otherwise('/docs_n_records');
     }])
-    .controller('updaterCtrl',['$scope','updater',function($scope,updater){
+    .controller('updaterCtrl',['$scope','updater','logger','updaterLogSrc',function($scope,updater,log,logSrc){
         $scope.install = false;
+        $scope.step_check = true;
+        $scope.step_download = false;
+        $scope.step_install = false;
+        $scope.step_restart = false;
+
         $scope.trans = "0kb";
         $scope.total = "0kb";
         $scope.time = "0kb";
         $scope.percent = "0%";
         $scope.speed = "0kb/s";
-        $scope.do_install = function(){
-            $scope.install = true;
+        $scope.do_download = function(){
+            $scope.step_check = false;
+            $scope.step_download = true;
             updater.doUpdate();
-        }
+        };
+
+        $scope.$on('latest_version',function(e,args){
+            $scope.$apply(function(){
+                $scope.latest_version = args.ver;
+            })
+        });
+
+        $scope.$on('step_install',function(){
+            log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Executing install step"});
+            $scope.$apply(function(){
+                $scope.step_download = false;
+                $scope.step_install = true;
+            });
+            log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Getting latest version"});
+            updater.getLatestVersion().then(function(ver){
+                log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Version got : " + ver});
+                log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Building filename : "});
+                var filename = updater.buildDnwldFileName(ver);
+                filename = OsTmpDir() + "/"+filename;
+                log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Filename built : " + filename});
+                log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Unpacking file"});
+                upd.unpack(filename, function(error, newAppPath) {
+                    if (!error) {
+                        log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Finished unpacking file"});
+                        log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Running installer"});
+                        upd.runInstaller(newAppPath, [upd.getAppPath(), upd.getAppExec()],{});
+                        log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Quiting App"});
+                        gui.App.quit();
+                    }else{
+                        log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Error while unpacking file"});
+                        log.debug({src:logSrc,diagId:"updaterCtrl::$on::step_install",msg:"Error : " + error});
+                    }
+                },pkg);
+            });
+        });
+
         $scope.cancel = function(){
             require('nw.gui').Window.get().close();
-        }
+        };
+
     }])
     .factory('updater',['$rootScope','$http','logger','updaterLogSrc',function($rootScope,$http,log,logSrc){
         var
@@ -87,19 +134,6 @@ var
                         time_rem = prettytime(state.time.remaining*1000,{ decimals: 0 })
                     ;
                     percentage = percentage.toFixed(2);
-                    // The state is an object that looks like this:
-                    // {
-                    //     percentage: 0.5,           // Overall percentage between 0 to 1 ()
-                    //     speed: 554732,             // The download speed in bytes/sec
-                    //     size: {
-                    //         total: 90044871,       // The total payload size in bytes
-                    //         transferred: 27610959  // The transferred payload size in bytes
-                    //     },
-                    //     time: {
-                    //         elapsed: 36.2356,      // The total elapsed seconds since the start (3 decimals)
-                    //         remaining: 81.4032     // The remaining seconds to finish (3 decimals)
-                    //     }
-                    // }
                     log.debug({src:logSrc,diagId:"updater::downloadNewVersion",msg:"State : " + JSON.stringify(state)});
                     log.debug({src:logSrc,diagId:"updater::downloadNewVersion",msg:"Percentage : " + percentage + " %"});
                     log.debug({src:logSrc,diagId:"updater::downloadNewVersion",msg:"Speed : " + speed + "/s"});
@@ -113,9 +147,16 @@ var
                 .on('error', function (err) {
                     // Do something with err
                 })
+                .on('end',function(){
+
+                    log.debug({src:logSrc,diagId:"updater::downloadNewVersion",msg:"Download completed !"});
+                    log.debug({src:logSrc,diagId:"updater::downloadNewVersion",msg:"----------------------------------------------------"});
+                    $rootScope.$broadcast(bc_dprog, {percentage:"100"});
+                    resolve();
+                })
                 .pipe(fs.createWriteStream(destFilename));
 
-                resolve();
+
             });
         };
         _gut.buildDnwldFileName = function(ver){
@@ -150,7 +191,7 @@ var
         }
         return logSrc;
     }])
-    .directive('updaterDaemon',['_backend_','$http','$state','logger','updaterLogSrc','updater',function(b,$http,$state,log,logSrc,updater){
+    .directive('updaterDaemon',['$rootScope','_backend_','$http','$state','logger','updaterLogSrc','updater',function($rootScope,b,$http,$state,log,logSrc,updater){
         var
             openUpdaterWindow = function(){
                 log.debug({src:logSrc,diagId:"updaterDaemon::openUpdaterWindow",msg:"Current state name : " + $state.current.name});
@@ -225,16 +266,26 @@ var
                     var controllerScope = angular.element(controllerElement).scope();
 
                     controllerScope.$apply(function(){
-                        controllerScope.total = opts.total;
-                        controllerScope.trans = opts.trans;
-                        controllerScope.speed = opts.speed + "/s";
-                        controllerScope.percent = opts.percentage + "%";
-                        controllerScope.time = opts.time;
+                        controllerScope.total = opts.total || controllerScope.total;
+                        controllerScope.trans = opts.trans || controllerScope.total;
+
+                        controllerScope.speed = opts.speed || "0kb";
+                        controllerScope.speed = controllerScope.speed + "/s";
+
+                        controllerScope.percent = opts.percentage || "0";
+                        controllerScope.percent = controllerScope.percent + "%";
+
+                        controllerScope.time = opts.time || "0s";
                     });
 
-                    log.debug({src:logSrc,diagId:"updaterDaemon::link",msg:"Install : " + scope.install});
                     log.debug({src:logSrc,diagId:"updaterDaemon::link",msg:"Got download progress update : " + opts.percentage+"%"});
-                    $("#update-progress").animate({width: opts.percentage+'%'});
+                    $("#update-progress").css({width: opts.percentage+'%'});
+
+                    if(opts.percentage === '100'){
+                        log.debug({src:logSrc,diagId:"updaterDaemon::link",msg:"Calling install step"});
+                        $rootScope.$broadcast('step_install');
+                    }
+
                 });
 
             };

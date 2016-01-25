@@ -1,26 +1,31 @@
 <div data-hubiso-module="updater" ng-controller="updaterCtrl">
-    <div class="row" ng-hide="install">
+
+<div ng-show="step_check">
+    <div class="row">
         <div class="col-xs-12">
             Found updates for Hubiso
         </div>
     </div>
-    <div class="row" ng-hide="install">
+    <div class="row">
         <div class="col-xs-12">
             Would you like to continue to install updates?
         </div>
     </div>
-    <div class="row" ng-hide="install">
+    <div class="row">
         <div class="col-xs-12">
-            <button class="btn btn-success" ng-click="do_install()">install</button>
+            <button class="btn btn-success" ng-click="do_download()">install</button>
             <button class="btn" ng-click="cancel()">cancel</button>
         </div>
     </div>
-    <div class="row" ng-show="install">
+</div>
+
+<div ng-show="step_download">
+    <div class="row" >
         <div class="col-xs-12">
             Installing updates
         </div>
     </div>
-    <div class="row" ng-show="install" style="margin-top:20px;">
+    <div class="row"  style="margin-top:20px;">
         <div class="col-xs-6">
             File Size
         </div>
@@ -28,7 +33,7 @@
             {{total}}
         </div>
     </div>
-    <div class="row" ng-show="install">
+    <div class="row" >
         <div class="col-xs-6">
             Downloaded
         </div>
@@ -36,7 +41,7 @@
             {{trans}} ( {{percent}} )
         </div>
     </div>
-    <div class="row" ng-show="install">
+    <div class="row" >
         <div class="col-xs-6">
             Transfer rate
         </div>
@@ -44,7 +49,7 @@
             {{speed}}
         </div>
     </div>
-    <div class="row" ng-show="install" style="margin-bottom:20px;">
+    <div class="row"  style="margin-bottom:20px;">
         <div class="col-xs-6">
             Time left
         </div>
@@ -52,12 +57,30 @@
             {{time}}
         </div>
     </div>
-
-    <div class="row" ng-show="install">
+    <div class="row" >
         <div class="col-xs-12">
             <div id="update-progress-box">
                 <div id="update-progress"></div>
             </div>
         </div>
     </div>
+</div>
+
+
+<div ng-show="step_install">
+    <div class="row">
+        <div class="col-xs-12">
+            Installing updates
+        </div>
+    </div>
+</div>
+
+<div ng-show="step_restart">
+    <div class="row">
+        <div class="col-xs-12">
+            Done Installing updates... restarting.
+        </div>
+    </div>
+</div>
+
 </div>
