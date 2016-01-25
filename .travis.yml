@@ -2,6 +2,8 @@ language: node_js
 node_js:
 - 5.1.1
 before_install:
+- sudo apt-get update
+- sudo apt-get install nsis
 - export NODE_PATH=/home/travis/.nvm/versions/node/v5.1.1/lib/node_modules/
 - npm install -g bower
 - npm install -g nw-builder
@@ -25,7 +27,9 @@ deploy:
     secure: 2PHBf7PzM0aTAziMOVzK0NEH0WEDiqRW1FGSAViaTAtMHxEZ6Xi8Jdm5B4PC2wNEDwIKFFbPdndOGK8oByOe/e4AdQ7rR3Wi5umgarpKTa3kPWUS0LJ4sy8PqwBp5S6LvYl/WE5kZvA++/QT0wmMU9ajIMzFGXz3dhbpRkyXf80iEFqOcGZqew440tJfneLI+ANaEhybAM+GDWKp2LGmCPj8gm7z6hj/uLhVttxo6n8vj1UxthQeWPdxGYJXrknRPGQMNCPvbvNRhvTOcNPdnsCKaQdSFvPEbgVW49H2Mf7/jELeJdWdZC31S07mDyryOQXKMj+Vk93Wcfd2vnY0IBdeQ+Hd1ePU9qByRGZE9J5z+uGeh3LZXmLpDW0MpJ76x73VcQ101zDs7hI18bd2lDZ7cO2rzWkqjQCPDhaGIjHRoB2t5FIBYibTjrF486CsU3vFnrSe7/zjf4KOCcDQexAAHUp0OhWxqTeSGhGmC3Ms6/Yhk/2XESUJurLjKS84/ur1iCAhiaugxO3hbzgCdqLaRKODZY2fx159+NXvsP08gYrd6XUN+AC7UEgUitwCUCPINq3z2Z76ki+1BeovfGEId3PeOUzDQKo4OMA4eTHTL729dYpbK10Evre/Kk76sGyRSdHJ6SM95ftU+++ZLEjxcW/Vg4cbIPXzHWf9Xjg=
   file:
     - "${RELEASE_FILE_WIN_32}"
+    - "${RELEASE_FILE_WIN_32_EXE}"
     - "${RELEASE_FILE_WIN_64}"
+    - "${RELEASE_FILE_WIN_64_EXE}"
     - "${RELEASE_FILE_LINUX_32}"
     - "${RELEASE_FILE_LINUX_64}"
   skip_cleanup: true
