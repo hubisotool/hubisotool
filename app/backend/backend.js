@@ -8,6 +8,8 @@ var
     app = require('nw.gui').App,
     gui = require('nw.gui'),
     pkg = require('../package.json'),
+    copyPath,
+    execPath,
     nw_updater = require('node-webkit-updater'),
     upd = new nw_updater(pkg),
 
