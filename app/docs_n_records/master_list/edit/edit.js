@@ -5,12 +5,12 @@
 var
     ml_edit = angular.module('docs_n_records.master_list.edit',['backend'])
 
-    .controller('rootDnrMlEditCtrl',['$scope','$stateParams','_backend_','hotkeys','docs_n_records.exporters.pdf.factory',function($scope,$stateParams,_backend_,hotkeys,pdfExporter){
+    .controller('rootDnrMlEditCtrl',['$scope','$stateParams','_backend_','hotkeys','docs_n_records.exporters.pdf.factory','logger','editLogSrc',function($scope,$stateParams,_backend_,hotkeys,pdfExporter,log,logSrc){
         $scope.cat = $stateParams.cat;
         $scope.docId = $stateParams.docId;
 
         $scope.savePdf = function(){
-            var content = $('[id="root.docs_n_records.master_list.edit.editor"]').code();
+            var content = $('[id="root.docs_n_records.master_list.edit.editor"]').summernote('code');
             pdfExporter.htmlToPdfMakeLayout({html:content,name:$scope.doc.name});
         }
 
@@ -27,21 +27,20 @@ var
         })
 
         //$scope.doc = JSON.parse($stateParams.doc);
-        var loadDoc = function(id) {
+            $scope.loadDoc = function(id) {
+            log.debug({src:logSrc,diagId:"rootDnrMlEditCtrl::loadDoc",msg:"Executing dnr.ml.doc.load() with id : " + id });
             _backend_["dnr"]["ml"]["doc"].load(id)
                 .then(function (doc) {
-                    $scope.doc = doc;
-                    $('[id="root.docs_n_records.master_list.edit.editor"]').code(doc.content);
-                    $scope.$apply();
+                    log.debug({src:logSrc,diagId:"rootDnrMlEditCtrl::loadDoc",msg:"Finished Executing dnr.ml.doc.load() got doc : " + doc.name });
+                    $scope.$apply(function(){
+                        $scope.doc = doc;
+                    })
+                    log.debug({src:logSrc,diagId:"rootDnrMlEditCtrl::loadDoc",msg:"Broadcasting docLoaded event with content : " + doc.content});
+                    $scope.$broadcast('docLoaded',doc.content);
                 });
         };
 
-        loadDoc($scope.docId);
-
-        console.log("New doc recieved: " + $stateParams.doc);
-
         $scope.updateDocName = function(id,name){
-            //Execute db update
             _backend_.execInDb("dnr","update",[{"_id":id},{$set:{name:name}},{multi:true}])
             .then(function(numReplaced){
               console.log("Number of Docs Updated : " + numReplaced)
@@ -49,7 +48,6 @@ var
         };
 
         $scope.updateDocContent = function(id,content){
-            //Execute db update
             _backend_.execInDb("dnr","update",[{"_id":id},{$set:{content:content}},{multi:true}])
                 .then(function(numReplaced){
                     console.log("Number of Docs Updated : " + numReplaced)
@@ -58,55 +56,55 @@ var
 
 
         $scope.setupScrollbar = function(newH){
-            $(".note-editable").niceScroll({cursorwidth:7});
+            //$(".note-editable").niceScroll({cursorwidth:7});
         };
 
         $scope.setupEditor = function(newH){
             var editorH = newH - parseInt($('[id="root.docs_n_records.master_list.edit.box.title"]').css("height"))-72;
             console.log("Title Height : " + newH)
             console.log("Editor Height : " + editorH)
-            $('[id="root.docs_n_records.master_list.edit.editor"]').destroy();
-            $('[id="root.docs_n_records.master_list.edit.editor"]').summernote({
-                height: editorH,
-                minHeight: editorH,
-                maxHeight: editorH,
-                focus: true,
-                onChange: function(contents, $editable) {
-                    $scope.updateDocContent($scope.docId,contents);
-                },
-                toolbar:[
-                    [
-                        'style',['style']
-                    ],
-                    [
-                        'font_style',['bold','italic','underline','strikethrough','clear']
-                    ],
-                    [
-                        'font_size',['fontsize']
-                    ],
-                    [
-                        'font_color',['color']
-                    ],
-                    [
-                        'layout_p',['ul','ol','paragraph']
-                    ],
-                    [
-                        'height_p',['height']
-                    ],
-                    [
-                        'table',['table']
-                    ],
-                    [
-                        'insert',['link','picture','hr']
-                    ],
-                    [
-                        'misc',['codeview','undo','redo']
-                    ],
-                    [
-                        'help',['help']
-                    ]
-                ]
-            });
+            //$('[id="root.docs_n_records.master_list.edit.editor"]').destroy();
+            //$('[id="root.docs_n_records.master_list.edit.editor"]').summernote({
+            //    height: editorH,
+            //    minHeight: editorH,
+            //    maxHeight: editorH,
+            //    focus: true,
+            //    onChange: function(contents, $editable) {
+            //        $scope.updateDocContent($scope.docId,contents);
+            //    },
+            //    toolbar:[
+            //        [
+            //            'style',['style']
+            //        ],
+            //        [
+            //            'font_style',['bold','italic','underline','strikethrough','clear']
+            //        ],
+            //        [
+            //            'font_size',['fontsize']
+            //        ],
+            //        [
+            //            'font_color',['color']
+            //        ],
+            //        [
+            //            'layout_p',['ul','ol','paragraph']
+            //        ],
+            //        [
+            //            'height_p',['height']
+            //        ],
+            //        [
+            //            'table',['table']
+            //        ],
+            //        [
+            //            'insert',['link','picture','hr']
+            //        ],
+            //        [
+            //            'misc',['codeview','undo','redo']
+            //        ],
+            //        [
+            //            'help',['help']
+            //        ]
+            //    ]
+            //});
             $scope.setupScrollbar(newH);
         };
 
@@ -120,7 +118,18 @@ var
             $scope.setupEditor(newH);
         };
     }])
-
+    .factory('editLogSrc',[function(){
+        var logSrc="";
+        try{
+            throw new Error();
+        }catch(err){
+            var regex = /\(.*\)/,
+                match = regex.exec(err.stack),
+                filename = match[0].replace("(","").replace(")","");
+            logSrc = filename;
+        }
+        return logSrc;
+    }])
     .directive('rootDnrMlEditWinRsz',[function(){
         return{
             restrict:'A',
@@ -141,6 +150,74 @@ var
                 $(document).on("change","[class~='root.docs_n_records.master_list.edit.doc.name']",function(){
                     scope.updateDocName(scope.doc["_id"],scope.doc.name)
                 })
+            }
+        }
+    }])
+
+    .directive('mlDocEditor',['logger','editLogSrc',function(log,logSrc){
+        return{
+            restrict:'A',
+            link:function($scope,elem){
+                $scope.$on('docLoaded',function(e,content){
+                    log.debug({src:logSrc,diagId:"mlDocEditor::link",msg:"Recieved docLoaded event"});
+                    log.debug({src:logSrc,diagId:"mlDocEditor::link",msg:"Setting editor content : " + content});
+                    $('[id="root.docs_n_records.master_list.edit.editor"]').summernote('code', content);
+                    log.debug({src:logSrc,diagId:"mlDocEditor::link",msg:"Finished Setting editor content"});
+                });
+                var setupEditor = function(){
+                    log.debug({src:logSrc,diagId:"mlDocEditor::link",msg:"Setting up editor"});
+                    var winH = $(window).height();
+                    var newH = winH-($("[ui-view='root.nav_bar']").height()+$("[ui-view='root.docs_n_records.nav_bar']").height())-20;
+                    var editorH = newH - parseInt($('[id="root.docs_n_records.master_list.edit.box.title"]').css("height"))-72;
+
+                    $('[id="root.docs_n_records.master_list.edit.editor"]').summernote({
+                        height: editorH,
+                        minHeight: editorH,
+                        maxHeight: editorH,
+                        focus: true,
+                        callbacks:{
+                            onInit:function(){
+                                $scope.loadDoc($scope.docId);
+                            },
+                            onChange: function(contents, $editable) {
+                                $scope.updateDocContent($scope.docId,contents);
+                            }
+                        },
+                        toolbar:[
+                            [
+                                'style',['style']
+                            ],
+                            [
+                                'font_style',['bold','italic','underline','strikethrough','clear']
+                            ],
+                            [
+                                'font_size',['fontsize']
+                            ],
+                            [
+                                'font_color',['color']
+                            ],
+                            [
+                                'layout_p',['ul','ol','paragraph']
+                            ],
+                            [
+                                'height_p',['height']
+                            ],
+                            [
+                                'table',['table']
+                            ],
+                            [
+                                'insert',['link','picture','hr']
+                            ],
+                            [
+                                'misc',['codeview','undo','redo']
+                            ],
+                            [
+                                'help',['help']
+                            ]
+                        ]
+                    });
+                }
+                setupEditor();
             }
         }
     }])

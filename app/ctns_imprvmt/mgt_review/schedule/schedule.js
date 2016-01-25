@@ -3,8 +3,6 @@
  */
 var
     async = require("async"),
-    path = require('path'),
-    logSrc = document.currentScript.src,
     schedule = angular.module('ctns_imprvmt.mgt_review.schedule',['ctns_imprvmt.mgt_review.schedule.event'])
     .config(['$stateProvider',function($stateProvider){
         $stateProvider
@@ -18,29 +16,37 @@ var
             })
 
     }])
-    .directive('calendar',['$state','_reviews_','_events_','logger',function($state,_reviews_,_events_,log){
+    .factory('scheduleLogSrc',[function(){
+        var logSrc="";
+        try{
+            throw new Error();
+        }catch(err){
+            var regex = /\(.*\)/,
+                match = regex.exec(err.stack),
+                filename = match[0].replace("(","").replace(")","");
+            logSrc = filename;
+        }
+        return logSrc;
+    }])
+    .directive('calendar',['$state','_reviews_','_events_','logger','scheduleLogSrc',function($state,_reviews_,_events_,log,logSrc){
         return{
             restrict:"A",
             link:function(scope,elem){
                 //Get reviews and events and make the eventList
                 async.parallel([
                     function(done){
-                        log.debug({src:logSrc,msg:">>> Loading reviewMap"});
                         var reviewMap = {};
                         _reviews_.load().then(function(reviews){
                             reviews.forEach(function(review,idx,arr){
                                 reviewMap[review._id]=review;
                             })
-                            log.debug({src:logSrc,msg:"<<< ReviewMap loaded"});
                             done(null,reviewMap);
                         })
                     },
                     function(done){
-                        log.debug({src:logSrc,msg:">>> Loading events"});
                         var events = [];
                         _events_.load().then(function(_events){
                             events = _events;
-                            log.debug({src:logSrc,msg:"<<< Events loaded"});
                             done(null,events);
                         })
                     }
@@ -48,12 +54,12 @@ var
 
                     var reviewMap = results[0], events = results[1];
                     _events_.createEventList(reviewMap,events).then(function(_eventList){
-                        log.trace("Event list recieved : " + JSON.stringify(_eventList));
-
                         $('[id="root.ctns_imprvmt.mgt_review.schedule.calendar"]').fullCalendar({
                             timezone:'local',
                             events:_eventList,
                             dayClick: function(date, jsEvent, view) {
+                                log.debug({src:logSrc,diagId:"calendar::link",msg:"Calendar date< "+moment(date).format("dddd, MMMM Do YYYY")+" > clicked"});
+                                log.debug({src:logSrc,diagId:"calendar::link",msg:"Transitioning to ctns_imprvmt.mgt_review.schedule.event"});
                                 $state.transitionTo("ctns_imprvmt.mgt_review.schedule.event", {dt:date.format()});
                             }
                         });

@@ -40,7 +40,7 @@ var
 
         $scope.setupScrollbar = function(newH){
             $("[data-hubiso-module='root.docs_n_records.master_list']").css('height',newH+"px");
-            $("[data-hubiso-module='root.docs_n_records.master_list']").niceScroll({cursorwidth:7});
+            //$("[data-hubiso-module='root.docs_n_records.master_list']").niceScroll({cursorwidth:7});
         };
 
         $scope.resizeDnrMl = function(){
@@ -57,7 +57,18 @@ var
         };
 
     }])
-
+    .factory('masterListLogSrc',[function(){
+        var logSrc="";
+        try{
+            throw new Error();
+        }catch(err){
+            var regex = /\(.*\)/,
+                match = regex.exec(err.stack),
+                filename = match[0].replace("(","").replace(")","");
+            logSrc = filename;
+        }
+        return logSrc;
+    }])
     .directive('rootDnrMlWinRsz',[function(){
         return{
             restrict:'A',

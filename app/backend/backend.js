@@ -6,22 +6,49 @@ var
     njs_backend = require("backend"),
     win = require('nw.gui').Window.get(),
     app = require('nw.gui').App,
+    gui = require('nw.gui'),
+    pkg = require('../package.json'),
+    nw_updater = require('node-webkit-updater'),
+    upd = new nw_updater(pkg),
 
     module_backend = angular.module('backend',[])
 
-    .config([function(){
-            console.log("Datapath : \n"+app.dataPath);
+    .factory('_backend_',['$state',function($state){
+        var _gut = {}, boot = function(){
+
+            if(gui.App.argv.length) {
+                // ------------- Step 5 -------------
+                copyPath = gui.App.argv[0];
+                execPath = gui.App.argv[1];
+
+                // Replace old app, Run updated app from original location and close temp instance
+                upd.install(copyPath, function(err) {
+                    if(!err) {
+                        upd.run(execPath, null);
+                        gui.App.quit();
+                    }
+                });
+            }
+
+            console.log("Datapath : "+app.dataPath);
+            console.log("Execpath : "+process.execPath);
+            console.log("Version : " + require('../package.json').version);
+            console.log("Platform : "+process.platform);
+            console.log("Arch : "+process.arch);
             njs_backend.startup({datapath:app.dataPath});
 
             win.on('close', function() {
-                console.log("Shutdown script called");
-                njs_backend.shutdown();
-                app.quit();
+                console.log("Setting updater window open variable to false");
+                njs_backend.execInDb("config","update",[{module:"updater"},{$set:{"updaterWindowOpen":"false"}},{multi:true}]).then(function(){
+                    njs_backend.shutdown();
+                    win.close(true);
+                })
             });
-    }])
 
-    .factory('_backend_',[function(){
-        var _gut = {};
+        };
+
+        boot();
+
         _gut["dnr"] = {};
 
         _gut["dnr"]["settings"] = {};
@@ -83,6 +110,12 @@ var
 
         _gut.saveToDb = function(dbname,obj){
             return njs_backend.saveToDb(dbname,obj);
+        };
+
+        _gut.addHeartBeat = function(fn){
+            if(typeof fn === "function"){
+                njs_backend.hubhb.add({intervals:{ "* * * * * *":[fn]}})
+            }
         };
 
         _gut["alert"] = function(opts){

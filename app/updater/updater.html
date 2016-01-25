@@ -1,0 +1,86 @@
+<div data-hubiso-module="updater" ng-controller="updaterCtrl">
+
+<div ng-show="step_check">
+    <div class="row">
+        <div class="col-xs-12">
+            Found updates for Hubiso
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            Would you like to continue to install updates?
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-success" ng-click="do_download()">install</button>
+            <button class="btn" ng-click="cancel()">cancel</button>
+        </div>
+    </div>
+</div>
+
+<div ng-show="step_download">
+    <div class="row" >
+        <div class="col-xs-12">
+            Installing updates
+        </div>
+    </div>
+    <div class="row"  style="margin-top:20px;">
+        <div class="col-xs-6">
+            File Size
+        </div>
+        <div class="col-xs-6">
+            {{total}}
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-xs-6">
+            Downloaded
+        </div>
+        <div class="col-xs-6">
+            {{trans}} ( {{percent}} )
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-xs-6">
+            Transfer rate
+        </div>
+        <div class="col-xs-6">
+            {{speed}}
+        </div>
+    </div>
+    <div class="row"  style="margin-bottom:20px;">
+        <div class="col-xs-6">
+            Time left
+        </div>
+        <div class="col-xs-6">
+            {{time}}
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-xs-12">
+            <div id="update-progress-box">
+                <div id="update-progress"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ng-show="step_install">
+    <div class="row">
+        <div class="col-xs-12">
+            Installing updates
+        </div>
+    </div>
+</div>
+
+<div ng-show="step_restart">
+    <div class="row">
+        <div class="col-xs-12">
+            Done Installing updates... restarting.
+        </div>
+    </div>
+</div>
+
+</div>

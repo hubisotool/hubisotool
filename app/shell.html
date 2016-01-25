@@ -3,7 +3,7 @@
 <head lang="en">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
     <meta charset="UTF-8">
-    <title></title>
+    <title>Hubiso</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
@@ -14,21 +14,24 @@
     <link rel="stylesheet" type="text/css" href="bower_components/jt.timepicker/jquery.timepicker.css   "/>
     <link rel="stylesheet" href="app.css"/>
 </head>
-<body>
-
+<body ng-controller="appCtrl">
+<div style="display:none"
+     reminder-daemon
+     updater-daemon
+        ></div>
 <div ui-view="root.nav_bar"></div>
 <div ui-view="root.workbench"></div>
 
+<script src="../node_modules/nw-dev/lib/dev.js"></script>
 <script src="../node_modules/pdfjs-dist/build/pdf.js"></script>
 
-<script src="bower_components/jquery/jquery.min.js"></script>
-<script src="bower_components/jquery.nicescroll/jquery.nicescroll.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
+
+<script src="bower_components/jquery.nicescroll/jquery.nicescroll.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
 <script src="bower_components/moment/min/moment.min.js"></script>
-<script src="bower_components/summernote/dist/summernote.min.js"></script>
 <script src="bower_components/pdfmake/build/pdfmake.min.js"></script>
 <script src="bower_components/pdfmake/build/vfs_fonts.js"></script>
 <script src="bower_components/angular-ui-layout/src/ui-layout.js"></script>
@@ -37,11 +40,14 @@
 <script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <script src="bower_components/jt.timepicker/jquery.timepicker.min.js"></script>
 
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/summernote/dist/summernote.js"></script>
 
 <script src="nav_bar/nav_bar.js"></script>
 
 <script src="backend/backend.js"></script>
 <script src="logger/logger.js"></script>
+<script src="updater/updater.js"></script>
 
 <script src="docs_n_records/settings/settings.js"></script>
 <script src="docs_n_records/master_list/master_list.js"></script>
