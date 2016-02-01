@@ -28,7 +28,7 @@
     "height": 500,
     "min_width": 900,
     "min_height": 500,
-    "toolbar": false
+    "toolbar": true
   },
   "packages": {
     "mac": {},
@@ -50,8 +50,5 @@
     "request": "^2.67.0",
     "request-progress": "^1.0.2",
     "winston": "^2.1.1"
-  },
-  "devDependencies": {
-    "nw-dev": "^1.3.1"
   }
 }
