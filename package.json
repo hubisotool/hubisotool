@@ -39,7 +39,7 @@
     "height": 500,
     "min_width": 900,
     "min_height": 500,
-    "toolbar": false
+    "toolbar": true
   },
   "packages": {
     "mac": {},

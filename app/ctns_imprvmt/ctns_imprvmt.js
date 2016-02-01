@@ -2,7 +2,7 @@
  * Created by Bishaka on 13/11/2015.
  */
 var
-    ctns_imprvmt = angular.module('ctns_imprvmt',['ctns_imprvmt.mgt_review'])
+    ctns_imprvmt = angular.module('ctns_imprvmt',['ctns_imprvmt.mgt_review','ctns_imprvmt.calendar'])
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 
             $stateProvider
