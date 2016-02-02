@@ -1,1 +1,71 @@
-calendar
+<div data-hubiso-module="root.ctns_imprvmt.calendar" ng-controller="hicalendar">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="hicalendar" hicalendar></div>
+        </div>
+    </div>
+
+    <div id="hiEventEditor" hieventeditor>
+        <div ng-show="state==='add'">
+            <div class="row title">
+                <div class="col-xs-11">
+                    Schedule |
+                    <select ng-model="schedule">
+                        <option ng-repeat="opt in schedule_opts" value="{{opt.val}}">{{opt.name}}</option>
+                    </select>
+                </div>
+                <div class="col-xs-1" ng-click="closeEventEditor()">
+                    <i class="fa fa-close"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    When:
+                </div>
+                <div class="col-xs-10">
+                    {{when}}
+                </div>
+            </div>
+            <div class="row editorEntry" ng-show="schedule==='rv'">
+                <div class="col-xs-2">
+                    Review:
+                </div>
+                <div class="col-xs-10">
+                    <select ng-model="review">
+                        <option ng-repeat="rv_opt in reviews" value="{{$index}}" >{{rv_opt.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row footer">
+                <div class="col-xs-3">
+                    <div id="addEvent" ng-click="addEvent()">Add</div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="state==='edit'">
+            <div class="row title">
+                <div class="col-xs-11">
+                    {{event.title}}
+                </div>
+                <div class="col-xs-1" ng-click="closeEventEditor()">
+                    <i class="fa fa-close"></i>
+                </div>
+            </div>
+            <div class="row editorEntry" ng-show="event.type==='ia'">
+                <div class="col-xs-2">
+                    Action:
+                </div>
+                <div class="col-xs-10">
+                    <div ng-show="isDue()">Fill in Action plan</div>
+                    <div ng-hide="isDue()">Not Available</div>
+                </div>
+            </div>
+            <div class="row footer">
+                <div class="col-xs-3">
+                    <div id="delEvent" ng-click="delEvent()">Delete</div>
+                </div>
+            </div>
+        </div>
+        <div id="hiEventEditorTriangle"></div>
+    </div>
+</div>

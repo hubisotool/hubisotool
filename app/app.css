@@ -354,6 +354,35 @@
   [data-hubiso-module="root.ctns_imprvmt.mgt_review"] [ui-layout] {
     margin-top: 80px; }
 
+[data-hubiso-module="root.ctns_imprvmt.calendar"] #hiEventEditor {
+  position: absolute;
+  width: 400px;
+  padding: 16px;
+  display: none;
+  z-index: 100;
+  background-color: white;
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1), inset -1px -1px 0 rgba(0, 0, 0, 0.07); }
+  [data-hubiso-module="root.ctns_imprvmt.calendar"] #hiEventEditor .title {
+    margin-bottom: 10px; }
+  [data-hubiso-module="root.ctns_imprvmt.calendar"] #hiEventEditor .footer {
+    margin-top: 10px; }
+  [data-hubiso-module="root.ctns_imprvmt.calendar"] #hiEventEditor .editorEntry {
+    margin-top: 5px; }
+[data-hubiso-module="root.ctns_imprvmt.calendar"] #addEvent, [data-hubiso-module="root.ctns_imprvmt.calendar"] #delEvent {
+  text-align: center;
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 8px;
+  cursor: default; }
+[data-hubiso-module="root.ctns_imprvmt.calendar"] #hiEventEditorTriangle {
+  background-color: white;
+  box-shadow: inset -1px 1px 1px 0 rgba(0, 0, 0, 0.07);
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  bottom: -5px;
+  transform: rotate(134deg); }
+
 [data-hubiso-module="updater"] .row {
   margin: 0; }
 [data-hubiso-module="updater"] #update-progress-box {
