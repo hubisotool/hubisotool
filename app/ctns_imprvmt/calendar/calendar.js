@@ -8,7 +8,6 @@ var
     editorInterval,
     calendar =  angular.module('ctns_imprvmt.calendar',[])
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
-            require('nw.gui').Window.get().showDevTools();
             $stateProvider
                 .state('ctns_imprvmt.calendar',{
                     url:'/calendar',
