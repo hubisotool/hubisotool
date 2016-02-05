@@ -21,13 +21,13 @@ var
 
     }])
     .controller('hicalendar',['$scope','_backend_','_reviews_',function($scope,b,r){
-            $scope.schedule = 'rv';
-            $scope.schedule_opts = [
-                                        {"name":"Internal Audit","val":"ia"},
-                                        {"name":"Review","val":"rv"}
-                                    ];
-
             var
+                gap_template = function(gap,action,person,timeline){
+                    this.gap = gap || "";
+                    this.action = action || "";
+                    this.person = person || "";
+                    this.timeline = timeline || "";
+                },
                 getCalendarHeight = function(){
                     var nb1 = $('[ui-view="root.nav_bar"]').height();
                     var nb2 = $('[ui-view="root.ctns_imprvmt.nav_bar"]').height();
@@ -79,6 +79,73 @@ var
                 }
             ;
 
+            $scope.gaps = [];
+
+            $scope.schedule = 'rv';
+            $scope.schedule_opts = [
+                {"name":"Internal Audit","val":"ia"},
+                {"name":"Review","val":"rv"}
+            ];
+
+            $scope.gaps.push(new gap_template());
+
+            $scope.ap_update = function(idx){
+
+                var gap_keys = Object.keys($scope.gaps[idx]), count = 0, exp_l = idx+1;
+
+                gap_keys.forEach(function(key){
+                    if(key === "timeline" || key === "$$hashKey"){
+                        return;
+                    }
+                    if($scope.gaps[idx][key].trim()){
+                        count++;
+                    }
+                });
+
+                if((count > 0)&&(exp_l>=$scope.gaps.length)){
+                    $scope.gaps.push(new gap_template());
+                }
+
+                if((count === 0)&&($scope.gaps.length>1)){
+                    $scope.gaps.splice(idx, 1);
+                }
+
+                var _id = $scope.event._id;
+                b.execInDb('aps','find',[{'event_id':_id}]).then(function(docs){
+                    var gap_buff = [],ap_entry;
+                    $scope.gaps.forEach(function(gap){
+                        gap_buff.push(new gap_template(gap.gap,gap.action,gap.person,gap.timeline));
+                    });
+                    if(docs.length < 1){
+                        ap_entry = { "event_id":_id,"gaps":gap_buff};
+                        b.execInDb('aps','insert',[ap_entry]);
+                    }else{
+                        b.execInDb('aps','update',[{"event_id":_id},{$set:{"gaps":gap_buff}}]);
+                    }
+                })
+            };
+
+            $scope.goFullscreen = function(state){
+                $scope.fullscreen_state = state;
+                $scope.closeEventEditor();
+                b.execInDb('aps','find',[{'event_id':$scope.event._id}]).then(function(docs){
+                    if(docs.length > 0){
+                        $scope.$apply(function(){
+                            $scope.gaps = docs[0].gaps
+                        });
+                    }else{
+                        $scope.$apply(function(){
+                            $scope.gaps = [new gap_template()];
+                        });
+                    }
+                });
+                $("#fullscreen").css({"top":"0","left":"0","width":"100%","height":"100%","display":"block","z-index":"100"});
+            };
+
+            $scope.closeFullscreen = function(state){
+                $("#fullscreen").css({"top":"100%","left":"100%","width":"100%","height":"100%","display":"none","z-index":"-100"});
+            };
+
 
             $scope.setDate = function(date){
                 var d = date.format('ddd'), m = date.format('D MMMM'), t=date.format('HH:');
@@ -113,7 +180,13 @@ var
                     break;
                 }
 
-                b.saveToDb('calendar',event).then(function(){
+                b.saveToDb('calendar',event).then(function(newEvent){
+                    switch(newEvent.type){
+                        case "ia":
+                            var ap_entry = { "event_id":newEvent._id};
+                            b.execInDb('aps','insert',[ap_entry]);
+                        break;
+                    }
                     $scope.closeEventEditor();
                     $('#hicalendar').fullCalendar('refetchEvents');
                 });

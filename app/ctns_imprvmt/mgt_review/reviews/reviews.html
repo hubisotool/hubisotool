@@ -1,5 +1,21 @@
 <div data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews" ng-controller="ctns_imprvmt.mgt_review.reviewsCtrl">
 
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-4 root.ctns_imprvmt.mgt_review.reviews.inputBox" >
+            <input type="text" placeholder="review name" ng-model="rv.name"/>
+        </div>
+        <div class="col-xs-2 root.ctns_imprvmt.mgt_review.reviews.inputBox">
+            <select name="" id="" ng-model="rv.cl">
+                <option value=""></option>
+                <option ng-repeat="cl in checklists" value="{{cl._id}}">{{cl.name}}</option>
+            </select>
+        </div>
+        <div class="col-xs-2 root.ctns_imprvmt.mgt_review.reviews.ctrlBox">
+            <div id="root.ctns_imprvmt.mgt_review.reviews.reviewlist.save" ng-click="createRv()">save</div>
+        </div>
+    </div>
     <div class="row root.ctns_imprvmt.mgt_review.reviews.reviewlist.header">
         <div class="col-xs-1">
             <input type="checkbox"/>
@@ -12,22 +28,6 @@
         </div>
         <div class="col-xs-2">
             Action(s)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-1">
-        </div>
-        <div class="col-xs-4">
-            <input type="text" placeholder="review name" ng-model="rv.name"/>
-        </div>
-        <div class="col-xs-2">
-            <select name="" id="" ng-model="rv.cl">
-                <option value=""></option>
-                <option ng-repeat="cl in checklists" value="{{cl._id}}">{{cl.name}}</option>
-            </select>
-        </div>
-        <div class="col-xs-2">
-            <div id="root.ctns_imprvmt.mgt_review.reviews.reviewlist.save" ng-click="createRv()">save</div>
         </div>
     </div>
     <div class="row root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry" ng-repeat="rv in reviews">

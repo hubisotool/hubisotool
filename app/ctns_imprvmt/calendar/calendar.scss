@@ -1,4 +1,5 @@
 @import "../../colors/colors";
+@import "../../dimens/dimens";
 [data-hubiso-module="root.ctns_imprvmt.calendar"]{
   #hiEventEditor{
     position: absolute;
@@ -48,5 +49,83 @@
     position: absolute;
     bottom: -5px;
     transform:             rotate( 134deg );
+  }
+
+  #fullscreen{
+
+    #action_plan{
+
+      .ap_no{
+        text-align: center;
+        vertical-align: middle;
+      }
+
+
+      .ap_entry{
+        border: 1px solid hsla(
+                        $sec-nav-border-hue,
+                        $sec-nav-border-sat,
+                        $sec-nav-border-light,
+                        $sec-nav-border-alpha
+        );
+        border-top:none;
+
+        textarea{
+          width: 100%;
+        }
+      }
+
+      #header{
+        line-height: $block-height;
+        vertical-align: middle;
+        background-color: hsla(
+                        $sec-nav-bg-hue,
+                        $sec-nav-bg-sat,
+                        $sec-nav-bg-light,
+                        $sec-nav-bg-alpha
+        );
+
+        border: 1px solid hsla(
+                                        $sec-nav-border-hue,
+                                        $sec-nav-border-sat,
+                                        $sec-nav-border-light,
+                                        $sec-nav-border-alpha
+        );
+      }
+    }
+
+    .block{
+      height: $block-height;
+    }
+
+    background-color: hsla(
+                    $cim-calender-fullscreen-bg-hue,
+                    $cim-calender-fullscreen-bg-sat,
+                    $cim-calender-fullscreen-bg-light,
+                    $cim-calender-fullscreen-bg-alpha
+    );
+    display: none;
+    height: 500px;
+    width: 500px;
+    position: absolute;
+
+    #closeFullscreen{
+      font-size: 20px;
+      text-align: right;
+    }
+
+  }
+
+  .editorAction{
+    cursor: default;
+  }
+
+  .editorAction:hover{
+    color: hsla(
+                $cim-calender-editor-action-hover-hue,
+                $cim-calender-editor-action-hover-sat,
+                $cim-calender-editor-action-hover-light,
+                $cim-calender-editor-action-hover-alpha
+    );
   }
 }

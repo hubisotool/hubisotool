@@ -56,7 +56,9 @@
                     Action:
                 </div>
                 <div class="col-xs-10">
-                    <div ng-show="isDue()">Fill in Action plan</div>
+                    <div ng-show="isDue()">
+                        <div class="editorAction" ng-click="goFullscreen('action_plan')">Fill in Action plan</div>
+                    </div>
                     <div ng-hide="isDue()">Not Available</div>
                 </div>
             </div>
@@ -68,4 +70,45 @@
         </div>
         <div id="hiEventEditorTriangle"></div>
     </div>
+
+    <div id="fullscreen">
+        <div class="row block">
+            <div id="closeFullscreen" class="col-xs-1 pull-right" ng-click="closeFullscreen()">
+                <i class="fa fa-close"></i>
+            </div>
+        </div>
+        <div ng-show="fullscreen_state==='action_plan'">
+            <div class="row" id="action_plan">
+                <div class="col-xs-12">
+                    <div class="row block" id="header">
+                        <div class="col-xs-1 ap_no">NO</div>
+                        <div class="col-xs-3 ap_gap">NONCONFORMITY IDENTIFIED</div>
+                        <div class="col-xs-3 ap_action">ACTION ITEMS</div>
+                        <div class="col-xs-3 ap_person">PERSON RESPONSIBLE</div>
+                        <div class="col-xs-2 ap_timeline">TIMELINE</div>
+                    </div>
+                    <div class="row ap_entry" ng-repeat="gap in gaps">
+                        <div class="col-xs-1 ap_no">
+                            {{$index+1}}
+                        </div>
+                        <div class="col-xs-3 ap_gap">
+                            <textarea ng-model="gap.gap" ng-change="ap_update($index)"></textarea>
+                        </div>
+                        <div class="col-xs-3 ap_action">
+                            <textarea ng-model="gap.action" ng-change="ap_update($index)"></textarea>
+                        </div>
+                        <div class="col-xs-3 ap_person">
+                            <textarea ng-model="gap.person" ng-change="ap_update($index)"></textarea>
+                        </div>
+                        <div class="col-xs-2 ap_timeline">
+                            <textarea ng-model="gap.timeline"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
 </div>

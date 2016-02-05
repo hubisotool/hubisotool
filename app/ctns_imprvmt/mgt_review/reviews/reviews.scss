@@ -1,4 +1,5 @@
 @import "../../../colors/colors";
+@import "../../../dimens/dimens";
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"]{
 
   [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.header"]{
@@ -16,6 +17,19 @@
   [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]{
     display: inline-block;
     margin-left: 10px;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.ctrlBox"],
+  [class~="root.ctns_imprvmt.mgt_review.reviews.inputBox"]{
+    height: $block-height;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.inputBox"]{
+    padding: $block-height*.2;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.ctrlBox"]{
+    padding: $block-height*.1;
   }
 
   [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]:nth-of-type(1),

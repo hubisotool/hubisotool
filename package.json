@@ -35,7 +35,7 @@
   ],
   "window": {
     "title": "Hubiso",
-    "width": 900,
+    "width": 970,
     "height": 500,
     "min_width": 900,
     "min_height": 500,
@@ -50,7 +50,7 @@
   "license": "N/A",
   "dependencies": {
     "async": "^1.5.0",
-    "backend": "git+https://hubiso@github.com/hubisotool/backend.git#v0.7.3",
+    "backend": "git+https://hubiso@github.com/hubisotool/backend.git#v0.8.0",
     "bluebird": "^2.10.2",
     "loglevel": "^1.4.0",
     "node-webkit-updater": "^0.3.2",
