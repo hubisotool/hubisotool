@@ -264,6 +264,13 @@
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"] [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"] {
   display: inline-block;
   margin-left: 10px; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"] [class~="root.ctns_imprvmt.mgt_review.reviews.ctrlBox"],
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"] [class~="root.ctns_imprvmt.mgt_review.reviews.inputBox"] {
+  height: 40px; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"] [class~="root.ctns_imprvmt.mgt_review.reviews.inputBox"] {
+  padding: 8px; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"] [class~="root.ctns_imprvmt.mgt_review.reviews.ctrlBox"] {
+  padding: 4px; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"] [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]:nth-of-type(1),
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"] [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]:nth-of-type(3) {
   margin-left: 0px; }
@@ -382,6 +389,34 @@
   position: absolute;
   bottom: -5px;
   transform: rotate(134deg); }
+[data-hubiso-module="root.ctns_imprvmt.calendar"] #fullscreen {
+  background-color: rgba(245, 250, 255, 0.99);
+  display: none;
+  height: 500px;
+  width: 500px;
+  position: absolute; }
+  [data-hubiso-module="root.ctns_imprvmt.calendar"] #fullscreen #action_plan .ap_no {
+    text-align: center;
+    vertical-align: middle; }
+  [data-hubiso-module="root.ctns_imprvmt.calendar"] #fullscreen #action_plan .ap_entry {
+    border: 1px solid #cbcccd;
+    border-top: none; }
+    [data-hubiso-module="root.ctns_imprvmt.calendar"] #fullscreen #action_plan .ap_entry textarea {
+      width: 100%; }
+  [data-hubiso-module="root.ctns_imprvmt.calendar"] #fullscreen #action_plan #header {
+    line-height: 40px;
+    vertical-align: middle;
+    background-color: #fbfcfe;
+    border: 1px solid #cbcccd; }
+  [data-hubiso-module="root.ctns_imprvmt.calendar"] #fullscreen .block {
+    height: 40px; }
+  [data-hubiso-module="root.ctns_imprvmt.calendar"] #fullscreen #closeFullscreen {
+    font-size: 20px;
+    text-align: right; }
+[data-hubiso-module="root.ctns_imprvmt.calendar"] .editorAction {
+  cursor: default; }
+[data-hubiso-module="root.ctns_imprvmt.calendar"] .editorAction:hover {
+  color: #339933; }
 
 [data-hubiso-module="updater"] .row {
   margin: 0; }
