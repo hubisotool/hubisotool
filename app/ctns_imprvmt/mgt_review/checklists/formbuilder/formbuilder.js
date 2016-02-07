@@ -59,7 +59,7 @@ var
                     console.log(JSON.stringify(checklist));
                     var form = checklist.form || [];
                     $('[id="root.ctns_imprvmt.mgt_review.checklists.checklist.formbuilder.form"]').formBuilder({
-                        defaultFields:form.reverse()
+                        defaultFields:form
                     });
 
                     $('[id="root.ctns_imprvmt.mgt_review.checklists.checklist.formbuilder.form"]').on('change',function(){
