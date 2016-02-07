@@ -50,7 +50,7 @@ var
     .controller('appCtrl',['$scope','hotkeys','$state',function($scope,hotkeys,$state){
 
             if($state.current.name!=="updater"){
-                //require('nw.gui').Window.get().showDevTools();
+                require('nw.gui').Window.get().showDevTools();
             }
 
             console.log("appCtrl registered!");

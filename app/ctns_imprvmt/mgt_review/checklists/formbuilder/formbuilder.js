@@ -3,6 +3,7 @@
  */
 
 var
+    x2js = new X2JS(),
     formbuilder = angular.module('ctns_imprvmt.mgt_review.checklists.formbuilder',[])
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
         $stateProvider
@@ -55,26 +56,36 @@ var
             restrict:'A',
             link:function(scope,elem){
                 scope.fetchCl().then(function(checklist){
-                    var
-                        form = checklist.form || "n/a",
-                        formbuilder
-                    ;
-                    if(form === "n/a"){
-                        formbuilder = new Formbuilder({
-                            selector: '[id="root.ctns_imprvmt.mgt_review.checklists.checklist.formbuilder.form"]'
+                    console.log(JSON.stringify(checklist));
+                    var form = checklist.form || [];
+                    $('[id="root.ctns_imprvmt.mgt_review.checklists.checklist.formbuilder.form"]').formBuilder({
+                        defaultFields:form
+                    });
+
+                    $('[id="root.ctns_imprvmt.mgt_review.checklists.checklist.formbuilder.form"]').on('change',function(){
+                        var data = $('[id="root.ctns_imprvmt.mgt_review.checklists.checklist.formbuilder.form"]').val(),
+                            data_obj = x2js.xml_str2json(data),
+                            data_arr_raw = [],
+                            data_arr = [];
+                            ;
+                        if(data_obj){
+                            data_arr_raw = data_arr_raw.concat(data_obj['form-template']['fields']['field']);
+                        };
+
+                        data_arr_raw.forEach(function(old_datum){
+                            var old_keys = Object.keys(old_datum), new_datum = {};
+                            old_keys.forEach(function(old_key){
+                                var new_key = old_key.replace("_","");
+                                new_datum[new_key] = old_datum[old_key];
+                            })
+                            data_arr.push(new_datum);
                         });
-                    }else{
-                        console.log(form.fields);
-                        formbuilder = new Formbuilder({
-                            selector: '[id="root.ctns_imprvmt.mgt_review.checklists.checklist.formbuilder.form"]',
-                            bootstrapData:form.fields
-                        });
-                    }
-                    formbuilder.on('save', function(payload){
-                        payload = JSON.parse(payload);
-                        scope.upd8Form(payload)
-                    })
+
+                        scope.upd8Form(data_arr);
+                    });
                 })
+
+
             }
         }
     }])
