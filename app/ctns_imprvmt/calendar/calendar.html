@@ -62,6 +62,17 @@
                     <div ng-hide="isDue()">Not Available</div>
                 </div>
             </div>
+            <div class="row editorEntry" ng-show="event.type==='rv'">
+                <div class="col-xs-2">
+                    Action:
+                </div>
+                <div class="col-xs-10">
+                    <div ng-show="isDue()">
+                        <div class="editorAction" ng-click="goFullscreen('review')">Fill in form</div>
+                    </div>
+                    <div ng-hide="isDue()">Not Available</div>
+                </div>
+            </div>
             <div class="row footer">
                 <div class="col-xs-3">
                     <div id="delEvent" ng-click="delEvent()">Delete</div>
@@ -106,8 +117,16 @@
                     </div>
                 </div>
             </div>
-
-
+        </div>
+        <div ng-show="fullscreen_state==='review'">
+            <div class="row" id="review_form">
+                <div class="col-xs-12">
+                    <div id="form"></div>
+                    <div id="hidden_div">
+                        <textarea id="form_buff"></textarea>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

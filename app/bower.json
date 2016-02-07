@@ -29,7 +29,7 @@
     "tooltipster": "https://github.com/ghostfreak3000/tooltipster.git#dist",
     "jt.timepicker": "https://github.com/ghostfreak3000/jquery-timepicker.git#ba1ba0ea71ed3b6ad6797712c6815ce9f559931e",
     "jquery": "~2.2.x",
-    "formBuilder": "https://github.com/kevinchappell/formBuilder.git#^1.6.6",
+    "formBuilder": "https://github.com/kevinchappell/formBuilder.git#^1.6.7",
     "x2js": "https://github.com/abdmob/x2js.git#^1.2.0"
   },
   "resolutions": {

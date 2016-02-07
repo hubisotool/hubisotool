@@ -397,6 +397,8 @@
   height: 500px;
   width: 500px;
   position: absolute; }
+  [data-hubiso-module="root.ctns_imprvmt.calendar"] #fullscreen #hidden_div {
+    display: none; }
   [data-hubiso-module="root.ctns_imprvmt.calendar"] #fullscreen #action_plan .ap_no {
     text-align: center;
     vertical-align: middle; }

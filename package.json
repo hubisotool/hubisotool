@@ -50,7 +50,7 @@
   "license": "N/A",
   "dependencies": {
     "async": "^1.5.0",
-    "backend": "git+https://hubiso@github.com/hubisotool/backend.git#v0.8.0",
+    "backend": "git+https://hubiso@github.com/hubisotool/backend.git#v0.9.0",
     "bluebird": "^2.10.2",
     "loglevel": "^1.4.0",
     "node-webkit-updater": "^0.3.2",

@@ -19,7 +19,7 @@ var
                 })
 
     }])
-    .controller('hicalendar',['$scope','_backend_','_reviews_',function($scope,b,r){
+    .controller('hicalendar',['$scope','_backend_','_reviews_','_checklists_',function($scope,b,r,cl){
             var
                 gap_template = function(gap,action,person,timeline){
                     this.gap = gap || "";
@@ -124,20 +124,67 @@ var
                 })
             };
 
+            $scope.saveForm = function(){
+                console.log("Saving form");
+                var ans_list = [];
+                $('.form-group input').each(function(){
+                    var
+                       ans = {name:$(this).prev().text(),val:$(this).val(),input_id:$(this).attr('id')}
+                    ;
+                    ans_list.push(ans)
+                });
+
+                b.execInDb('ans','find',[{"event_id":$scope.event._id}]).then(function(_ans_objs){
+                    if(_ans_objs.length > 0){
+                        //update
+                        b.execInDb('ans','update',[{"event_id":$scope.event._id},{$set:{"ans":ans_list}}]);
+                    }else{
+                        //insert
+                        var ans_obj = {"event_id":$scope.event._id,"ans":ans_list};
+                        b.saveToDb('ans',ans_obj);
+                    }
+                })
+            };
+
             $scope.goFullscreen = function(state){
                 $scope.fullscreen_state = state;
                 $scope.closeEventEditor();
-                b.execInDb('aps','find',[{'event_id':$scope.event._id}]).then(function(docs){
-                    if(docs.length > 0){
-                        $scope.$apply(function(){
-                            $scope.gaps = docs[0].gaps
+                switch(state){
+                    case "action_plan":
+                        b.execInDb('aps','find',[{'event_id':$scope.event._id}]).then(function(docs){
+                            if(docs.length > 0){
+                                $scope.$apply(function(){
+                                    $scope.gaps = docs[0].gaps
+                                });
+                            }else{
+                                $scope.$apply(function(){
+                                    $scope.gaps = [new gap_template()];
+                                });
+                            }
                         });
-                    }else{
-                        $scope.$apply(function(){
-                            $scope.gaps = [new gap_template()];
+                    break;
+                    case "review":
+                        r.get($scope.event.rv_id).then(function(rv){
+                            cl.get(rv.cl).then(function(checklist){
+                                b.execInDb('ans','find',[{"event_id":$scope.event._id}]).then(function(ansList){
+                                    var renderOpts = {"container":$("#form")}, buildOpts={"defaultFields":checklist.form};
+
+                                    $("#form_buff").formBuilder(buildOpts);
+                                    $("#form_buff").formRender(renderOpts);
+                                    if(ansList.length > 0){
+                                        ansList[0].ans.forEach(function(ans){
+                                            $("#"+ans.input_id).val(ans.val);
+                                        })
+                                    }
+                                    $('.form-group input').on('change',function(){
+                                        $scope.saveForm();
+                                    })
+                                });
+                            })
                         });
-                    }
-                });
+                    break;
+                }
+
                 $("#fullscreen").css({"top":"0","left":"0","width":"100%","height":"100%","display":"block","z-index":"100"});
             };
 
