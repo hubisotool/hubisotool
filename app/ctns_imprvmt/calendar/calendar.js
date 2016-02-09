@@ -19,7 +19,7 @@ var
                 })
 
     }])
-    .controller('hicalendar',['$scope','_backend_','_reviews_','_checklists_',function($scope,b,r,cl){
+    .controller('hicalendar',['$scope','_backend_','_reviews_','_checklists_','_occurences_',function($scope,b,r,cl,o){
             var
                 gap_template = function(gap,action,person,timeline){
                     this.gap = gap || "";
@@ -83,7 +83,8 @@ var
             $scope.schedule = 'rv';
             $scope.schedule_opts = [
                 {"name":"Internal Audit","val":"ia"},
-                {"name":"Review","val":"rv"}
+                {"name":"Review","val":"rv"},
+                {"name":"Occurence","val":"oc"}
             ];
 
             $scope.gaps.push(new gap_template());
@@ -127,7 +128,7 @@ var
             $scope.saveForm = function(){
                 console.log("Saving form");
                 var ans_list = [];
-                $('.form-group input').each(function(){
+                $('.form-control').each(function(){
                     var
                        ans = {name:$(this).prev().text(),val:$(this).val(),input_id:$(this).attr('id')}
                     ;
@@ -183,6 +184,26 @@ var
                             })
                         });
                     break;
+                    case "occurence":
+                        o.get($scope.event.oc_id).then(function(oc){
+                            cl.get(oc.cl).then(function(checklist){
+                                b.execInDb('ans','find',[{"event_id":$scope.event._id}]).then(function(ansList){
+                                    var renderOpts = {"container":$("#form")}, buildOpts={"defaultFields":checklist.form};
+
+                                    $("#form_buff").formBuilder(buildOpts);
+                                    $("#form_buff").formRender(renderOpts);
+                                    if(ansList.length > 0){
+                                        ansList[0].ans.forEach(function(ans){
+                                            $("#"+ans.input_id).val(ans.val);
+                                        })
+                                    }
+                                    $('.form-control').on('change',function(){
+                                        $scope.saveForm();
+                                    })
+                                });
+                            })
+                        });
+                    break;
                 }
 
                 $("#fullscreen").css({"top":"0","left":"0","width":"100%","height":"100%","display":"block","z-index":"100"});
@@ -223,6 +244,10 @@ var
                     case "rv":
                         event["title"]=$scope.reviews[$scope.review].name;
                         event["rv_id"]=$scope.reviews[$scope.review]._id;
+                    break;
+                    case "oc":
+                        event["title"]=$scope.occurences[$scope.occurence].name;
+                        event["oc_id"]=$scope.occurences[$scope.occurence]._id;
                     break;
                 }
 
@@ -310,7 +335,7 @@ var
             };
             return _gut;
     }])
-    .directive('hicalendar',['_reviews_',function(r){
+    .directive('hicalendar',['_reviews_','_occurences_',function(r,o){
         var _gut = {};
             _gut.restrict = "A";
             _gut.link = function(scope,elem){
@@ -320,6 +345,13 @@ var
                     scope.$apply(function(){
                         scope.reviews = reviews;
                         scope.review = 0;
+                    })
+                });
+
+                o.load().then(function(occurences){
+                    scope.$apply(function(){
+                        scope.occurences = occurences;
+                        scope.occurence = 0;
                     })
                 });
 

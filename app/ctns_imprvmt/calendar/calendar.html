@@ -36,6 +36,17 @@
                     </select>
                 </div>
             </div>
+            <div class="row editorEntry" ng-show="schedule==='oc'">
+                <div class="col-xs-3">
+                    Occurence:
+                </div>
+                <div class="col-xs-9">
+                    <select ng-model="occurence">
+                        <option ng-repeat="oc_opt in occurences" value="{{$index}}" >{{oc_opt.name}}</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="row footer">
                 <div class="col-xs-3">
                     <div id="addEvent" ng-click="addEvent()">Add</div>
@@ -73,6 +84,18 @@
                     <div ng-hide="isDue()">Not Available</div>
                 </div>
             </div>
+            <div class="row editorEntry" ng-show="event.type==='oc'">
+                <div class="col-xs-2">
+                    Action:
+                </div>
+                <div class="col-xs-10">
+                    <div ng-show="isDue()">
+                        <div class="editorAction" ng-click="goFullscreen('occurence')">Fill in form</div>
+                    </div>
+                    <div ng-hide="isDue()">Not Available</div>
+                </div>
+            </div>
+
             <div class="row footer">
                 <div class="col-xs-3">
                     <div id="delEvent" ng-click="delEvent()">Delete</div>
@@ -118,7 +141,7 @@
                 </div>
             </div>
         </div>
-        <div ng-show="fullscreen_state==='review'">
+        <div ng-show="fullscreen_state==='review'||fullscreen_state==='occurence'">
             <div class="row" id="review_form">
                 <div class="col-xs-12">
                     <div id="form"></div>
@@ -128,6 +151,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>
