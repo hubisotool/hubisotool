@@ -19,7 +19,7 @@ var
                 })
 
     }])
-    .controller('hicalendar',['$scope','_backend_','_reviews_','_checklists_','_occurences_',function($scope,b,r,cl,o){
+    .controller('hicalendar',['$scope','_backend_','_reviews_','_checklists_','_occurences_','_qims_',function($scope,b,r,cl,o,q){
             var
                 gap_template = function(gap,action,person,timeline){
                     this.gap = gap || "";
@@ -84,7 +84,8 @@ var
             $scope.schedule_opts = [
                 {"name":"Internal Audit","val":"ia"},
                 {"name":"Review","val":"rv"},
-                {"name":"Occurence","val":"oc"}
+                {"name":"Occurence","val":"oc"},
+                {"name":"Quality Improvement","val":"qim"}
             ];
 
             $scope.gaps.push(new gap_template());
@@ -204,6 +205,26 @@ var
                             })
                         });
                     break;
+                    case "qim":
+                        q.get($scope.event.qim_id).then(function(qim){
+                            cl.get(qim.cl).then(function(checklist){
+                                b.execInDb('ans','find',[{"event_id":$scope.event._id}]).then(function(ansList){
+                                    var renderOpts = {"container":$("#form")}, buildOpts={"defaultFields":checklist.form};
+
+                                    $("#form_buff").formBuilder(buildOpts);
+                                    $("#form_buff").formRender(renderOpts);
+                                    if(ansList.length > 0){
+                                        ansList[0].ans.forEach(function(ans){
+                                            $("#"+ans.input_id).val(ans.val);
+                                        })
+                                    }
+                                    $('.form-control').on('change',function(){
+                                        $scope.saveForm();
+                                    })
+                                });
+                            })
+                        });
+                    break;
                 }
 
                 $("#fullscreen").css({"top":"0","left":"0","width":"100%","height":"100%","display":"block","z-index":"100"});
@@ -248,6 +269,10 @@ var
                     case "oc":
                         event["title"]=$scope.occurences[$scope.occurence].name;
                         event["oc_id"]=$scope.occurences[$scope.occurence]._id;
+                    break;
+                    case "qim":
+                        event["title"]=$scope.qims[$scope.qim].name;
+                        event["qim_id"]=$scope.qims[$scope.qim]._id;
                     break;
                 }
 
@@ -335,7 +360,7 @@ var
             };
             return _gut;
     }])
-    .directive('hicalendar',['_reviews_','_occurences_',function(r,o){
+    .directive('hicalendar',['_reviews_','_occurences_','_qims_',function(r,o,q){
         var _gut = {};
             _gut.restrict = "A";
             _gut.link = function(scope,elem){
@@ -352,6 +377,13 @@ var
                     scope.$apply(function(){
                         scope.occurences = occurences;
                         scope.occurence = 0;
+                    })
+                });
+
+                q.load().then(function(qims){
+                    scope.$apply(function(){
+                        scope.qims = qims;
+                        scope.qim = 0;
                     })
                 });
 

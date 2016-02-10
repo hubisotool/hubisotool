@@ -9,7 +9,7 @@
         <div ng-show="state==='add'">
             <div class="row title">
                 <div class="col-xs-11">
-                    Schedule |
+                    Add |
                     <select ng-model="schedule">
                         <option ng-repeat="opt in schedule_opts" value="{{opt.val}}">{{opt.name}}</option>
                     </select>
@@ -43,6 +43,16 @@
                 <div class="col-xs-9">
                     <select ng-model="occurence">
                         <option ng-repeat="oc_opt in occurences" value="{{$index}}" >{{oc_opt.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row editorEntry" ng-show="schedule==='qim'">
+                <div class="col-xs-3">
+                    Form:
+                </div>
+                <div class="col-xs-9">
+                    <select ng-model="qim">
+                        <option ng-repeat="qim_opt in qims" value="{{$index}}" >{{qim_opt.name}}</option>
                     </select>
                 </div>
             </div>
@@ -95,6 +105,17 @@
                     <div ng-hide="isDue()">Not Available</div>
                 </div>
             </div>
+            <div class="row editorEntry" ng-show="event.type==='qim'">
+                <div class="col-xs-2">
+                    Action:
+                </div>
+                <div class="col-xs-10">
+                    <div ng-show="isDue()">
+                        <div class="editorAction" ng-click="goFullscreen('qim')">Fill in form</div>
+                    </div>
+                    <div ng-hide="isDue()">Not Available</div>
+                </div>
+            </div>
 
             <div class="row footer">
                 <div class="col-xs-3">
@@ -141,7 +162,7 @@
                 </div>
             </div>
         </div>
-        <div ng-show="fullscreen_state==='review'||fullscreen_state==='occurence'">
+        <div ng-show="fullscreen_state==='review'||fullscreen_state==='occurence'||fullscreen_state==='qim'">
             <div class="row" id="review_form">
                 <div class="col-xs-12">
                     <div id="form"></div>

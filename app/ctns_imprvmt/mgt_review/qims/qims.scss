@@ -1,0 +1,39 @@
+@import "../../../colors/colors";
+@import "../../../dimens/dimens";
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"]{
+
+  [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.header"]{
+    border-bottom: 1px solid $border-color;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry"]:nth-of-type(2n){
+    background-color: #f0f0f0;
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.qims.qimlist.save"]{
+    cursor: default;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry.action"]{
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.qims.ctrlBox"],
+  [class~="root.ctns_imprvmt.mgt_review.qims.inputBox"]{
+    height: $block-height;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.qims.inputBox"]{
+    padding: $block-height*.2;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.qims.ctrlBox"]{
+    padding: $block-height*.1;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry.action"]:nth-of-type(1),
+  [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry.action"]:nth-of-type(3){
+    margin-left: 0px;
+  }
+}
