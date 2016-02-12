@@ -35,12 +35,14 @@
   ],
   "window": {
     "title": "Hubiso",
+    "icon": "icons/icon.png",
     "width": 970,
     "height": 500,
     "min_width": 900,
     "min_height": 500,
     "toolbar": false
   },
+  "winIco":"icons/win/hubisotool.ico",
   "packages": {
     "mac": {},
     "win": {},
