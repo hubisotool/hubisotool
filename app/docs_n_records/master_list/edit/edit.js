@@ -63,48 +63,6 @@ var
             var editorH = newH - parseInt($('[id="root.docs_n_records.master_list.edit.box.title"]').css("height"))-72;
             console.log("Title Height : " + newH)
             console.log("Editor Height : " + editorH)
-            //$('[id="root.docs_n_records.master_list.edit.editor"]').destroy();
-            //$('[id="root.docs_n_records.master_list.edit.editor"]').summernote({
-            //    height: editorH,
-            //    minHeight: editorH,
-            //    maxHeight: editorH,
-            //    focus: true,
-            //    onChange: function(contents, $editable) {
-            //        $scope.updateDocContent($scope.docId,contents);
-            //    },
-            //    toolbar:[
-            //        [
-            //            'style',['style']
-            //        ],
-            //        [
-            //            'font_style',['bold','italic','underline','strikethrough','clear']
-            //        ],
-            //        [
-            //            'font_size',['fontsize']
-            //        ],
-            //        [
-            //            'font_color',['color']
-            //        ],
-            //        [
-            //            'layout_p',['ul','ol','paragraph']
-            //        ],
-            //        [
-            //            'height_p',['height']
-            //        ],
-            //        [
-            //            'table',['table']
-            //        ],
-            //        [
-            //            'insert',['link','picture','hr']
-            //        ],
-            //        [
-            //            'misc',['codeview','undo','redo']
-            //        ],
-            //        [
-            //            'help',['help']
-            //        ]
-            //    ]
-            //});
             $scope.setupScrollbar(newH);
         };
 
@@ -168,16 +126,14 @@ var
                     log.debug({src:logSrc,diagId:"mlDocEditor::link",msg:"Setting up editor"});
                     var winH = $(window).height();
                     var newH = winH-($("[ui-view='root.nav_bar']").height()+$("[ui-view='root.docs_n_records.nav_bar']").height())-20;
-                    var editorH = newH - parseInt($('[id="root.docs_n_records.master_list.edit.box.title"]').css("height"))-72;
-
+                    var editorH = newH - parseInt($('[id="root.docs_n_records.master_list.edit.box.title"]').css("height"))-70;
                     $('[id="root.docs_n_records.master_list.edit.editor"]').summernote({
-                        height: editorH,
-                        minHeight: editorH,
-                        maxHeight: editorH,
+                        minHeight:1165,
                         focus: true,
                         callbacks:{
                             onInit:function(){
                                 $scope.loadDoc($scope.docId);
+                                $('[data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .note-editing-area').css('height',editorH);
                             },
                             onChange: function(contents, $editable) {
                                 $scope.updateDocContent($scope.docId,contents);

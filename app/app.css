@@ -175,9 +175,18 @@
     border: none; }
   [data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .col-xs-12 {
     padding: 0; }
+  [data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .note-editing-area {
+    overflow: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #f1f2f4; }
   [data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .note-editable.panel-body {
-    padding-left: 15px;
-    padding-right: 15px;
+    border: 1px solid #f0f0f0;
+    margin: auto;
+    width: 900px;
+    padding-top: 80px;
+    padding-left: 80px;
+    padding-right: 80px;
     font-family: "Bookman", Georgia, "Times New Roman", serif; }
     [data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .note-editable.panel-body table {
       width: 100%;

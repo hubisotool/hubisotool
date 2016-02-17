@@ -27,9 +27,23 @@
       padding: 0;
     }
 
+    .note-editing-area{
+      overflow: auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-color: hsla( $cim-mgtrv-sidebar-hover-hue,
+              $cim-mgtrv-sidebar-hover-sat,
+              $cim-mgtrv-sidebar-hover-light,
+              $cim-mgtrv-sidebar-hover-alpha);
+    }
+
     .note-editable.panel-body{
-      padding-left: 15px;
-      padding-right: 15px;
+      border: 1px solid #f0f0f0;
+      margin:auto;
+      width:900px;
+      padding-top: 80px;
+      padding-left: 80px;
+      padding-right: 80px;
       font-family: "Bookman", Georgia, "Times New Roman", serif;
       table{
         width: 100%;
