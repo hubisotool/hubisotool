@@ -2,7 +2,124 @@
 @import "../../../dimens/dimens";
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.reviews"]{
 
+  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.header.th"],
+  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.td"]{
+    height: $block-height;
+    line-height: $block-height;
+    vertical-align: middle;
+  }
+
   [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.header"]{
+    background-color: hsla(
+                    $sec-nav-bg-hue,
+                    $sec-nav-bg-sat,
+                    $sec-nav-bg-light,
+                    $sec-nav-bg-alpha
+    );
+
+    border-bottom: 1px solid hsla(
+                    $cim-mgtrv-checklist-header-border-hue,
+                    $cim-mgtrv-checklist-header-border-sat,
+                    $cim-mgtrv-checklist-header-border-light,
+                    $cim-mgtrv-checklist-header-border-alpha
+    );
+
+    border-top: 1px solid hsla(
+                    $cim-mgtrv-checklist-header-border-hue,
+                    $cim-mgtrv-checklist-header-border-sat,
+                    $cim-mgtrv-checklist-header-border-light,
+                    $cim-mgtrv-checklist-header-border-alpha
+    );
+
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.reviews.reviewlist.save"]{
+    text-align: center;
+    line-height: $block-height*.8;
+    vertical-align: middle;
+    background-color: hsla(
+                    $cim-mgtrv-sidebar-active-bg-hue,
+                    $cim-mgtrv-sidebar-active-bg-sat,
+                    $cim-mgtrv-sidebar-active-bg-light,
+                    $cim-mgtrv-sidebar-active-bg-alpha
+    );
+    height: 100%;
+    transition: background $hover-transition-duration, color $hover-transition-duration;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.reviews.reviewlist.save"]:hover{
+    background-color: hsla(
+                    $cim-mgtrv-checklist-ctrl-save-hover-bg-hue,
+                    $cim-mgtrv-checklist-ctrl-save-hover-bg-sat,
+                    $cim-mgtrv-checklist-ctrl-save-hover-bg-light,
+                    $cim-mgtrv-checklist-ctrl-save-hover-bg-alpha
+    );
+
+    color: hsla(
+                    $cim-mgtrv-checklist-ctrl-save-hover-color-hue,
+                    $cim-mgtrv-checklist-ctrl-save-hover-color-sat,
+                    $cim-mgtrv-checklist-ctrl-save-hover-color-light,
+                    $cim-mgtrv-checklist-ctrl-save-hover-color-alpha
+    );
+
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.reviews.input.name"],
+  [id="root.ctns_imprvmt.mgt_review.reviews.input.cl"]{
+    height: 100%;
+    width: 100%;
+    padding-left: $block-padding-left;
+    border:1px solid hsla(
+                    $cim-mgtrv-checklist-input-name-border-hue,
+                    $cim-mgtrv-checklist-input-name-border-sat,
+                    $cim-mgtrv-checklist-input-name-border-light,
+                    $cim-mgtrv-checklist-input-name-border-alpha
+    );
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.ctrlBox"],
+  [class~="root.ctns_imprvmt.mgt_review.reviews.inputBox"]{
+    height: $block-height;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.inputBox"]{
+    padding: $block-height*.2;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.ctrlBox"]{
+    padding: $block-height*.1;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry"]:nth-of-type(2n){
+    background-color: hsla(
+                    $cim-mgtrv-sidebar-active-bg-hue,
+                    $cim-mgtrv-sidebar-active-bg-sat,
+                    $cim-mgtrv-sidebar-active-bg-light,
+                    $cim-mgtrv-sidebar-active-bg-alpha
+    );
+  }
+
+  [id="root.ctns_imprvmt.mgt_review.reviews.reviewlist.save"]{
+    cursor: default;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]{
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]:nth-of-type(1){
+    margin-left: 0px;
+  }
+
+
+/*  [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.header"]{
     border-bottom: 1px solid $border-color;
   }
 
@@ -35,5 +152,5 @@
   [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]:nth-of-type(1),
   [class~="root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"]:nth-of-type(3){
     margin-left: 0px;
-  }
+  }*/
 }

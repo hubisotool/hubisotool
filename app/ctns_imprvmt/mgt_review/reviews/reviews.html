@@ -4,10 +4,10 @@
         <div class="col-xs-1">
         </div>
         <div class="col-xs-4 root.ctns_imprvmt.mgt_review.reviews.inputBox" >
-            <input type="text" placeholder="review name" ng-model="rv.name"/>
+            <input type="text" id="root.ctns_imprvmt.mgt_review.reviews.input.name" placeholder="review name" ng-model="rv.name"/>
         </div>
         <div class="col-xs-2 root.ctns_imprvmt.mgt_review.reviews.inputBox">
-            <select name="" id="" ng-model="rv.cl">
+            <select name="" id="root.ctns_imprvmt.mgt_review.reviews.input.cl" ng-model="rv.cl">
                 <option value=""></option>
                 <option ng-repeat="cl in checklists" value="{{cl._id}}">{{cl.name}}</option>
             </select>
@@ -17,31 +17,31 @@
         </div>
     </div>
     <div class="row root.ctns_imprvmt.mgt_review.reviews.reviewlist.header">
-        <div class="col-xs-1">
+        <div class="col-xs-1 root.ctns_imprvmt.mgt_review.reviews.reviewlist.header.th">
             <input type="checkbox"/>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-4 root.ctns_imprvmt.mgt_review.reviews.reviewlist.header.th">
             Name
         </div>
-        <div class="col-xs-2">
+        <div class="col-xs-2 root.ctns_imprvmt.mgt_review.reviews.reviewlist.header.th">
             Checklist
         </div>
-        <div class="col-xs-2">
+        <div class="col-xs-2 root.ctns_imprvmt.mgt_review.reviews.reviewlist.header.th">
             Action(s)
         </div>
     </div>
     <div class="row root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry" ng-repeat="rv in reviews">
-        <div class="col-xs-1">
+        <div class="col-xs-1 root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.td">
             <input type="checkbox"/>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-4 root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.td">
             <div ng-hide="editRvId===rv._id">{{rv.name}}</div>
             <div ng-show="editRvId===rv._id">
                 <input id="_rv_edit_name_{{rv._id}}" type="text" placeholder="review name" value="{{rv.name}}"/>
             </div>
 
         </div>
-        <div class="col-xs-2">
+        <div class="col-xs-2 root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.td">
             <div ng-hide="editRvId===rv._id">{{nameMap[rv.cl]}}</div>
             <div ng-show="editRvId===rv._id">
                 <select id="_rv_edit_cl_{{rv._id}}" name="">
@@ -50,7 +50,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-xs-2">
+        <div class="col-xs-2 root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.td">
             <div ng-click="editRv(rv)" ng-hide="editRvId===rv._id" class="hubiso-icon-edit root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"></div>
             <div ng-click="deleteRv(rv)" ng-hide="editRvId===rv._id" class="hubiso-icon-trash root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"></div>
             <div ng-click="saveEditRv(rv)" ng-show="editRvId===rv._id" class="hubiso-icon-check-mark root.ctns_imprvmt.mgt_review.reviews.reviewlist.entry.action"></div>
