@@ -15,6 +15,9 @@ var
                     'root.workbench':{
                         templateUrl:'docs_n_records/docs_n_records.html'
                     },
+                    'root.docs_n_records.workbench@docs_n_records':{
+                        templateUrl:'docs_n_records/master_list/master_list.html'
+                    },
                     'root.docs_n_records.nav_bar@docs_n_records':{
                         templateUrl:'docs_n_records/nav_bar/nav_bar.html'
                     }

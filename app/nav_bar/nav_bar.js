@@ -4,8 +4,9 @@
 
 var mainNav = angular.module('mainNav',[])
 
-.controller('mainNavCtrl',['$scope','logger',function($scope,log){
+.controller('mainNavCtrl',['$scope','logger','$state',function($scope,log,$state){
         log.debug("mainNavCtrl loaded");
+
 }])
 ;
 
