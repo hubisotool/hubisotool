@@ -134,6 +134,12 @@ var
                             onInit:function(){
                                 $scope.loadDoc($scope.docId);
                                 $('[data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .note-editing-area').css('height',editorH);
+                                $(window).on('resize',function(){
+                                    var winH = $(window).height();
+                                    var newH = winH-($("[ui-view='root.nav_bar']").height()+$("[ui-view='root.docs_n_records.nav_bar']").height())-20;
+                                    var editorH = newH - parseInt($('[id="root.docs_n_records.master_list.edit.box.title"]').css("height"))-70;
+                                    $('[data-hubiso-module="root.docs_n_records.master_list.edit"] [id="root.docs_n_records.master_list.edit.box.editor"] .note-editing-area').css('height',editorH);
+                                });
                             },
                             onChange: function(contents, $editable) {
                                 $scope.updateDocContent($scope.docId,contents);

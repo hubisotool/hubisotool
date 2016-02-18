@@ -304,15 +304,37 @@
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.occurences"] [class~="root.ctns_imprvmt.mgt_review.occurences.occurencelist.entry.action"]:nth-of-type(3) {
   margin-left: 0px; }
 
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.header.th"],
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry.td"] {
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.header"] {
-  border-bottom: 1px solid #ccc; }
-[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry"]:nth-of-type(2n) {
-  background-color: #f0f0f0; }
+  background-color: #fbfcfe;
+  border-bottom: 1px solid #cbcccd;
+  border-top: 1px solid #cbcccd; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [id="root.ctns_imprvmt.mgt_review.qims.qimlist.save"] {
-  cursor: default; }
-[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry.action"] {
-  display: inline-block;
-  margin-left: 10px; }
+  text-align: center;
+  line-height: 32px;
+  vertical-align: middle;
+  background-color: #e3e6e8;
+  height: 100%;
+  transition: background 0.3s, color 0.3s;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [id="root.ctns_imprvmt.mgt_review.qims.qimlist.save"]:hover {
+  background-color: #339933;
+  color: white; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [id="root.ctns_imprvmt.mgt_review.qims.input.name"],
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [id="root.ctns_imprvmt.mgt_review.qims.input.cl"] {
+  height: 100%;
+  width: 100%;
+  padding-left: 15px;
+  border: 1px solid #cbcccd; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.ctrlBox"],
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.inputBox"] {
   height: 40px; }
@@ -320,8 +342,14 @@
   padding: 8px; }
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.ctrlBox"] {
   padding: 4px; }
-[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry.action"]:nth-of-type(1),
-[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry.action"]:nth-of-type(3) {
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry"]:nth-of-type(2n) {
+  background-color: #e3e6e8; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [id="root.ctns_imprvmt.mgt_review.qims.qimlist.save"] {
+  cursor: default; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry.action"] {
+  display: inline-block;
+  margin-left: 10px; }
+[data-hubiso-module="root.ctns_imprvmt.mgt_review.qims"] [class~="root.ctns_imprvmt.mgt_review.qims.qimlist.entry.action"]:nth-of-type(1) {
   margin-left: 0px; }
 
 [data-hubiso-module="root.ctns_imprvmt.mgt_review.checklists.formbuilder"] [class~="root.ctns_imprvmt.mgt_review.checklists.checklist.formbuilder.action"] {
